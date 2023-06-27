@@ -1,0 +1,2925 @@
+{
+  "beginner": {
+    "test_1": {
+      "1": {
+        "question": "В какой стране буква Z читается как [zed]?",
+        "A": "A. Великобритания",
+        "B": "B. США",
+        "C": "C. Казахстан",
+        "Correct": "B"
+      },
+      "2": {
+        "question": "Назовите три примера, используемых в видеоуроке, в которых буква С читается как [k]:",
+        "A": "A. cat, code, cut",
+        "B": "B. capybara, coke, scene",
+        "C": "C. cat, cut, race",
+        "Correct": "A"
+      },
+      "3": {
+        "question": "Как читаются гласные в открытом слоге в английском языке?",
+        "A": "A. По-разному, в зависимости от гласной",
+        "B": "B. Все читаются как [о]",
+        "C": "C. Как в алфавите",
+        "Correct": "B"
+      },
+      "4": {
+        "question": "Сколько типов слогов существует в английском языке?",
+        "A": "A. 4; четыре",
+        "B": "B. 3; три",
+        "C": "C. 5; пять",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "Как дословно переводится слово «drilling» на русский язык?",
+        "A": "A. Сверление",
+        "B": "B. Дрель",
+        "C": "C. Повторение - мать учения",
+        "Correct": "A"
+      },
+      "6": {
+        "question": "Назовите самое распространенное сочетание согласных, которое встречается в английском языке.",
+        "A": "A. sh",
+        "B": "B. ch",
+        "C": "C. zh",
+        "Correct": "B"
+      },
+      "7": {
+        "question": "Как с английского языка переводится фраза: «I am pleased to see you!»",
+        "A": "A. Я счастлив встрече с тобой!",
+        "B": "B. Я доволен тобой!",
+        "C": "C. Я прошу, пожалуйста, встретиться со мной!",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "Назовите сленговое слово, которое часто используют в Канаде и Америке.",
+        "A": "A. Howdy",
+        "B": "B. Hiya",
+        "C": "C. Yo",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "Как по-русски называются demonstrative pronouns?",
+        "A": "A. Демонстративные местоимения",
+        "B": "B. Указательные местоимения",
+        "C": "C. Демонстрационные местоимения",
+        "Correct": "B"
+      },
+      "10": {
+        "question": "Переведите словосочетание «these books» на русский язык.",
+        "A": "A. эти книги",
+        "B": "B. те книги",
+        "C": "C. тут книги",
+        "Correct": "A"
+      }
+    },
+    "test_2": {
+      "1": {
+        "question": "Найдите строку, в которой перечислены все личные местоимения:",
+        "A": "A. I, you, he, she, they, we. your",
+        "B": "B. I, you, we, they, it, he, she, it",
+        "C": "C. I, you, he, she, it, we, their",
+        "Correct": "B"
+      },
+      "2": {
+        "question": "Переведите на английский язык предложение: “Мы друзья”.",
+        "A": "A. We are friends.",
+        "B": "B. We are druzya.",
+        "C": "C. We are the same.",
+        "Correct": "A"
+      },
+      "3": {
+        "question": "Как по-английски сказать: “Сейчас зима”?",
+        "A": "A. It is winter now.",
+        "B": "B. It be winter now.",
+        "C": "C. Winter.",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "Как по-английски называется седьмой месяц в году?",
+        "A": "A. August",
+        "B": "B. September",
+        "C": "C. July",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "Количественные числительные – это:",
+        "A": "A. Cardinal Numerals",
+        "B": "B. Ordinal Numerals",
+        "C": "C. Coordination Numerals",
+        "Correct": "A"
+      },
+      "6": {
+        "question": "Как сказать по-английски “минута в минуту”?",
+        "A": "A. minute in minute",
+        "B": "B. on the dot",
+        "C": "C. оба варианта",
+        "Correct": "B"
+      },
+      "7": {
+        "question": "Найдите составленный правильно вопрос:",
+        "A": "A. It is rainy?",
+        "B": "B. Are it rainy?",
+        "C": "C. Is it rainy?",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "Переведите на английский язык вопрос: “Какая сегодня погода?”",
+        "A": "A. What is the weather like today?",
+        "B": "B. What was the weather yesterday?",
+        "C": "C. What is your face look like?",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "Как переводится выражение “so expensive!” на русский язык?",
+        "A": "A. Так дешево!",
+        "B": "B. Так дорого!",
+        "C": "C. Дороже!",
+        "Correct": "B"
+      },
+      "10": {
+        "question": "Как по-английски сказать “куда?”",
+        "A": "A. why",
+        "B": "B. who",
+        "C": "C. where",
+        "Correct": "C"
+      }
+    },
+    "test_3": {
+      "1": {
+        "question": "Каким животным является Мелман из “Мадагаскара”?",
+        "A": "A. zebra",
+        "B": "B. giraffe",
+        "C": "C. lion",
+        "Correct": "B"
+      },
+      "2": {
+        "question": "Переведите на английский язык предложение “Тут есть цветок”, используя конструкцию there is/there are.",
+        "A": "A. There are flowers.",
+        "B": "B. There is a flower.",
+        "C": "C. There is a girl.",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "Как переводится “глагол” на английский язык?",
+        "A": "A. verb",
+        "B": "B. noun",
+        "C": "C. adverb",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "Как переводится выражение “Take a rest” на русский язык?",
+        "A": "A. Приляг",
+        "B": "B. Успокойся",
+        "C": "C. Отдыхай",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "Продолжите предложение: “I like….”",
+        "A": "A. clean",
+        "B": "B. reading",
+        "C": "C. often",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "Переведите на английский язык предложение: “Мы не любим кофе”.",
+        "A": "A. We don’t like coffee. ",
+        "B": "B. We don't like tea",
+        "C": "C. We don't like minecraft",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "Как по-английски звучит словосочетание “Шесть рукопожатий”?",
+        "A": "A. Six hands",
+        "B": "B. Six handmades",
+        "C": "C. Six handshakes",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "Как дословно переводится глагол “have” на русский язык?",
+        "A": "A. делать",
+        "B": "B. иметь",
+        "C": "C. быть",
+        "Correct":"B"
+      },
+      "9": {
+        "question": "Найдите существительное во множественном числе:",
+        "A": "A. new",
+        "B": "B. gloves",
+        "C": "C. money",
+        "Correct": "B"
+      },
+      "10": {
+        "question": "Groundhog Day переводится на русский язык как:",
+        "A": "A. День сурка",
+        "B": "B. День суриката",
+        "C": "C. День земли",
+        "Correct": "A"
+      }
+    },
+    "test_final": {
+      "1": {
+        "question": "Выбери ряд, где буква 'а' читается одинаково:",
+        "A": "A. take, skate, plane",
+        "B": "B. cat, bag, watch",
+        "C": "C. table, awesome, water",
+        "D": "D. hat, game, map",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "Выберите из данных вариантов неформальное приветствие.",
+        "A": "A. Long time no see.",
+        "B": "B. Good to see you!",
+        "C": "C. I am pleased to see you.",
+        "D": "D. Good morning.",
+        "Correct": "A"
+      },
+      "3": {
+        "question": "Заполни пробел: _ are my trousers.",
+        "A": "A. These/those",
+        "B": "B. These/this",
+        "C": "C. Those/that",
+        "D": "D. This/that",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "Заполни пробел: Who are _ people over there?",
+        "A": "A. These",
+        "B": "B. This",
+        "C": "C. Those",
+        "D": "D. That",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "Выбери правильное местоимение, чтобы заполнить пробел: _ has got a brother. (Diana)",
+        "A": "A. We",
+        "B": "B. He",
+        "C": "C. It",
+        "D": "D. She",
+        "Correct": "D"
+      },
+      "6": {
+        "question": "Выбери местоимение, которое НЕЛЬЗЯ поставить: _ are watching TV.",
+        "A": "A. You",
+        "B": "B. She",
+        "C": "C. We",
+        "D": "D. They",
+        "Correct": "B"
+      },
+      "7": {
+        "question": "Заполни пробел: _ they from Kazakhstan?",
+        "A": "A. Do",
+        "B": "B. Are",
+        "C": "C. When",
+        "D": "D. Is",
+        "Correct": "B"
+      },
+      "8": {
+        "question": "Which season is the hottest?",
+        "A": "A. winter",
+        "B": "B. summer",
+        "C": "C. autumn",
+        "D": "D. spring",
+        "Correct": "B"
+      },
+      "9": {
+        "question": "Seven forty-five is ...",
+        "A": "A. 8:55",
+        "B": "B. 7:45",
+        "C": "C. 8:45",
+        "D": "D. 7:55",
+        "Correct": "B"
+      },
+      "10": {
+        "question": "6 p.m. это ...",
+        "A": "A. 6 o'clock in the midnight",
+        "B": "B. 6 o'clock in the evening",
+        "C": "C. 6 o'clock in the afternoon",
+        "D": "D. 6 o'clock in the morning",
+        "Correct": "B"
+      },
+      "11": {
+        "question": "What is the weather like today?",
+        "A": "A. I'm fine, thank you.",
+        "B": "B. It's 5 o'clock.",
+        "C": "C. It's rainy outside.",
+        "D": "D. It's Monday.",
+        "Correct": "C"
+      },
+      "12": {
+        "question": "Поставь подходящее слово: Put on your sweater. It's _ today.",
+        "A": "A. sunny",
+        "B": "B. hot",
+        "C": "C. cold",
+        "D": "D. warm",
+        "Correct": "C"
+      },
+      "13": {
+        "question": "_ is your favourite colour?",
+        "A": "A. Which",
+        "B": "B. Why",
+        "C": "C. Who",
+        "D": "D. What",
+        "Correct": "D"
+      },
+      "14": {
+        "question": "_ are you wearing that coat? - Because it's cold!",
+        "A": "A. Why",
+        "B": "B. When",
+        "C": "C. What",
+        "D": "D. How",
+        "Correct": "A"
+      },
+      "15": {
+        "question": "_ a monkey on the tree.",
+        "A": "A. There are",
+        "B": "B. There is",
+        "C": "C. That are",
+        "D": "D. Those is",
+        "Correct": "B"
+      },
+      "16": {
+        "question": "Вставь правильный вариант: There are _ in the fridge.",
+        "A": "A. eight apples",
+        "B": "B. monkeys",
+        "C": "C. a pen",
+        "D": "D. one tomato",
+        "Correct": "A"
+      },
+      "17": {
+        "question": "Выбери корректный глагол: I _ at the university.",
+        "A": "A. study",
+        "B": "B. go",
+        "C": "C. like",
+        "D": "D. drive",
+        "Correct": "A"
+      },
+      "18": {
+        "question": "Выбери правильный глагол: He _ swimming.",
+        "A": "A. like",
+        "B": "B. likes",
+        "C": "C. do like",
+        "D": "D. liking",
+        "Correct": "B"
+      },
+      "19": {
+        "question": "Напиши данное предложение в Present Simple: (what / you / do at the weekend)?",
+        "A": "A. What are you do at the weekend?",
+        "B": "B. What you do at the weekend?",
+        "C": "C. What does you do at the weekend?",
+        "D": "D. What do you do at the weekend?",
+        "Correct": "D"
+      },
+      "20": {
+        "question": "Выбери фразу, которая НЕ описывает ежедневную рутину:",
+        "A": "A. to take out the garbage",
+        "B": "B. to buy a present",
+        "C": "C. to wash the dishes",
+        "D": "D. to wake up",
+        "Correct": "B"
+      }
+    }
+  },
+  "Elementary": {
+    "test_1": {
+      "1": {
+        "question": "Которое слово является подлежащим в данном предложении?",
+        "A": "A. cat",
+        "B": "B. chased",
+        "C": "C. mouse",
+        "D": "D. the",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "Которое слово является глаголом в данном предложении?",
+        "A": "A. dog",
+        "B": "B. barked",
+        "C": "C. loudly",
+        "D": "D. the",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "Которое местоимение может заменить 'Mary' в предложении 'Mary is my friend'?",
+        "A": "A. her",
+        "B": "B. she",
+        "C": "C. they",
+        "D": "D. we",
+        "Correct": "B"
+      },
+      "4": {
+        "question": "Которое местоимение может заменить 'book' в предложении 'I read the book yesterday'?",
+        "A": "A. it",
+        "B": "B. them",
+        "C": "C. he",
+        "D": "D. she",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "Которое притяжательное прилагательное стоит поставить в этом предложении: 'She has a pencil. This is _____ pencil.'?",
+        "A": "A. my",
+        "B": "B. your",
+        "C": "C. his",
+        "D": "D. her",
+        "Correct": "D"
+      },
+      "6": {
+        "question": "Которое слово является исчисляемым существительным?",
+        "A": "A. water",
+        "B": "B. milk",
+        "C": "C. apple",
+        "D": "D. rice",
+        "Correct": "C"
+      },
+      "7": {
+        "question": "Которое слово является неисчисляемым существительным?",
+        "A": "A. book",
+        "B": "B. table",
+        "C": "C. cheese",
+        "D": "D. pencil",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "Которые указательные местоимения нужно вставить в это предложение? '_____ house is not mine, mine is ______ green cottage next to it.'",
+        "A": "A. this, that",
+        "B": "B. that, that",
+        "C": "C. these, those",
+        "D": "D. these, that",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "Который предлог времени нужно поставить в этом предложении: 'The party starts _____ 8 o'clock'?",
+        "A": "A. at",
+        "B": "B. on",
+        "C": "C. in",
+        "D": "D. for",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "Который предлог времени нужно поставить в этом предложении: 'I will see you _____ Friday'?",
+        "A": "A. at",
+        "B": "B. on",
+        "C": "C. in",
+        "D": "D. by",
+        "Correct": "B"
+      }
+    },
+    "test_2": {
+      "1": {
+          "question": "В котором предложении правильно используется 'have got'?",
+          "A": "A. He have got a new bike.",
+          "B": "B. They has got a big house.",
+          "C": "C. She has got two brothers.",
+          "D": "D. I have got like pizza.",
+          "Correct": "C"
+        },
+        "2": {
+          "question": "В котором предложении правильно используется притяжательная ''s''?",
+          "A": "A. He is playing with the dog’s toys.",
+          "B": "B. The cat playing with a toy.",
+          "C": "C. The bird's fly in the sky.",
+          "D": "D. The fish swimming in the bowl.",
+          "Correct": "A"
+        },
+        "3": {
+          "question": "В котором предложении правильно используется 'there is'?",
+          "A": "A. There is three birds in the tree.",
+          "B": "B. There is a dog and a cat in the house.",
+          "C": "C. There is many books on the shelf.",
+          "D": "D. There is a toys on the floor.",
+          "Correct": "B"
+        },
+        "4": {
+          "question": "В котором предложении правильно используется 'there are'?",
+          "A": "A. There are a elephant in the zoo.",
+          "B": "B. There are two oranges in the basket.",
+          "C": "C. There are a cake on the plate.",
+          "D": "D. There are a pencil on the desk.",
+          "Correct": "B"
+        },
+        "5": {
+          "question": "Который предлог времени нужно использовать в данном предложении: 'I will meet you ____ the park at 3 o'clock.'?",
+          "A": "A. in",
+          "B": "B. on",
+          "C": "C. at",
+          "D": "D. to",
+          "Correct": "A"
+        },
+        "6": {
+          "question": "В котором предложении правильно используется Present Simple?",
+          "A": "A. He am going to the store.",
+          "B": "B. They is eating lunch.",
+          "C": "C. She watches TV every day.",
+          "D": "D. We are played in the park.",
+          "Correct": "C"
+        },
+        "7": {
+          "question": "В котором предложении правильно используется Present Simple в отрицательной форме?",
+          "A": "A. She don't like pizza.",
+          "B": "B. They doesn't play basketball.",
+          "C": "C. He isn't tall.",
+          "D": "D. We aren't going to the party.",
+          "Correct": "C"
+        },
+        "8": {
+          "question": "В каком предложении правильно используется 'or'?",
+          "A": "A. I will go to the park or I will play basketball.",
+          "B": "B. She will eat pizza or she is hungry.",
+          "C": "C. They like to swim or they are scared of water.",
+          "D": "D. He will watch a movie or he is in love.",
+          "Correct": "A"
+        },
+        "9": {
+          "question": "В каком предложении правильно используется 'and'?",
+          "A": "A. I like to play soccer and baseball.",
+          "B": "B. She is tall and not .",
+          "C": "C. They ate pizza or they ate burgers.",
+          "D": "D. He will go to the beach after he will go to the park.",
+          "Correct": "A"
+        },
+        "10": {
+          "question": "Правильно переведи вопрос “Ты умеешь играть в футбол?”",
+          "A": "A. Do you play football?",
+          "B": "B. Is you play football?",
+          "C": "C. Can you play football?",
+          "D": "D. You are play football?",
+          "Correct": "C"
+        }
+      
+    },
+    "test_3": {
+      "1": {
+          "question": "В котором предложении правильно используется 'some'?",
+          "A": "A. I don't have some friends.",
+          "B": "B. They need some milk for their cereal.",
+          "C": "C. He doesn't like some apples.",
+          "D": "D. We aren't going to some movies.",
+          "Correct": "B"
+        },
+        "2": {
+          "question": "В котором предложении правильно используется 'any'?",
+          "A": "A. She wants to buy any flowers.",
+          "B": "B. They didn't bring any food to the picnic.",
+          "C": "C. He likes any pizza toppings.",
+          "D": "D. We have any tickets for the concert.",
+          "Correct": "B"
+        },
+        "3": {
+          "question": "В котором предложении правильно используется 'much'?",
+          "A": "A. I have much time to finish my project.",
+          "B": "B. They bought much oranges at the store.",
+          "C": "C. He didn't eat much breakfast.",
+          "D": "D. We need to bring much books to school.",
+          "Correct": "C"
+        },
+        "4": {
+          "question": "В котором предложении правильно используется 'many'?",
+          "A": "A. She drank many water bottles today.",
+          "B": "B. They have many dogs at home.",
+          "C": "C. He didn't see many movies last week.",
+          "D": "D. We don't have many money to spend.",
+          "Correct": "C"
+        },
+        "5": {
+          "question": "В котором предложении правильно используется 'a lot of'?",
+          "A": "A. I don't have a lot of friends.",
+          "B": "B. They have a lot of snow in the winter.",
+          "C": "C. He doesn't eat a lot of vegetables.",
+          "D": "D. We need a lot of help to move the furniture.",
+          "Correct": "B"
+        },
+        "6": {
+          "question": "Какое слово правильно дополнит это предложение: 'I have ____ time to finish my homework.'",
+          "A": "A. few",
+          "B": "B. a few",
+          "C": "C. little",
+          "D": "D. a little",
+          "Correct": "C"
+        },
+        "7": {
+          "question": "Какое слово правильно дополнит это предложение: 'She has ____ friends in her new school.'",
+          "A": "A. few",
+          "B": "B. a few",
+          "C": "C. little",
+          "D": "D. a little",
+          "Correct": "B"
+        },
+        "8": {
+          "question": "В котором предложении правильно используется прилагательное с окончанием '-ed'?",
+          "A": "A. She is very excited for her trip.",
+          "B": "B. The amusement park was very interested.",
+          "C": "C. Learning new things is always amazed.",
+          "D": "D. We were interesting in the movie we saw.",
+          "Correct": "А"
+        },
+        "9": {
+          "question": "В котором предложении правильно используется прилагательное с окончанием “-ing”?",
+          "A": "A. I was very boring during the lecture.",
+          "B": "B. They are always boring at parties.",
+          "C": "C. He felt very relaxing after his massage.",
+          "D": "D. We found the museum exhibit to be interested.",
+          "Correct": "B"
+        },
+        "10": {
+          "question": "В котором предложении правильно используется сравнительная форма слова 'big'?",
+          "A": "A. The elephant is big.",
+          "B": "B. The elephant is bigger than the giraffe.",
+          "C": "C. The elephant is more big than the giraffe.",
+          "D": "D. The elephant is big than the giraffe.",
+          "Correct": "B"
+        }
+      
+    },
+    "test_4": {
+      "1": {
+          "question": "В котором предложении правильно используется превосходная форма слова 'fast'?",
+          "A": "A. She runs fast.",
+          "B": "B. She runs faster than her brother.",
+          "C": "C. She is the fastest runner in her school.",
+          "D": "D. She is faster than any other runner.",
+          "Correct": "C"
+        },
+        "2": {
+          "question": "В котором предложении правильно используется превосходная форма слова 'interesting'?",
+          "A": "A. He is interesting.",
+          "B": "B. He is more interesting than his sister.",
+          "C": "C. He is the most interesting student in his class.",
+          "D": "D. He is interestingest than any other student.",
+          "Correct": "C"
+        },
+        "3": {
+          "question": "С каким словом правильно используется отрицательная приставка 'im-'?",
+          "A": "A. kind",
+          "B": "B. generous",
+          "C": "C. possible",
+          "D": "D. happy",
+          "Correct": "C"
+        },
+        "4": {
+          "question": "С каким словом правильно используется отрицательная приставка 'un-'?",
+          "A": "A. kind",
+          "B": "B. polite",
+          "C": "C. honest",
+          "D": "D. good",
+          "Correct": "A"
+        },
+        "5": {
+          "question": "С каким словом правильно используется отрицательная приставка 'il-'?",
+          "A": "A. honest",
+          "B": "B. smart",
+          "C": "C. legal",
+          "D": "D. kind",
+          "Correct": "C"
+        },
+        "6": {
+          "question": "С каким словом правильно используется отрицательная приставка 'dis-'?",
+          "A": "A. amazing",
+          "B": "B. agree",
+          "C": "C. tall",
+          "D": "D. likely",
+          "Correct": "B"
+        },
+        "7": {
+          "question": "В котором предложении правильно используется 'was'?",
+          "A": "A. We was at the park yesterday.",
+          "B": "B. He were happy to see his friends.",
+          "C": "C. She was at the party.",
+          "D": "D. They was sleeping in the morning.",
+          "Correct": "C"
+        },
+        "8": {
+          "question": "В котором предложении правильно используется 'were'?",
+          "A": "A. I was playing soccer with my brother.",
+          "B": "B. You was studying for the test all night.",
+          "C": "C. We were happy for dinner.",
+          "D": "D. He were in his room.",
+          "Correct": "C"
+        },
+        "9": {
+          "question": "Которое предложение в Past Simple?",
+          "A": "A. She is singing a song.",
+          "B": "B. They are playing basketball.",
+          "C": "C. I walked to school yesterday.",
+          "D": "D. He will travel to Europe next month.",
+          "Correct": "C"
+        },
+        "10": {
+          "question": "Поменяйте предложение на Past Simple: 'I don’t like chocolate'",
+          "A": "A. I doesn’t like chocolate.",
+          "B": "B. I am like chocolate.",
+          "C": "C. I didn’t liked chocolate.",
+          "D": "D. I didn’t like chocolate.",
+          "Correct": "D"
+        }
+      
+    },
+    "test_5": {
+      "1": {
+        "question": "Которое предложение в present simple?",
+        "A": "A. She went to the store yesterday.",
+        "B": "B. He is going to the park later.",
+        "C": "C. They will go on vacation next month.",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "Которое предложение является отрицательным в past simple?",
+        "A": "A. I always eat breakfast in the morning.",
+        "B": "B. He didn't finish his homework last night.",
+        "C": "C. We will go to the beach tomorrow.",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "Которое предложение является вопросительным и в present simple?",
+        "A": "A. Did they walked to school this morning?",
+        "B": "B. Do you like to play sports after school?",
+        "C": "C. I went to the movies with my friends yesterday.",
+        "Correct": "B"
+      },
+      "4": {
+        "question": "Которое предложение является утвердительным и в past simple tense?",
+        "A": "A. She doesn't like to eat vegetables.",
+        "B": "B. We are playing games in the park today.",
+        "C": "C. They watched the movie last night.",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "В котором предложении правильно используется present continuous?",
+        "A": "A. I am eat dinner now.",
+        "B": "B. She am playing with her friends.",
+        "C": "C. They are dancing in the living room.",
+        "Correct": "C"
+      },
+      "6": {
+        "question": "В котором предложении правильно используется present simple и говорится о погоде?",
+        "A": "A. It is raining outside right now.",
+        "B": "B. It rains a lot in this city during the summer.",
+        "C": "C. We will have a snowstorm tomorrow.",
+        "Correct": "B"
+      },
+      "7": {
+        "question": "В котором предложении правильно используется present continuous и говорится о погоде?",
+        "A": "A. The sun shines brightly in the morning.",
+        "B": "B. It snows heavily in the mountains during the winter.",
+        "C": "C. It is drizzling outside and I am getting wet.",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "Как правильно поменять предложение \"I walk to school every day\" на future simple?",
+        "A": "A. I will walk to school every day.",
+        "B": "B. I am walking to school every day.",
+        "C": "C. I walked to school every day.",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "Как правильно поменять предложение \"He likes to play soccer on Saturdays\" на future simple?",
+        "A": "A. He is going to play soccer on Saturdays.",
+        "B": "B. He will play soccer on Saturdays.",
+        "C": "C. He plays soccer on Saturdays.",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "В котором предложении правильно используется 'should' чтобы дать совет?",
+        "A": "A. You shouldn’t go to church.",
+        "B": "B. You should eat more vegetables for better health.",
+        "C": "C. He has to should go to school.",
+        "Correct": "B"
+      }
+    },
+    "test_6": {
+      "1": {
+        "question": "Как правильно перевести вопрос: “Она хотела бы стакан сока?”",
+        "A": "A. Would she like a glass of juice?",
+        "B": "B. Does she like a glass of juice?",
+        "C": "C. She would like a glass of juice.",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "В котором предложении правильно используется 'look as if' or 'look as though'?",
+        "A": "A. She looks alike her mother.",
+        "B": "B. It looks as if it's going to rain soon.",
+        "C": "C. He looks like he's happy today.",
+        "Correct": "C"
+      },
+      "3": {
+        "question": "В котором предложении правильно используется 'look alike'?",
+        "A": "A. They look alike as though they are having fun at the party.",
+        "B": "B. The twins look alike, they have the same face.",
+        "C": "C. She looks alike as if she is tired from working all day.",
+        "Correct": "B"
+      },
+      "4": {
+        "question": "В котором предложении используется наречие?",
+        "A": "A. She sings beautiful.",
+        "B": "B. He is very happy to see his friends.",
+        "C": "C. They swim slow in the pool.",
+        "Correct": "B"
+      },
+      "5": {
+        "question": "В котором предложении используется наречие степени?",
+        "A": "A. The cat runs quickly in the garden.",
+        "B": "B. She is a little bit taller than her sister.",
+        "C": "C. He always eats too many candies.",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "Закончите предложение: ______________ David drink coffee?",
+        "A": "A. Does",
+        "B": "B. Is",
+        "C": "C. Has",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "Закончите предложение: ______________ John on the train?",
+        "A": "A. Does",
+        "B": "B. Is",
+        "C": "C. Has",
+        "Correct": "B"
+      },
+      "8": {
+        "question": "В каком предложении правильно используется 'must', чтобы выразить обязательство?",
+        "A": "A. You have to study for your exams.",
+        "B": "B. We must finish our work by tomorrow.",
+        "C": "C. She must have a lot of money.",
+        "Correct": "B"
+      },
+      "9": {
+        "question": "В каком предложении правильно используется ‘have to’, чтобы выразить обычное обязательство?",
+        "A": "A. They have to go to the dentist yesterday.",
+        "B": "B. He has to wake up early for work every day.",
+        "C": "C. We have to clean the house next week.",
+        "Correct": "C"
+      },
+      "10": {
+        "question": "В каком предложении правильно используется ‘must’ для выражения запрета?",
+        "A": "A. You must eat healthy food.",
+        "B": "B. He must not play with fire.",
+        "C": "C. They must wear a helmet when riding a bike.",
+        "Correct": "B"
+      }
+    },
+    "test_7": {
+      "1": {
+        "question": "Какое предложение правильно использует повелительное наклонение?",
+        "A": "A. I am tired, let's go home.",
+        "B": "B. Please, can we go home now?",
+        "C": "C. Close the door, it's cold outside.",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "Какое предложение правильно использует отрицательное повелительное наклонение?",
+        "A": "A. Don't forget to buy some bread at the store.",
+        "B": "B. Let's have pizza for dinner tonight.",
+        "C": "C. Don't talk with your mouth full.",
+        "Correct": "C"
+      },
+      "3": {
+        "question": "Как правильно перевести на английский язык фразу 'Он перешел дорогу'?",
+        "A": "A. He crossed the street.",
+        "B": "B. He went across the street.",
+        "C": "C. He went behind the street.",
+        "Correct": "B"
+      },
+      "4": {
+        "question": "Как правильно перевести на английский язык фразу 'Кот спрятался за диваном'?",
+        "A": "A. The cat is hiding under the couch.",
+        "B": "B. The cat is hiding across the couch.",
+        "C": "C. The cat is hiding behind the couch.",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "Do you ___ wear a uniform to school?",
+        "A": "A. must",
+        "B": "B. have to",
+        "C": "C. need to",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "Sarah ___ clean her room before going out to play with friends.",
+        "A": "A. must",
+        "B": "B. have to",
+        "C": "C. need to",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "Have you ever ___ sushi before?",
+        "A": "A. eat",
+        "B": "B. ate",
+        "C": "C. eaten",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "Tom ___ his keys. He can't find them anywhere.",
+        "A": "A. has lost",
+        "B": "B. lose",
+        "C": "C. losed",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "___ you ___ to Paris before?",
+        "A": "A. Have, been",
+        "B": "B. Have, gone",
+        "C": "C. Has, been",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "Yesterday, I ___ a cake for my friend's birthday.",
+        "A": "A. baked",
+        "B": "B. have baked",
+        "C": "C. am baking",
+        "Correct": "A"
+      }
+    },
+    "test_final": {
+      "1": {
+        "question": "Choose the subject of the sentence: Mary goes to baseball everyday.",
+        "A": "A. to baseball",
+        "B": "B. Mary",
+        "C": "C. everyday",
+        "D": "D. goes",
+        "Correct": "B"
+      },
+      "2": {
+        "question": "Choose the VERB of the sentence: I watch movies in the evenings.",
+        "A": "A. movies",
+        "B": "B. watch",
+        "C": "C. in the evenings",
+        "D": "D. I",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "Choose the ADJECTIVE of the sentence: Brian is a handsome guy.",
+        "A": "A. guy",
+        "B": "B. Brian",
+        "C": "C. is",
+        "D": "D. handsome",
+        "Correct": "D"
+      },
+      "4": {
+        "question": "Choose the noun of the sentence: Brian loves eating burgers.",
+        "A": "A. burgers",
+        "B": "B. eating",
+        "C": "C. loves",
+        "D": "D. Brian",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "Choose the PERSONAL PRONOUN",
+        "A": "A. me, you, us, them, him, her, it",
+        "B": "B. I, you, we, they, he, she, it",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "Put the correct word to complete question. ____ I kazakh?",
+        "A": "A. Am",
+        "B": "B. Is",
+        "C": "C. Are",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "Choose Possessive Adjectives",
+        "A": "A. me, you, us, them, him, her, it",
+        "B": "B. I, you, we, they, he, she, it",
+        "C": "C. my, your, our, their, his, her, its",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "I am __ doctor.",
+        "A": "A. an",
+        "B": "B. the",
+        "C": "C. a",
+        "Correct": "C"
+      },
+      "9": {
+        "question": "Choose the countable noun",
+        "A": "A. chair",
+        "B": "B. water",
+        "C": "C. tea",
+        "D": "D. sugar",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "Choose the correct sentence. Дом моих друзей.",
+        "A": "A. My friends' house",
+        "B": "B. My friend's house",
+        "C": "C. My friends's house",
+        "Correct": "A"
+      },
+      "11": {
+        "question": "Choose the correct plural form.",
+        "A": "A. wolfes",
+        "B": "B. wolf",
+        "C": "C. wolves",
+        "D": "D. wolfs",
+        "Correct": "C"
+      },
+      "12": {
+        "question": "Choose the ordinal number",
+        "A": "A. second",
+        "B": "B. one",
+        "C": "C. twenty four",
+        "D": "D. fifty",
+        "Correct": "A"
+      },
+      "13": {
+        "question": "What time is it? (5:30)",
+        "A": "A. It's half past five",
+        "B": "B. It's quarter to six",
+        "C": "C. It's quarter past six",
+        "D": "D. It's half to five",
+        "Correct": "A"
+      },
+      "14": {
+        "question": "У нее есть собака?",
+        "A": "A. Has she got a dog?",
+        "B": "B. Have you got a dog?",
+        "C": "C. Has she got a cat?",
+        "D": "D. Have she got a dog?",
+        "Correct": "A"
+      },
+      "15": {
+        "question": "Не хотите ли немного кофе?",
+        "A": "A. Would you like some coffee?",
+        "B": "B. Can you drink coffee?",
+        "C": "C. Do you like coffee?",
+        "D": "D. Are you coffee?",
+        "Correct": "A"
+      },
+      "16": {
+        "question": "There are ___ expensive cars in front of that house.",
+        "A": "A. much",
+        "B": "B. a lot of",
+        "C": "C. many",
+        "Correct": "B"
+      },
+      "17": {
+        "question": "We have ___ apples in our fridge.",
+        "A": "A. a few",
+        "B": "B. little",
+        "C": "C. a little",
+        "D": "D. few",
+        "Correct": "A"
+      },
+      "18": {
+        "question": "Roger выглядел потрясающе на фотографии.",
+        "A": "A. Roger looked amazed in the picture.",
+        "B": "B. Roger looked amazing in the picture.",
+        "Correct": "B"
+      },
+      "19": {
+        "question": "The blue car is ______________ than the black car.",
+        "A": "A. more nicer",
+        "B": "B. more nice",
+        "C": "C. nice",
+        "D": "D. nicer",
+        "Correct": "D"
+      },
+      "20": {
+        "question": "This building is ________________ in the street.",
+        "A": "A. the biggest",
+        "B": "B. most bigges",
+        "C": "C. big",
+        "D": "D. biggest",
+        "Correct": "A"
+      }
+    }
+  },
+  "Pre-Intermediate": {
+    "test_1": {
+      "1": {
+        "question": "What is your name?",
+        "A": "A. My name is John.",
+        "B": "B. I am a student.",
+        "C": "C. Yes, please.",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "How old are you?",
+        "A": "A. I am 25 years old.",
+        "B": "B. I like playing soccer.",
+        "C": "C. I have two brothers.",
+        "Correct": "A"
+      },
+      "3": {
+        "question": "Where are you from?",
+        "A": "A. I am from Germany.",
+        "B": "B. I like watching movies.",
+        "C": "C. My favorite food is pizza.",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "What do you do?",
+        "A": "A. I am a teacher.",
+        "B": "B. I have a dog.",
+        "C": "C. I like playing the guitar.",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "What is your favorite color?",
+        "A": "A. My favorite color is blue.",
+        "B": "B. I like going to the beach.",
+        "C": "C. I have a cat.",
+        "Correct": "A"
+      },
+      "6": {
+        "question": "What is your favorite food?",
+        "A": "A. My favorite food is sushi.",
+        "B": "B. I like reading books.",
+        "C": "C. I have a fish.",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "What do you like to do in your free time?",
+        "A": "A. I like playing video games.",
+        "B": "B. I have a hamster.",
+        "C": "C. My favorite color is green.",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "Do you have any brothers or sisters?",
+        "A": "A. Yes, I have two brothers.",
+        "B": "B. I like listening to music.",
+        "C": "C. My favorite food is pasta.",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "What is your favorite animal?",
+        "A": "A. My favorite animal is a dog.",
+        "B": "B. I like watching TV.",
+        "C": "C. I have a bird.",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "What is your favorite hobby?",
+        "A": "A. My favorite hobby is painting.",
+        "B": "B. I have a turtle.",
+        "C": "C. My favorite color is yellow.",
+        "Correct": "A"
+      }
+    },
+    "test_2": {
+      "1": {
+        "question": "What do you like to drink?",
+        "A": "A. I like drinking coffee.",
+        "B": "B. I like playing basketball.",
+        "C": "C. My favorite food is hamburgers.",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "Do you like to travel?",
+        "A": "A. Yes, I love traveling.",
+        "B": "B. I like swimming.",
+        "C": "C. My favorite animal is a rabbit.",
+        "Correct": "A"
+      },
+      "3": {
+        "question": "What is your favorite sport?",
+        "A": "A. My favorite sport is soccer.",
+        "B": "B. I like playing chess.",
+        "C": "C. I have a horse.",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "What is your favorite TV show?",
+        "A": "A. My favorite TV show is Friends.",
+        "B": "B. I like going to the gym.",
+        "C": "C. My favorite",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "What games do you play?",
+        "A": "A. I like chatting in discord.",
+        "B": "B. I play Valorant.",
+        "C": "C. I play with my friends.",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "What is the capital of France?",
+        "A": "A. Madrid.",
+        "B": "B. Paris.",
+        "C": "C. London.",
+        "Correct": "B"
+      },
+      "7": {
+        "question": "How many planets are in our solar system?",
+        "A": "A. 7.",
+        "B": "B. 8.",
+        "C": "C. 9.",
+        "Correct": "B"
+      },
+      "8": {
+        "question": "What is the largest ocean in the world?",
+        "A": "A. Indian Ocean.",
+        "B": "B. Atlantic Ocean.",
+        "C": "C. Pacific Ocean.",
+        "Correct": "C"
+      },
+      "9": {
+        "question": "Who painted the Mona Lisa?",
+        "A": "A. Leonardo da Vinci.",
+        "B": "B. Vincent van Gogh.",
+        "C": "C. Pablo Picasso.",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "What is the currency of Japan?",
+        "A": "A. Yen.",
+        "B": "B. Euro.",
+        "C": "C. Dollar.",
+        "Correct": "A"
+      }
+    },
+    "test_3": {
+      "1": {
+        "question": "What is the capital city of Australia?",
+        "A": "A. Melbourne",
+        "B": "B. Sydney",
+        "C": "C. Canberra",
+        "D": "D. Brisbane",
+        "Correct": "C"
+      },
+      "2": {
+        "question": "Which country is the largest in the world by land area?",
+        "A": "A. China",
+        "B": "B. Russia",
+        "C": "C. Canada",
+        "D": "D. United States",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "What is the tallest mammal in the world?",
+        "A": "A. Elephant",
+        "B": "B. Giraffe",
+        "C": "C. Lion",
+        "D": "D. Hippopotamus",
+        "Correct": "B"
+      },
+      "4": {
+        "question": "Who wrote the Harry Potter series?",
+        "A": "A. J.K. Rowling",
+        "B": "B. Stephen King",
+        "C": "C. George R.R. Martin",
+        "D": "D. Suzanne Collins",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "Which planet in our solar system is known as the \"Red Planet\"?",
+        "A": "A. Venus",
+        "B": "B. Earth",
+        "C": "C. Mars",
+        "D": "D. Jupiter",
+        "Correct": "C"
+      },
+      "6": {
+        "question": "What is the largest country in South America?",
+        "A": "A. Brazil",
+        "B": "B. Argentina",
+        "C": "C. Colombia",
+        "D": "D. Peru",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "What is the currency of Mexico?",
+        "A": "A. Peso",
+        "B": "B. Dollar",
+        "C": "C. Euro",
+        "D": "D. Yen",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "What is the largest desert in the world?",
+        "A": "A. Sahara Desert",
+        "B": "B. Gobi Desert",
+        "C": "C. Atacama Desert",
+        "D": "D. Arabian Desert",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "What is the capital of South Korea?",
+        "A": "A. Busan",
+        "B": "B. Seoul",
+        "C": "C. Incheon",
+        "D": "D. Daegu",
+        "Correct": "B"
+      },
+      "10": {
+        "question": "How long _____ in Paris?",
+        "A": "A. did you stay",
+        "B": "B. were you stay",
+        "C": "C. you stayed",
+        "D": "D. all above",
+        "Correct": "A"
+      }
+    },
+    "test_4": {
+      "1": {
+        "question": "How _____ to Barcelona?",
+        "A": "A. did you travel",
+        "B": "B. you travelled",
+        "C": "C. were you travel",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "Which _____ ?",
+        "A": "A. your favourite colour is",
+        "B": "B. does your favourite colour be",
+        "C": "C. is your favourite colour",
+        "Correct": "C"
+      },
+      "3": {
+        "question": "What instrument _____ when you were a child?",
+        "A": "A. could play you",
+        "B": "B. could you play",
+        "C": "C. you could play",
+        "Correct": "B"
+      },
+      "4": {
+        "question": "Why _____ here?",
+        "A": "A. that man's standing",
+        "B": "B. does that man is standing",
+        "C": "C. is that man standing",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "How much _____?",
+        "A": "A. she has lost",
+        "B": "B. does she have lost",
+        "C": "C. has she lost",
+        "Correct": "C"
+      },
+      "6": {
+        "question": "How _____ to Barcelona?",
+        "A": "A. did you travel",
+        "B": "B. were you travel",
+        "C": "C. you travelled",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "What time _____ to arrive?",
+        "A": "A. is she going",
+        "B": "B. she's going",
+        "C": "C. is going",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "Where _____ last summer?",
+        "A": "A. went he",
+        "B": "B. did he go",
+        "C": "C. he went",
+        "Correct": "B"
+      },
+      "9": {
+        "question": "What time _____ to bed?",
+        "A": "A. children should",
+        "B": "B. should children go",
+        "C": "C. do children should go",
+        "Correct": "B"
+      },
+      "10": {
+        "question": "When _____ me?",
+        "A": "A. can you see",
+        "B": "B. can see",
+        "C": "C. you can see",
+        "Correct": "A"
+      }
+    },
+    "test_5": {
+      "1": {
+        "question": "We need to buy a new car. , we can't afford it right now.",
+        "A": "A. Although",
+        "B": "B. So",
+        "C": "C. However",
+        "Correct": "C"
+      },
+      "2": {
+        "question": "He didn't have his car, _____ he had to take a taxi.",
+        "A": "A. because",
+        "B": "B. so",
+        "C": "C. however",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "A: I'm hungry. B: _____ make some bacon and eggs.",
+        "A": "A. I'll",
+        "B": "B. Shall I",
+        "C": "C. Shall we",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "I hope _____ see you again one day.",
+        "A": "A. I'll",
+        "B": "B. Shall I",
+        "C": "C. Shall we",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "I don't think _____ go out this weekend. I'm very tired.",
+        "A": "A. I'll",
+        "B": "B. Shall I",
+        "C": "C. Shall we",
+        "Correct": "A"
+      },
+      "6": {
+        "question": " always love you.",
+        "A": "A. I will",
+        "B": "B. Shall I",
+        "C": "C. Shall we",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "After the conference, I _____ that a man _____ the walls of the building.",
+        "A": "A. was seeing / was painting",
+        "B": "B. saw / was painting",
+        "C": "C. was seeing / painted",
+        "Correct": "B"
+      },
+      "8": {
+        "question": "He was so angry that he _____ and _____.",
+        "A": "A. was getting up / left",
+        "B": "B. got up / was leaving",
+        "C": "C. got up / left",
+        "Correct": "C"
+      },
+      "9": {
+        "question": "I _____ the vase while I _____ the bookshelf.",
+        "A": "A. broke / was cleaning",
+        "B": "B. broke / cleaned",
+        "C": "C. was breaking / was cleaning",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "As soon as we walked into the room, we _____ a noise. Someone ______ my computer.",
+        "A": "A. heard / used",
+        "B": "B. were hearing / used",
+        "C": "C. heard / was using",
+        "Correct": "C"
+      }
+    },
+    "test_6": {
+      "1": {
+        "question": "A: 'Excuse me, __________ English?' B: 'No, sorry.'",
+        "A": "A. do you speak",
+        "B": "B. are you speaking",
+        "C": "C. you speak",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "I ________.",
+        "A": "A. aren't very often doing sport",
+        "B": "B. don't very often do sport",
+        "C": "C. don't do sport very often",
+        "Correct": "C"
+      },
+      "3": {
+        "question": "I am hungry. I ______ to eat something.",
+        "A": "A. want",
+        "B": "B. 'm wanting",
+        "C": "C. am want",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "What time ____________ work on Fridays?",
+        "A": "A. she starts",
+        "B": "B. does she start",
+        "C": "C. is she starting",
+        "Correct": "B"
+      },
+      "5": {
+        "question": "I _____ tennis with my friends next Friday.",
+        "A": "A. will play",
+        "B": "B. 'm playing",
+        "C": "C. 'm going to play",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "Can you pass me the remote? I _____ some TV.",
+        "A": "A. will watch",
+        "B": "B. am going to watch",
+        "C": "C. am watching",
+        "Correct": "B"
+      },
+      "7": {
+        "question": "What _____ with the lottery money?",
+        "A": "A. will do",
+        "B": "B. are you doing",
+        "C": "C. are you going to do",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "We _____ married in June.",
+        "A": "A. will get",
+        "B": "B. are going to get",
+        "C": "C. are getting",
+        "Correct": "C"
+      },
+      "9": {
+        "question": "A: 'Did you remember to make the reservation?' B: 'Oh no, I forgot. I _____ the hotel right now.'",
+        "A": "A. 'll call",
+        "B": "B. 'm calling",
+        "C": "C. 'm going to call",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "Laura ______ next Tuesday. I can't wait to see her.",
+        "A": "A. will come back",
+        "B": "B. is coming back",
+        "C": "C. is going to come back",
+        "Correct": "B"
+      }
+    },
+    "test_7": {
+      "1": {
+        "question": "_____ used my computer yesterday. I need to know who did it.",
+        "A": "A. Somebody",
+        "B": "B. Nobody",
+        "C": "C. Anybody",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "It happened very quickly and I couldn't see _____.",
+        "A": "A. nothing",
+        "B": "B. something",
+        "C": "C. anything",
+        "Correct": "C"
+      },
+      "3": {
+        "question": "Have you talked to _____ about your problem?",
+        "A": "A. somebody",
+        "B": "B. nobody",
+        "C": "C. anybody",
+        "Correct": "C"
+      },
+      "4": {
+        "question": "You work _____; you need a holiday.",
+        "A": "A. too much",
+        "B": "B. too many",
+        "C": "C. too",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "My parents got angry because my marks weren't _____.",
+        "A": "A. enough good",
+        "B": "B. good enough",
+        "C": "C. too much good",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "This house is _____ small; we need a bigger one.",
+        "A": "A. too",
+        "B": "B. too much",
+        "C": "C. enough",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "They don't go _____. They work.",
+        "A": "A. to the school",
+        "B": "B. for the school",
+        "C": "C. to school",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "They often go _____ at weekends.",
+        "A": "A. for fish",
+        "B": "B. to a fish",
+        "C": "C. fishing",
+        "Correct": "C"
+      },
+      "9": {
+        "question": "I'd like to go _____ to Egypt.",
+        "A": "A. for trip",
+        "B": "B. on a trip",
+        "C": "C. to a trip",
+        "Correct": "B"
+      },
+      "10": {
+        "question": "What time do you usually go _____?",
+        "A": "A. for the bed",
+        "B": "B. to the bed",
+        "C": "C. to bed",
+        "Correct": "C"
+      }
+    },
+    "test_final": {
+      "1": {
+        "question": "... one do you prefer?",
+        "A": "A. Which",
+        "B": "B. Who",
+        "C": "C. Where",
+        "D": "D. How",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "Put the words into correct order: lessons How you many do have?",
+        "A": "A. How many lessons do you have?",
+        "B": "B. How you many lessons do have?",
+        "C": "C. How do you many lessons have?",
+        "D": "D. How many lessons you do have?",
+        "Correct": "A"
+      },
+      "3": {
+        "question": "Which tense do we use when we talk about facts?",
+        "A": "A. Present Simple",
+        "B": "B. Present Continuous",
+        "C": "C. Present Perfect",
+        "D": "D. Past Perfect",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "He is not ... (work) now.",
+        "A": "A. works",
+        "B": "B. working",
+        "C": "C. worked",
+        "D": "D. work",
+        "Correct": "B"
+      },
+      "5": {
+        "question": "Choose the correct past form of the following verbs: watch, do, break.",
+        "A": "A. Watched, did, broke",
+        "B": "B. Watched, doed, breaked",
+        "C": "C. Watch, did, broken",
+        "D": "D. Watchs, do, broken",
+        "Correct": "A"
+      },
+      "6": {
+        "question": "Change the sentence into the past simple: We don't eat bananas.",
+        "A": "A. We didn't eat bananas.",
+        "B": "B. We don't ate bananas.",
+        "C": "C. We didn't ate bananas.",
+        "D": "D. We didn't eaten bananas.",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "Choose the correct construction of the Past Continuous.",
+        "A": "A. Subject + was/were + V ing",
+        "B": "B. Subject + do/does + V",
+        "C": "C. Subject + did + V ed",
+        "D": "D. Subject + am/is/are + V ing",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "Translate the sentence: Они вернутся ночью.",
+        "A": "A. They will come back of night.",
+        "B": "B. They will come back in night.",
+        "C": "C. They will come back at night.",
+        "D": "D. They will come back on night.",
+        "Correct": "C"
+      },
+      "9": {
+        "question": "Open the brackets using the correct form of the verbs: He (take) a shower when the telephone (ring).",
+        "A": "A. was taking, rang",
+        "B": "B. was take, rang",
+        "C": "C. were taking, ring",
+        "D": "D. were take, ring",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "I woke up ... there was a noise.",
+        "A": "A. so",
+        "B": "B. because",
+        "C": "C. although",
+        "D": "D. but",
+        "Correct": "B"
+      },
+      "11": {
+        "question": "What does this sentence mean? - Ann used to eat a lot of fast food.",
+        "A": "A. She doesn't eat fast food now.",
+        "B": "B. She eats fast food now.",
+        "C": "C. She is eating fast food at the moment.",
+        "D": "D. She didn't eat fast food in the past.",
+        "Correct": "A"
+      },
+      "12": {
+        "question": "Ask a question: You used to go to work every day.",
+        "A": "A. Were you use to go to work every day?",
+        "B": "B. Did you used to go to work every day?",
+        "C": "C. Did you use to go to work every day?",
+        "D": "D. Do you use to go to work every day?",
+        "Correct": "C"
+      },
+      "13": {
+        "question": "What do we use to talk about spontaneous or instant decision?",
+        "A": "A. will",
+        "B": "B. be able to",
+        "C": "C. be going to",
+        "D": "D. can",
+        "Correct": "A"
+      },
+      "14": {
+        "question": "Why in the following sentence do we use 'be going to' but not 'will'? - I see clouds. It's going to rain.",
+        "A": "A. Because it's a request.",
+        "B": "B. Because I am a meteorologist.",
+        "C": "C. Because It is someone's opinion.",
+        "D": "D. Because it is a prediction based on evidence.",
+        "Correct": "D"
+      },
+      "15": {
+        "question": "Find the sentence where we used Present Continuous for future arrangement.",
+        "A": "A. It's going to rain.",
+        "B": "B. Sorry, I'm busy. I'm doing my homework.",
+        "C": "C. We are getting married in July.",
+        "D": "D. He is sleeping at the moment.",
+        "Correct": "C"
+      },
+      "16": {
+        "question": "Choose the correct word: She bought ... new clothes.",
+        "A": "A. nothing",
+        "B": "B. any",
+        "C": "C. something",
+        "D": "D. some",
+        "Correct": "D"
+      },
+      "17": {
+        "question": "Choose the correct relative clause: They called a lawyer ... lived nearby.",
+        "A": "A. which",
+        "B": "B. that",
+        "C": "C. what",
+        "D": "D. who",
+        "Correct": "D"
+      },
+      "18": {
+        "question": "Did you really understand ... I told you?",
+        "A": "A. which",
+        "B": "B. who",
+        "C": "C. what",
+        "D": "D. that",
+        "Correct": "C"
+      },
+      "19": {
+        "question": "Choose the correct intensifier: He is ... rich ... to buy a plane.",
+        "A": "A. too rich",
+        "B": "B. enough rich",
+        "C": "C. rich enough",
+        "D": "D. poor enough",
+        "Correct": "C"
+      },
+      "20": {
+        "question": "Choose an option only with strong adjectives.",
+        "A": "A. Interesting, impossible, good.",
+        "B": "B. Bad, fascinating, good.",
+        "C": "C. Impossible, hungry, bad.",
+        "D": "D. Starving, awful, fantastic.",
+        "Correct": "D"
+      }
+    }
+  },
+  "Intermediate": {
+    "test_1": {
+      "1": {
+        "question": "A: We ______ to the cinema tonight. B: ______ to the cinema?",
+        "A": "A. are going / Do you often go",
+        "B": "B. go / Do you often go",
+        "C": "C. are going / Are you often going",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "A: What time ______ this afternoon? B: I don't know. We ______ tomorrow.",
+        "A": "A. does the train leave / leave",
+        "B": "B. does the train leave / are leaving",
+        "C": "C. is the train leaving / leave",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "A: ______ ? B: Yes, but I ______ to quit.",
+        "A": "A. Are you smoking / try",
+        "B": "B. Do you smoke / try",
+        "C": "C. Do you smoke / 'm trying",
+        "Correct": "C"
+      },
+      "4": {
+        "question": "A: I ______ on holiday two or three times a year. B: That's great! And where______ this year?",
+        "A": "A. go / do you go",
+        "B": "B. 'm going / do you go",
+        "C": "C. go / are you going",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "I think it's better to stay. It ______ and we ______ an umbrella.",
+        "A": "A. 's raining / don't have",
+        "B": "B. rains / don't have",
+        "C": "C. 's raining / aren't having",
+        "Correct": "A"
+      },
+      "6": {
+        "question": "What time ______ work on Monday?",
+        "A": "A. do you finish",
+        "B": "B. will you finish",
+        "C": "C. are you going to finish",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "I don't think I ______ come tomorrow.",
+        "A": "A. 'm being able to",
+        "B": "B. am able to",
+        "C": "C. will be able to",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "I ______ my arm. I ______ it playing with my cousin.",
+        "A": "A. 've broken / broke",
+        "B": "B. 've broken / 've broken",
+        "C": "C. broke / 've broken",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "I'm sure I ______ this man before.",
+        "A": "A. 've seen",
+        "B": "B. saw",
+        "C": "C. 've see",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "Bruce ______ tennis since he was a child. He ______ many trophies.",
+        "A": "A. has been playing / has won",
+        "B": "B. is playing / has won",
+        "C": "C. has played / has been winning",
+        "Correct": "A"
+      }
+    },
+    "test_2": {
+      "1": {
+        "question": "A: He ______ hundreds of job applications, but he's got no Corrects yet. B: How long ______ for a job?",
+        "A": "A. 's been sending / has he been looking",
+        "B": "B. 's sent / has he looked",
+        "C": "C. 's sent / has he been looking",
+        "Correct": "C"
+      },
+      "2": {
+        "question": "He was texting his friends _____ breakfast.",
+        "A": "A. while",
+        "B": "B. during",
+        "C": "C. for",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "She lived in a homeless shelter _____ two years.",
+        "A": "A. while",
+        "B": "B. during",
+        "C": "C. for",
+        "Correct": "C"
+      },
+      "4": {
+        "question": "This tea tastes a bit ______ the other.",
+        "A": "A. bitterest than",
+        "B": "B. more bitter than",
+        "C": "C. more bitter that",
+        "Correct": "B"
+      },
+      "5": {
+        "question": "She seems _______ since she got divorced.",
+        "A": "A. happier",
+        "B": "B. more happy",
+        "C": "C. more happier",
+        "Correct": "A"
+      },
+      "6": {
+        "question": "Yesterday I bought ___ book and some flowers for Linda, but I lost ___ book on my way home.",
+        "A": "A. a / the",
+        "B": "B. - / the",
+        "C": "C. the / a",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "A: I need ___ knife, can you give me one? B: You can use ___ knife on the kitchen top.",
+        "A": "A. - / the",
+        "B": "B. the / -",
+        "C": "C. a / the",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "I need ______ pen; this one doesn't work.",
+        "A": "A. another",
+        "B": "B. other",
+        "C": "C. others",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "I can't help you now; I'll have to do it ______ time.",
+        "A": "A. other",
+        "B": "B. others",
+        "C": "C. another",
+        "Correct": "C"
+      },
+      "10": {
+        "question": "Not all countries ______ to manufacture high-quality products.",
+        "A": "A. are able",
+        "B": "B. can",
+        "C": "C. could",
+        "Correct": "A"
+      }
+    },
+    "test_3": {
+      "1": {
+        "question": "They ______ unlock the door and escape.",
+        "A": "A. can",
+        "B": "B. could",
+        "C": "C. managed to",
+        "Correct": "C"
+      },
+      "2": {
+        "question": "You should visit them.",
+        "A": "A. could",
+        "B": "B. ought to",
+        "C": "C. must",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "We have to clean our room every day.",
+        "A": "A. ought to",
+        "B": "B. should",
+        "C": "C. 've got to",
+        "Correct": "C"
+      },
+      "4": {
+        "question": "The food is on the table. Please serve ______.",
+        "A": "A. yourself",
+        "B": "B. you",
+        "C": "C. myself",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "You must be careful not to cut ______.",
+        "A": "A. you",
+        "B": "B. myself",
+        "C": "C. yourself",
+        "Correct": "C"
+      },
+      "6": {
+        "question": "I am so ______! This massage chair is very ______.",
+        "A": "A. relaxed / relaxing",
+        "B": "B. relaxing / relaxed",
+        "C": "C. relaxing / relaxing",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "I get very _____ when I can't find the words to say what I mean to say. It's so ______.",
+        "A": "A. frustrated / frustrating",
+        "B": "B. frustrating / frustrated",
+        "C": "C. frustrated / frustrated",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "I was very late. When I arrived, the conference _____.",
+        "A": "A. was already starting",
+        "B": "B. started",
+        "C": "C. had already started",
+        "Correct": "C"
+      },
+      "9": {
+        "question": "When he heard the police knocking on the door, he ____ under the bed.",
+        "A": "A. hid",
+        "B": "B. had hidden",
+        "C": "C. was hiding",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "I _____ anything about the night of the accident.",
+        "A": "A. don't remember",
+        "B": "B. 'm not remembering",
+        "C": "C. wasn't remembering",
+        "Correct": "A"
+      }
+    },
+    "test_4": {
+      "1": {
+        "question": "After we broke up, she sold the ring that I _____ her for her birthday.",
+        "A": "A. give",
+        "B": "B. was giving",
+        "C": "C. had given",
+        "Correct": "C"
+      },
+      "2": {
+        "question": "When we were children we used ______skiing every winter.",
+        "A": "A. to go",
+        "B": "B. go",
+        "C": "C. to going",
+        "Correct": "A"
+      },
+      "3": {
+        "question": "Tommy and I are very different, but we are used ______ together.",
+        "A": "A. to living",
+        "B": "B. to live",
+        "C": "C. living",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "When we called she didn't Correct because she ______ for the job.",
+        "A": "A. has been interviewed",
+        "B": "B. was interviewed",
+        "C": "C. was being interviewed",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "We are sorry about the problem, sir. But don't worry, the mistake ______ right now.",
+        "A": "A. has being corrected",
+        "B": "B. was corrected",
+        "C": "C. is being corrected",
+        "Correct": "C"
+      },
+      "6": {
+        "question": "The new musical ______ next week at 12th Street's Old Auditorium.",
+        "A": "A. is going to be performed",
+        "B": "B. is going to perform",
+        "C": "C. is performed",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "A lot of measures ______ to fix the economy.",
+        "A": "A. have been taken",
+        "B": "B. are taking",
+        "C": "C. have taken",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "Paul is behaving in a very unusual way. I think he ______ again.",
+        "A": "A. can't drink",
+        "B": "B. can be drinking",
+        "C": "C. might be drinking",
+        "Correct": "C"
+      },
+      "9": {
+        "question": "If Suzan said that, it ______ true. She never lies.",
+        "A": "A. might be",
+        "B": "B. must be",
+        "C": "C. can be",
+        "Correct": "B"
+      },
+      "10": {
+        "question": "What will happen if the parachute ______?",
+        "A": "A. doesn't open",
+        "B": "B. won't open",
+        "C": "C. might not open",
+        "Correct": "A"
+      }
+    },
+    "test_5": {
+      "1": {
+        "question": "I won't sign up for the dancing competition unless Jack ______ my partner.",
+        "A": "A. is",
+        "B": "B. must be",
+        "C": "C. will be",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "If I ______ you, I wouldn't trust him.",
+        "A": "A. was",
+        "B": "B. were",
+        "C": "C. did",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "You ______ healthier if you ______ a bit of weight.",
+        "A": "A. felt / would lose",
+        "B": "B. would feel / would lose",
+        "C": "C. would feel / lost",
+        "Correct": "C"
+      },
+      "4": {
+        "question": "What would you have done if I ______?",
+        "A": "A. didn't come",
+        "B": "B. wouldn't come",
+        "C": "C. hadn't come",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "They ______ him if I ______ them the money.",
+        "A": "A. would have killed / didn't give",
+        "B": "B. would have killed / hadn't given",
+        "C": "C. had killed him / wouldn't give",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "'I need to see Sarah this weekend.' ⇒ George said that ______.",
+        "A": "A. he needed to see Sarah this weekend",
+        "B": "B. he was needing to see Sarah that weekend",
+        "C": "C. he needed to see Sarah that weekend",
+        "Correct": "C"
+      },
+      "7": {
+        "question": "I'm reading now.' ⇒ Sally told me ______.",
+        "A": "A. that she was reading at that moment",
+        "B": "B. that she read now",
+        "C": "C. that she was reading now",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "He told me ______ for him.",
+        "A": "A. wait",
+        "B": "B. to wait",
+        "C": "C. waiting",
+        "Correct": "B"
+      },
+      "9": {
+        "question": "You promised ______ to the concert.",
+        "A": "A. let me go",
+        "B": "B. to let me go",
+        "C": "C. to let me going",
+        "Correct": "B"
+      },
+      "10": {
+        "question": "There was very ______ space left to park.",
+        "A": "A. few",
+        "B": "B. little",
+        "C": "C. much",
+        "Correct": "B"
+      }
+    },
+    "test_6": {
+      "1": {
+        "question": "A: Have you got anything to read? B: Yes, I have ______ magazines.",
+        "A": "A. a few",
+        "B": "B. a bit of",
+        "C": "C. a little",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "_____ a new diet.",
+        "A": "A. They both have started",
+        "B": "B. Both they have started",
+        "C": "C. They have both started",
+        "Correct": "C"
+      },
+      "3": {
+        "question": "He fell and ______ eggs got broken.",
+        "A": "A. all the",
+        "B": "B. all",
+        "C": "C. all of",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "A: How many episodes did you watch? B:_____. I read a book.",
+        "A": "A. No",
+        "B": "B. Nothing",
+        "C": "C. None",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "I didn't tell _____ what happened.",
+        "A": "A. nobody",
+        "B": "B. anybody",
+        "C": "C. no person",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "We stayed on the top floor suite. There was ______ lovely view from the terrace.",
+        "A": "A. such",
+        "B": "B. such a",
+        "C": "C. so",
+        "Correct": "B"
+      },
+      "7": {
+        "question": "It was ______ late ______ we decided to leave.",
+        "A": "A. so / that",
+        "B": "B. such / than",
+        "C": "C. so much / that",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "This is the place ______ I saw him the last time.",
+        "A": "A. where",
+        "B": "B. which",
+        "C": "C. that",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "That's the man ______ daughter has won the lottery.",
+        "A": "A. which",
+        "B": "B. who",
+        "C": "C. whose",
+        "Correct": "C"
+      },
+      "10": {
+        "question": "Elisabeth has passed the test, ______?",
+        "A": "A. has she",
+        "B": "B. hasn't she",
+        "C": "C. hasn't Elisabeth",
+        "Correct": "B"
+      }
+    },
+    "test_7": {
+      "1": {
+        "question": "You won't do anything stupid, ______?",
+        "A": "A. will you",
+        "B": "B. shall you",
+        "C": "C. won't you",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "We could attend the conference ______ the fact that we didn’t have invitations.",
+        "A": "A. although",
+        "B": "B. in spite of",
+        "C": "C. however",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "Tomas can be very annoying sometimes. ______ , he is very loyal to his friends.",
+        "A": "A. However",
+        "B": "B. Although",
+        "C": "C. In spite of",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "She smiled _____ him, and he blushed.",
+        "A": "A. to",
+        "B": "B. at",
+        "C": "C. on",
+        "Correct": "B"
+      },
+      "5": {
+        "question": "He paid _____ the meal and she paid _____ the taxi.",
+        "A": "A. to",
+        "B": "B. for",
+        "C": "C. -",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "I'm sorry ____ not writing sooner.",
+        "A": "A. on",
+        "B": "B. for",
+        "C": "C. at",
+        "Correct": "B"
+      },
+      "7": {
+        "question": "I'm tired _____ listening to you.",
+        "A": "A. in",
+        "B": "B. at",
+        "C": "C. of",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "It's almost 5. I _____ to the bank before they close.",
+        "A": "A. 'd better go",
+        "B": "B. should better go",
+        "C": "C. 'd better to go",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "It's time the government _____ something about the situation.",
+        "A": "A. do",
+        "B": "B. should do",
+        "C": "C. did",
+        "Correct": "C"
+      },
+      "10": {
+        "question": "We haven't talked to them _____ they got married.",
+        "A": "A. from",
+        "B": "B. since",
+        "C": "C. for",
+        "Correct": "B"
+      }
+    },
+    "test_final": {
+      "1": {
+        "question": "The concert started at 8 but the doors were open _____ 6:30.",
+        "A": "A. from",
+        "B": "B. since",
+        "C": "C. for",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "The Channel Tunnel is a _____ tunnel that connects England with France.",
+        "A": "A. 50-kilometre",
+        "B": "B. 50-kilometres",
+        "C": "C. 50 kilometres",
+        "Correct": "A"
+      },
+      "3": {
+        "question": "The Eiffel Tower is a _____ iron tower.",
+        "A": "A. 1083-feet",
+        "B": "B. 1083 foot",
+        "C": "C. 1083-foot",
+        "Correct": "C"
+      },
+      "4": {
+        "question": "When he _____ from the war, he was never the same.",
+        "A": "A. depended on",
+        "B": "B. ended up",
+        "C": "C. got back",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "In difficult times, you can always _____ him. He's always there for you.",
+        "A": "A. deal with",
+        "B": "B. get along with",
+        "C": "C. depend on",
+        "Correct": "C"
+      },
+      "6": {
+        "question": "If you don't have time to go to the gym, you can _____ at home.",
+        "A": "A. turn into",
+        "B": "B. work out",
+        "C": "C. wash up",
+        "Correct": "B"
+      },
+      "7": {
+        "question": "We _____ and clean the kitchen after each meal.",
+        "A": "A. turn into",
+        "B": "B. wash up",
+        "C": "C. wrap up",
+        "Correct": "B"
+      },
+      "8": {
+        "question": "I have to take it as it ______.",
+        "A": "A. comes",
+        "B": "B. coming",
+        "C": "C. came",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "Complete the sentence with the past simple form of the verb in the bracket: They (not play) very well yesterday. They lost the match.",
+        "A": "A. didn't played",
+        "B": "B. won't play",
+        "C": "C. didn't play",
+        "Correct": "C"
+      },
+      "10": {
+        "question": "Ted and Rose __________ be good players. They have won hundreds of cups!",
+        "A": "A. must",
+        "B": "B. mustn't",
+        "C": "C. can",
+        "Correct": "A"
+      },
+      "11": {
+        "question": "My nephew was by the clown.",
+        "A": "A. amusing",
+        "B": "B. amuse",
+        "C": "C. amused",
+        "Correct": "C"
+      },
+      "12": {
+        "question": "He is looking for __________ (leather / stylish / a /black) bag.",
+        "A": "A. a leather stylish black",
+        "B": "B. a stylish leather black",
+        "C": "C. a stylish black leather",
+        "Correct": "C"
+      },
+      "13": {
+        "question": "I ________ this picture ____ 10 in the morning.",
+        "A": "A. Has been painting / since",
+        "B": "B. have been painting / for",
+        "C": "C. have been painting / since",
+        "Correct": "C"
+      },
+      "14": {
+        "question": "Choose an example of the combination \"adjective+noun\".",
+        "A": "A. time-out",
+        "B": "B. passer-by",
+        "C": "C. software",
+        "Correct": "B"
+      },
+      "15": {
+        "question": "Finish the sentence: He made a dentist’s appointment because he ... a tooth.",
+        "A": "A. broke",
+        "B": "B. had broken",
+        "C": "C. has broken",
+        "Correct": "A"
+      },
+      "16": {
+        "question": "Choose the correct option: Nick, John, I need some money. Does ... of you have any money I can borrow?",
+        "A": "A. either",
+        "B": "B. neither",
+        "C": "C. none",
+        "Correct": "A"
+      },
+      "17": {
+        "question": "Did they eat ... of the cakes?",
+        "A": "A. either",
+        "B": "B. all",
+        "C": "C. every",
+        "Correct": "B"
+      },
+      "18": {
+        "question": "Which suffix creates nouns?",
+        "A": "A. -ment",
+        "B": "B. -al",
+        "C": "C. -ous",
+        "Correct": "A"
+      },
+      "19": {
+        "question": "Replace the phrase in the bracket with the phrasal verb: Can you ____________ (think of an idea) a better idea?",
+        "A": "A. come up with",
+        "B": "B. go on",
+        "C": "C. give up",
+        "Correct": "A"
+      },
+      "20": {
+        "question": "I really want to _________ (leave a building) of this office and go for a walk.",
+        "A": "A. fine out",
+        "B": "B. take on",
+        "C": "C. get out",
+        "Correct": "C"
+      }
+    }
+  },
+  "Upper-Intermediate": {
+    "test_1": {
+      "1": {
+        "question": "I hope I'll pass the test, I ____ very hard all week.",
+        "A": "A. 've worked",
+        "B": "B. 've been working",
+        "C": "C. 've being working",
+        "Correct": "B"
+      },
+      "2": {
+        "question": "I ____ for my keys since yesterday, but I ____ them.",
+        "A": "A. 've been looking / haven't found",
+        "B": "B. 've been looking / haven't been finding",
+        "C": "C. 've looked / haven't been finding",
+        "Correct": "A"
+      },
+      "3": {
+        "question": "_____ a book by Charles Dickens?",
+        "A": "A. Have you ever read",
+        "B": "B. Have you ever being reading",
+        "C": "C. Have you ever been reading",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "I ______ you all afternoon. Are you OK?",
+        "A": "A. 've called",
+        "B": "B. 've been calling",
+        "C": "C. 've calling",
+        "Correct": "B"
+      },
+      "5": {
+        "question": "I can see you _____ your room. It looks great!",
+        "A": "A. have redecorated",
+        "B": "B. have been redecorating",
+        "C": "C. have being redecorating",
+        "Correct": "A"
+      },
+      "6": {
+        "question": "Why are your shoes so dirty? ______ football in the mud?",
+        "A": "A. Have you played",
+        "B": "B. Have you playing",
+        "C": "C. Have you been playing",
+        "Correct": "C"
+      },
+      "7": {
+        "question": "I was very late. When I arrived, the conference _____.",
+        "A": "A. was already starting",
+        "B": "B. started",
+        "C": "C. had already started",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "We _____ for nearly an hour when we realized that we were totally lost.",
+        "A": "A. walked",
+        "B": "B. had been walking",
+        "C": "C. had walked",
+        "Correct": "B"
+      },
+      "9": {
+        "question": "we / visit our grandparents on the weekend? → ___________?",
+        "A": "A. Are we visiting our grandparents on the weekend?",
+        "B": "B. Will we be visiting our grandparents on the weekend?",
+        "C": "C. Will we visit our grandparents on the weekend?",
+        "Correct": "C"
+      },
+      "10": {
+        "question": "In five years, 60% of the world's population _____ the internet.",
+        "A": "A. will be using",
+        "B": "B. are going to use",
+        "C": "C. will use",
+        "Correct": "A"
+      }
+    },
+    "test_2": {
+      "1": {
+        "question": "When we arrive in Los Angeles we'll need to rest, because we _______ about 800 miles.",
+        "A": "A. will be driving",
+        "B": "B. will have driven",
+        "C": "C. will drive",
+        "Correct": "B"
+      },
+      "2": {
+        "question": "By the time you arrive I _______ something spectacular and dinner will be on the table waiting for you.",
+        "A": "A. will cook",
+        "B": "B. will have cooked",
+        "C": "C. will be cooking",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "When you cross that door, I __________ my homework.",
+        "A": "A. will have finished",
+        "B": "B. finish",
+        "C": "C. have finished",
+        "Correct": "A"
+      },
+      "4": {
+        "question": "If she _______ more experienced, she would be more likely to get the job.",
+        "A": "A. were",
+        "B": "B. had been",
+        "C": "C. would be",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "If the food _______ so bad, we wouldn't have complained.",
+        "A": "A. wasn't",
+        "B": "B. hadn't been",
+        "C": "C. wouldn't be",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "He says he's your friend, but he didn't help you. If he were your friend, he _____ you.",
+        "A": "A. had helped",
+        "B": "B. would have helped",
+        "C": "C. would help",
+        "Correct": "B"
+      },
+      "7": {
+        "question": "I wish I _______ a better job. I don’t enjoy this kind of work.",
+        "A": "A. had",
+        "B": "B. would have had",
+        "C": "C. had had",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "I wish you _______ so late. I'm tired of always waiting for you!",
+        "A": "A. didn't always arrive",
+        "B": "B. wouldn't always arrive",
+        "C": "C. wouldn't always have arrived",
+        "Correct": "B"
+      },
+      "9": {
+        "question": "I missed my flight yesterday. If only I _______ a bit earlier!",
+        "A": "A. would get up",
+        "B": "B. would have got up",
+        "C": "C. had got up",
+        "Correct": "C"
+      },
+      "10": {
+        "question": "If only he _______ here. He’d know what to do.",
+        "A": "A. would have been",
+        "B": "B. was",
+        "C": "C. would be",
+        "Correct": "B"
+      }
+    },
+    "test_3": {
+      "1": {
+        "question": "They _______ bought a new house. They are both unemployed.",
+        "A": "A. can't have",
+        "B": "B. might not have",
+        "C": "C. mustn't have",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "I'm sorry but Mr. Banks isn't here. He _______ left.",
+        "A": "A. can't have",
+        "B": "B. might have",
+        "C": "C. must have",
+        "Correct": "C"
+      },
+      "3": {
+        "question": "We _______ bought enough beer for the party.",
+        "A": "A. must not have",
+        "B": "B. ought not have",
+        "C": "C. may not have",
+        "Correct": "C"
+      },
+      "4": {
+        "question": "My car isn't there any more! It _______ stolen while I was shopping.",
+        "A": "A. should have been",
+        "B": "B. mustn't have been",
+        "C": "C. might have been",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "Which sentence is correct?",
+        "A": "A. Does he go late to bed usually?",
+        "B": "B. Does he usually go to bed late?",
+        "C": "C. Does he go late usually to bed?",
+        "Correct": "B"
+      },
+      "6": {
+        "question": "Which sentence is correct?",
+        "A": "A. She hardly ever gets angry.",
+        "B": "B. She gets angry hardly ever.",
+        "C": "C. She gets hardly ever angry.",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "He insisted _____ coming with us.",
+        "A": "A. in",
+        "B": "B. at",
+        "C": "C. on",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "Don't try to compare Rome _____ Paris. They're too different.",
+        "A": "A. with",
+        "B": "B. of",
+        "C": "C. about",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "'I don't want any trouble.' ⇒ He told me he _____ any trouble.",
+        "A": "A. didn't want",
+        "B": "B. hasn't wanted",
+        "C": "C. hadn't wanted",
+        "Correct": "A"
+      },
+      "10": {
+        "question": "'I'll be at home all afternoon.' ⇒ She said she _____ at home all afternoon.",
+        "A": "A. was",
+        "B": "B. 'd be",
+        "C": "C. 'd been",
+        "Correct": "B"
+      }
+    },
+    "test_4": {
+      "1": {
+        "question": "Christopher: \"Do you want to dance?\"\nChristopher asked me______",
+        "A": "A. if I wanted to dance",
+        "B": "B. whether he wanted to dance",
+        "C": "C. if I want to dance",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "Justin: \"What are you doing?\"\nJustin asked me_____",
+        "A": "A. what he is do",
+        "B": "B. what I was doing",
+        "C": "C. what I will be doing",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "The report _______ two days ago.",
+        "A": "A. should been finished",
+        "B": "B. should finish",
+        "C": "C. should have been finished",
+        "Correct": "C"
+      },
+      "4": {
+        "question": "They hated _______ mercenaries, but that's what they were.",
+        "A": "A. being called",
+        "B": "B. to being called",
+        "C": "C. be called",
+        "Correct": "A"
+      },
+      "5": {
+        "question": "Why _______ about the meeting yesterday?",
+        "A": "A. didn't I tell",
+        "B": "B. hasn't I being told",
+        "C": "C. wasn't I told",
+        "Correct": "C"
+      },
+      "6": {
+        "question": "_______ soon? Do you think you'll get the job?",
+        "A": "A. Will you be interviewed",
+        "B": "B. Will you interview",
+        "C": "C. Will you being interviewed",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "I would like _____ my grandmother next year.",
+        "A": "A. visit",
+        "B": "B. to visit",
+        "C": "C. visiting",
+        "Correct": "B"
+      },
+      "8": {
+        "question": "The report _______ two days ago.",
+        "A": "A. should finish",
+        "B": "B. should been finished",
+        "C": "C. should have been finished",
+        "Correct": "C"
+      },
+      "9": {
+        "question": "Tennis is okay, but I prefer _____ padel.",
+        "A": "A. play",
+        "B": "B. to play",
+        "C": "C. playing",
+        "Correct": "C"
+      },
+      "10": {
+        "question": "I enjoy _____ stories to my children.",
+        "A": "A. read",
+        "B": "B. to read",
+        "C": "C. reading",
+        "Correct": "C"
+      }
+    },
+    "test_5": {
+      "1": {
+        "question": "The delegate refused .",
+        "A": "A. to be interviewed",
+        "B": "B. to interview",
+        "C": "C. having been interviewed",
+        "Correct": "A"
+      },
+      "2": {
+        "question": "He admitted ______ the gun to the murderer.",
+        "A": "A. to give",
+        "B": "B. to have given",
+        "C": "C. having given",
+        "Correct": "C"
+      },
+      "3": {
+        "question": "He won the race _______ being in his best form.",
+        "A": "A. in order not to",
+        "B": "B. in spite of not",
+        "C": "C. however not",
+        "Correct": "B"
+      },
+      "4": {
+        "question": "I didn't tell her the truth _______ hurt her feelings.",
+        "A": "A. So as not to",
+        "B": "B. in order to not",
+        "C": "C. so that not",
+        "Correct": "A"
+      },
+      "5": {
+        "question": " everything started to fall apart.",
+        "A": "A. It was 2010 when",
+        "B": "B. 2010 it was",
+        "C": "C. 2010 was where",
+        "Correct": "A"
+      },
+      "6": {
+        "question": "Which sentence is INCORRECT?",
+        "A": "A. What we did was wait for help.",
+        "B": "B. The only thing we did was wait for help.",
+        "C": "C. It's that we did wait for help",
+        "Correct": "C"
+      },
+      "7": {
+        "question": "What's the name of the man ____ lives next door?",
+        "A": "A. that",
+        "B": "B. where",
+        "C": "C. who",
+        "Correct": "C"
+      },
+      "8": {
+        "question": "This is the computer ____ I bought from my friend.",
+        "A": "A. which",
+        "B": "B. what",
+        "C": "C. who",
+        "Correct": "A"
+      },
+      "9": {
+        "question": "The two men _____ robbed the bank were wearing masks.",
+        "A": "A. that they",
+        "B": "B. which",
+        "C": "C. who",
+        "Correct": "C"
+      },
+      "10": {
+        "question": "That's the man ______ daughter has won the lottery.",
+        "A": "A. which",
+        "B": "B. who",
+        "C": "C. whose",
+        "Correct": "C"
+      }
+    },
+    "test_final": {
+      "1": {
+        "question": "I ________ when I’m bathing.",
+        "A": "A. sing often loudly",
+        "B": "B. loudly sing often",
+        "C": "C. often sing loudly",
+        "Correct": "C"
+      },
+      "2": {
+        "question": "________ are becoming an increasingly large proportion of many societies.",
+        "A": "A. Unemployed",
+        "B": "B. The unemployed",
+        "C": "C. The unemployed people",
+        "Correct": "B"
+      },
+      "3": {
+        "question": "We tried to talk quietly ________ wake other people in dormitory.",
+        "A": "A. to not",
+        "B": "B. not to",
+        "C": "C. so as not to",
+        "Correct": "C"
+      },
+      "4": {
+        "question": "________ the very steep climbing up the last hill, I really enjoyed the hiking.",
+        "A": "A. Although",
+        "B": "B. In spite",
+        "C": "C. Despite",
+        "Correct": "C"
+      },
+      "5": {
+        "question": "Our eldest son is at ________ university. He’s studying Physics in London.",
+        "A": "A. the",
+        "B": "B. a",
+        "C": "C. (–)",
+        "Correct": "C"
+      },
+      "6": {
+        "question": "That’s a _______ chair – where did you buy it?",
+        "A": "A. lovely little wooden",
+        "B": "B. little lovely wooden",
+        "C": "C. lovely wooden little",
+        "Correct": "A"
+      },
+      "7": {
+        "question": "I like the dogs that my neighbour has, but generally I prefer ________ cats.",
+        "A": "A. (–)",
+        "B": "B. some",
+        "C": "C. the",
+        "Correct": "A"
+      },
+      "8": {
+        "question": "________ of our team played well today – that’s why we lost.",
+        "A": "A. Neither",
+        "B": "B. None",
+        "C": "C. Some",
+        "Correct": "B"
+      },
+      "9": {
+        "question": "I love ________ in that shop.",
+        "A": "A. a furniture",
+        "B": "B. the furnitures",
+        "C": "C. the furniture",
+        "Correct": "C"
+      },
+      "10": {
+        "question": "Does anyone know where ________?",
+        "A": "A. lives Sam",
+        "B": "B. does Sam live",
+        "C": "C. Sam lives",
+        "Correct": "C"
+      },
+      "11": {
+        "question": "I’m sorry I didn’t mean what I just said. I _____ it all back.",
+        "A": "A. give",
+        "B": "B. take",
+        "C": "C. put",
+        "D": "D. pull",
+        "Correct": "B"
+      },
+      "12": {
+        "question": "I’m really looking forward ______ you later.",
+        "A": "A. to see",
+        "B": "B. seeing",
+        "C": "C. to seeing",
+        "D": "D. see",
+        "Correct": "C"
+      },
+      "13": {
+        "question": "That sales assistant was so ____ in fact she was downright rude.",
+        "A": "A. diplomatic",
+        "B": "B. tactful",
+        "C": "C. helpless",
+        "D": "D. unhelpful",
+        "Correct": "D"
+      },
+      "14": {
+        "question": "Please _____ papers now and correct your partner’s Corrects.",
+        "A": "A. swap",
+        "B": "B. grab",
+        "C": "C. divert",
+        "D": "D. scam",
+        "Correct": "A"
+      },
+      "15": {
+        "question": "We’ll have to cut the meeting _____ as something urgent has come up.",
+        "A": "A. down",
+        "B": "B. off",
+        "C": "C. up",
+        "D": "D. short",
+        "Correct": "A"
+      },
+      "16": {
+        "question": "We’ll _____ sun, sand and sea this time next week.",
+        "A": "A. be enjoying",
+        "B": "B. have been enjoying",
+        "C": "C. have enjoyed",
+        "D": "D. enjoy",
+        "Correct": "A"
+      },
+      "17": {
+        "question": "Steve _____ have lost his way as he’s never late.",
+        "A": "A. can’t",
+        "B": "B. must",
+        "C": "C. mustn’t",
+        "D": "D. can",
+        "Correct": "B"
+      },
+      "18": {
+        "question": "My grandmother _____ me eat everything on my plate even if I didn’t want to.",
+        "A": "A. let",
+        "B": "B. allowed",
+        "C": "C. made",
+        "D": "D. forced",
+        "Correct": "C"
+      },
+      "19": {
+        "question": "I’m so busy these days that there’s _____ time to relax.",
+        "A": "A. a little",
+        "B": "B. enough",
+        "C": "C. few",
+        "D": "D. little",
+        "Correct": "D"
+      },
+      "20": {
+        "question": "I can’t really remember the house _____ I grew up in.",
+        "A": "A. where",
+        "B": "B. that",
+        "C": "C. what",
+        "D": "D. whose",
+        "Correct": "B"
+      }
+    }
+  }
+}
+ 

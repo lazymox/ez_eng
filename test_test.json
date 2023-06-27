@@ -1,0 +1,153 @@
+{
+  "test_1": {
+    "question_1": "1. I’m 13 and my brother is 16, so he’s ________ me.",
+    "A": "A. older than",
+    "B": "B. the oldest of",
+    "C": "C. as old as",
+    "Correct": "A"
+  },"test_2": {
+    "question_1": "2. Julie’s very ________. She’s never late, and she never forgets to do things.",
+    "A": "A. reliable",
+    "B": "B. patient",
+    "C": "C. strict",
+    "Correct": "A"
+  },"test_3": {
+    "question_1": "3. We stayed in a great hotel ________ the sea.",
+    "A": "A. it overlooks",
+    "B": "B. overlooked",
+    "C": "C. overlooking",
+    "Correct": "C"
+  },"test_4": {
+    "question_1": "4. Not until the 2010s ________ for the average person to own a smartphone.",
+    "A": "A. it was possible",
+    "B": "B. was it possible",
+    "C": "C. was possible",
+    "Correct": "B"
+  },"test_5": {
+    "question_1": "5. Chloe ________ her arm in a hot oven.",
+    "A": "A. broke",
+    "B": "B. burned",
+    "C": "C. sprained",
+    "Correct": "B"
+  },"test_6": {
+    "question_1": "6. Tomorrow’s a day off, that's why we ________ go to work.",
+    "A": "A. have to",
+    "B": "B. mustn’t",
+    "C": "C. don’t have to",
+    "Correct": "C"
+  },"test_7": {
+    "question_1": "7. I always  ________ swimming at least twice a week.",
+    "A": "A. go",
+    "B": "B. do",
+    "C": "C. play",
+    "Correct": "A"
+  },"test_8": {
+    "question_1": "8. My friend Simon ________  to New Orleans last year.",
+    "A": "A. went",
+    "B": "B. has gone",
+    "C": "C. has been",
+    "Correct": "A"
+  },"test_9": {
+    "question_1": "9. That is ________ place, there are lots of factories and warehouses.",
+    "A": "A. an agricultural",
+    "B": "B. an industrial",
+    "C": "C. a residential",
+    "Correct": "B"
+  },"test_10": {
+    "question_1": "10. If I ________ all of my chores, I ________ to the park.",
+    "A": "A. will finish; will go",
+    "B": "B. will finish; go",
+    "C": "C. finish; will go",
+    "Correct": "C"
+  },"test_11": {
+    "question_1": "11. She was so frustrated that she burst ________  tears.",
+    "A": "A. into",
+    "B": "B. out",
+    "C": "C. with",
+    "Correct": "A"
+  },"test_12": {
+    "question_1": "12. Where did you go ________ holiday last month?",
+    "A": "A. for",
+    "B": "B. on",
+    "C": "C. to",
+    "Correct": "B"
+  },"test_13": {
+    "question_1": "13. Ocean currents ________ play a key part in controlling global climate.",
+    "A": "A. are known to",
+    "B": "B. thought to",
+    "C": "C. are believed that they",
+    "Correct": "A"
+  },"test_14": {
+    "question_1": "14. My aunt ________ applying for a job in Egypt.",
+    "A": "A. would like",
+    "B": "B. is planning",
+    "C": "C. is thinking of",
+    "Correct": "C"
+  },"test_15": {
+    "question_1": "15. She couldn’t ________  your beard, because she hadn’t got any scissors.",
+    "A": "A. brush",
+    "B": "B. cut",
+    "C": "C. wash",
+    "Correct": "B"
+  },"test_16": {
+    "question_1": "16. I wish I ________  have lessons the coming week!",
+    "A": "A. don’t",
+    "B": "B. didn’t",
+    "C": "C. won’t",
+    "Correct": "B"
+  },"test_17": {
+    "question_1": "17. The government is planning to ________ taxes on car sales.",
+    "A": "A. increase",
+    "B": "B. expand",
+    "C": "C. go up",
+    "Correct": "A"
+  },"test_18": {
+    "question_1": "18. When he first moved to Almaty, life in  a different city was very strange and uncomfortable, but now he’s used ________  there.",
+    "A": "A. living",
+    "B": "B. to live",
+    "C": "C. to living",
+    "Correct": "C"
+  },"test_19": {
+    "question_1": "19. There ________ sugar on the shelf.",
+    "A": "A. is some",
+    "B": "B. are some",
+    "C": "C. is a",
+    "Correct": "A"
+  },"test_20": {
+    "question_1": "20. Criminal is the one who is guilty of ________  the law.",
+    "A": "A. breaking",
+    "B": "B. cheating",
+    "C": "C. committing",
+    "Correct": "A"
+  },"test_21": {
+    "question_1": "21. Why on earth isn’t Sarah here yet? ________  for her for over an hour!",
+    "A": "A. I’m waiting",
+    "B": "B. I’ve been waiting",
+    "C": "C. I’ve waited",
+    "Correct": "B"
+  },"test_22": {
+    "question_1": "22. “It’s raining cats and dogs, and it’s freezing.” What are the weather conditions?",
+    "A": "A. high winds and snow",
+    "B": "B. heavy rain and cold temperatures",
+    "C": "C. thick cloud but quite warm",
+    "Correct": "B"
+  },"test_23": {
+    "question_1": "23. ________  feeling OK? You look like you’re dead.",
+    "A": "A. Do you",
+    "B": "B. You are",
+    "C": "C. Are you",
+    "Correct": "C"
+  },"test_24": {
+    "question_1": "24. Daulet’s hair is getting far too long; he should ________ soon.",
+    "A": "A. cut it",
+    "B": "B. have cut it",
+    "C": "C. have it cut",
+    "Correct": "C"
+  },"test_25": {
+    "question_1": "25. Bob works for an oil production company. He got ________ recently, and so now he’s an area manager.",
+    "A": "A. made redundant",
+    "B": "B. promoted",
+    "C": "C. a raise",
+    "Correct": "B"
+  }
+}
