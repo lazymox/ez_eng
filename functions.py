@@ -2,7 +2,6 @@ import os
 from aiogram import types
 from json import dumps, loads, load
 
-import aiogram
 from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 

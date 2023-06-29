@@ -34,7 +34,7 @@ async def subacrition_scheduler():
     current_date = datetime.now().strftime('%Y-%m-%d')
     for end_day in dates:
         if end_day[0] == current_date:
-            db.remove_subscrition(end_day[2]) #ОШИБКА
+            db.remove_subscrition(end_day[2])
 
 
 async def scheduler():

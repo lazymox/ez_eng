@@ -1,10 +1,8 @@
-import asyncio
 
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from aiogram.utils import executor
 from aiogram import types
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 import scheduled as sc
 import functions as f
@@ -118,8 +116,8 @@ async def answer_handler(callback: CallbackQuery):
         db.upd_passed(user_id, 0)
         db.upd_process(user_id, False)
         await bot.send_message(callback.from_user.id, f"END.\n"
-                                                      f"Your level is {db.get_level(user_id)[0]}\n"
-                                                      f"Score is {score} out of 25")
+                                                      f"Ваш уровень английского:*{db.get_level(user_id)[0]}*\\n"
+                                                      f"Вы набрали *{score}*\ баллов из 25", parse_mode="MarkdownV2")
         return
     q = "test_" + str(data["question"] + 1)
     await bot.edit_message_text(chat_id=callback.from_user.id,
@@ -132,11 +130,11 @@ async def answer_handler(callback: CallbackQuery):
 async def check_level(message: types.Message):
     user_id = message.from_user.id
     if db.get_level(user_id)[0]:
-        await bot.send_message(message.from_user.id, "You already passed an exam")
+        await bot.send_message(message.from_user.id, "Вы уже сдавали проверочный экзамен ")
         return
     if db.get_process(user_id)[0]:
         await bot.send_message(message.from_user.id,
-                               "You are already doing test")
+                               "Тест уже идёт")
         return
     db.upd_process(user_id, True)
     db.upd_passed(user_id, 0)
@@ -151,7 +149,6 @@ async def check_level(message: types.Message):
 @dp.message_handler(commands=['profile'])
 async def id_from_message(message: types.message_id):
     await f.get_profile(message)
-
 
 
 if __name__ == '__main__':
