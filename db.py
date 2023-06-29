@@ -269,3 +269,24 @@ class Database:
             pass
         cursor = connection.cursor()
         cursor.execute(f"UPDATE users set subscription=0 where WHERE user_id = {user_id} ")
+
+    def get_try(self, user_id):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        cursor.execute("SELECT try FROM users WHERE user_id = %s", (user_id,))
+        result = cursor.fetchone()
+        connection.close()
+        return result
+
+    def upd_try(self, user_id, tries):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        cursor.execute("UPDATE users SET try = %s WHERE user_id = %s", (tries, user_id))
+        connection.commit()
+        connection.close()

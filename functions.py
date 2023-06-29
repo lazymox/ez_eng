@@ -39,60 +39,82 @@ async def prep_test_mess(user_id):
 
 
 # составоение теста
-def compose_markup(number: int, testing, d_exist):
+def compose_markup(number: int, d_exist):
     question = str(number)
-    km = InlineKeyboardMarkup(row_width=3)
+    km = InlineKeyboardMarkup(row_width=4)
     cdA = {
         "question": number,
         "answer": "A"
     }
-    km.insert(InlineKeyboardButton(testing[question]["A"], callback_data=dumps(cdA)))
+    km.insert(InlineKeyboardButton("A", callback_data=dumps(cdA)))
     cdB = {
         "question": number,
         "answer": "B"
     }
-    km.insert(InlineKeyboardButton(testing[question]["B"], callback_data=dumps(cdB)))
+    km.insert(InlineKeyboardButton("B", callback_data=dumps(cdB)))
     cdC = {
         "question": number,
         "answer": "C"
     }
-    km.insert(InlineKeyboardButton(testing[question]["C"], callback_data=dumps(cdC)))
+    km.insert(InlineKeyboardButton("C", callback_data=dumps(cdC)))
+    if d_exist:
+        cdD = {
+            "question": number,
+            "answer": "D"
+        }
+        km.insert(InlineKeyboardButton("D", callback_data=dumps(cdD)))
     return km
 
 
 @dp.callback_query_handler(lambda c: True)
 async def answer_handler(callback: CallbackQuery):
     user_id = callback.from_user.id
+    level = db.get_level(user_id)
+    progress = db.get_leveling(user_id)
+    testNum = "test_" + video[level][progress]["test"]
+    testing = test[level][testNum]
+
     data = loads(callback.data)
-    q = "test_" + str(data["question"])
-    is_correct = test[q]["Correct"] == data["answer"]
-    passed_value = db.get_passed(user_id)
+    q = str(data["question"])
+    is_correct = testing[q]["Correct"] == data["answer"]
+    passed_value = db.get_passed(user_id)[0]
     msg = db.get_msg(user_id)[0]
     if is_correct:
-        passed = passed_value[0] + 1
+        passed = passed_value + 1
         db.upd_passed(user_id, passed)
-    if q == "test_25":
+    if int(q) + 1 not in testing.keys():
         score = db.get_passed(user_id)[0]
-        if score <= 8:
-            db.upd_level(user_id, "Beginner")
-        elif score <= 12:
-            db.upd_level(user_id, "Elementary")
-        elif score <= 16:
-            db.upd_level(user_id, "Pre-Intermediate")
-        elif score <= 21:
-            db.upd_level(user_id, "Intermediate")
+        if score >= int(q) * 0.7:
+            tries = db.get_try(user_id)
+            if tries == 0:
+                db.upd_coin(user_id, db.get_coin(user_id) + 3)
+            elif tries == 1:
+                db.upd_coin(user_id, db.get_coin(user_id) + 2)
+            else:
+                db.upd_coin(user_id, db.get_coin(user_id) + 1)
+            db.upd_try(user_id, 0)
+            await bot.send_message(user_id, "хорош, прошел")
         else:
-            db.upd_level(user_id, "Upper-Intermediate")
-
+            await bot.send_message(user_id, "все хуйня давай по новому")
+            db.upd_try(user_id, db.get_try(user_id) + 1)
         await bot.delete_message(callback.from_user.id, msg)
         await bot.send_message(callback.from_user.id, f"END.\n"
                                                       f"Your Score is {score}")
+
         return
-    q = "test_" + str(data["question"] + 1)
+    q = str(data["question"] + 1)
+    d_exist = False
+
+    if "D" in testing["1"].keys():
+        d_exist = True
+
+    text = testing[q]["question"] + "\n" + testing[q]["A"] + "\n" + testing[q]["B"] + "\n" + testing[q]["C"] + "\n"
+    if d_exist:
+        text += testing[q]["D"]
     await bot.edit_message_text(chat_id=callback.from_user.id,
-                                text=test[q]["question_1"],
+                                text=text,
                                 message_id=msg,
-                                reply_markup=compose_markup(data["question"] + 1))
+                                reply_markup=compose_markup(data["question"] + 1, d_exist))
 
 
 @dp.callback_query(text="start_test")
@@ -118,10 +140,15 @@ async def start_test(callback: types.CallbackQuery):
     if "D" in testing["1"].keys():
         d_exist = True
 
+    text = testing["1"]["question"] + "\n" + testing["1"]["A"] + "\n" + testing["1"]["B"] + "\n" + testing["1"]["C"] + "\n"
+    if d_exist:
+        text += testing["1"]["D"]
+
+    db.upd_passed(user_id, 0)
     msg = await bot.send_message(
         user_id,
-        testing["1"],
-        reply_markup=compose_markup(1, testing, d_exist)
+        text,
+        reply_markup=compose_markup(1, d_exist)
     )
     db.upd_msg(user_id, msg.message_id)
 
