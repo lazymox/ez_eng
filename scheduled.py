@@ -47,18 +47,18 @@ async def scheduler():
     kazakhstan_tz = pytz.timezone('Asia/Almaty')
     while True:
         now = datetime.now(tz=kazakhstan_tz)
-        if now.hour == 14 and now.minute == 6:
+        if now.hour == 17 and now.minute == 14:
             await daily()
         await asyncio.sleep(60)
 
 
-schedule.every().day.at('00:00').do(run_threaded, subscription_scheduler)  # планировщик для статуса подписок
+
 
 
 async def on_startup(_):
     asyncio.create_task(scheduler())
+    # schedule.every().day.at('00:00').do(run_threaded, subscription_scheduler)  # планировщик для статуса подписок
 
-
-while 1:
-    schedule.run_pending()
-    time.sleep(1)
+# while 1:
+#     schedule.run_pending()
+#     time.sleep(1)

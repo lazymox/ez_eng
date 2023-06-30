@@ -4,6 +4,7 @@ from json import dumps, loads, load
 
 from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from aiogram.utils.callback_data import CallbackData
 
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from pytube import YouTube
@@ -13,7 +14,7 @@ from db import Database
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
 video = load(open("video.json", "r", encoding="utf-8"))
-
+cd = CallbackData("question", "answer")
 
 # отправка видео
 async def video_send(link, user_id):
@@ -41,27 +42,27 @@ async def prep_test_mess(user_id):
 def compose_markup(number: int, d_exist):
     question = str(number)
     km = InlineKeyboardMarkup(row_width=4)
-    cdA = {
+    cbA = {
         "question": number,
         "answer": "A"
     }
-    km.insert(InlineKeyboardButton("A", callback_data=dumps(cdA)))
-    cdB = {
+    km.insert(InlineKeyboardButton("A", callback_data=dumps(cbA)))
+    cbB = {
         "question": number,
         "answer": "B"
     }
-    km.insert(InlineKeyboardButton("B", callback_data=dumps(cdB)))
-    cdC = {
+    km.insert(InlineKeyboardButton("B", callback_data=dumps(cbB)))
+    cbC = {
         "question": number,
         "answer": "C"
     }
-    km.insert(InlineKeyboardButton("C", callback_data=dumps(cdC)))
+    km.insert(InlineKeyboardButton("C", callback_data=dumps(cbC)))
     if d_exist:
-        cdD = {
+        cbD = {
             "question": number,
             "answer": "D"
         }
-        km.insert(InlineKeyboardButton("D", callback_data=dumps(cdD)))
+        km.insert(InlineKeyboardButton("D", callback_data=dumps(cbD)))
     return km
 
 

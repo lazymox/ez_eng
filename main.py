@@ -2,6 +2,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from aiogram.utils import executor
 from aiogram import types
+from aiogram.utils.callback_data import CallbackData
 
 import scheduled as sc
 import functions as f
@@ -18,7 +19,7 @@ import aioschedule
 test = load(open("test.json", "r", encoding="utf-8"))
 test_test = load(open("test_test.json", "r", encoding="utf-8"))
 db = Database()
-
+cb = CallbackData("question", "answer")
 
 @dp.message_handler(commands=['start'])
 async def hello(message: types.Message, state: FSMContext):
@@ -68,6 +69,7 @@ async def check_sub(message: types.Message):
 def compose_markup(number: int):
     question = "test_" + str(number)
     km = InlineKeyboardMarkup(row_width=1)
+
     cdA = {
         "question": number,
         "answer": "A"
