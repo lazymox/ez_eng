@@ -1,7 +1,7 @@
 {
   "Beginer": {
     "1": {
-      "video_1": "https://youtu.be/ZQr7fzVp_KQ",
+      "video_1": "https://www.youtube.com/watch?v=ZQr7fzVp_KQ",
       "video_2": "https://youtu.be/41mnXiZ1U78",
       "video_3": "https://youtu.be/i3t8wG1tBUc",
       "test": "0"
@@ -84,18 +84,18 @@
   },
   "Elementary": {
     "1": {
-      "video_1": "https://youtu.be/CkUhvBIqOBc",
+      "video_1": "https://www.youtube.com/watch?v=CkUhvBIqOBc",
       "video_2": "https://youtu.be/VQ3boz6Jllk",
       "test": "0"
     },
     "2": {
-      "video_1": "https://youtu.be/XZgk5cFL1CI",
+      "video_1": "https://www.youtube.com/watch?v=XZgk5cFL1CI",
       "video_2": "https://youtu.be/A_tj_5LLvvY",
       "video_3": "https://youtu.be/OeNVsUCkKZw",
       "test": "0"
     },
     "3": {
-      "video_1": "https://youtu.be/HkxREzZOs4o",
+      "video_1": "https://www.youtube.com/watch?v=HkxREzZOs4o",
       "video_2": "https://youtu.be/MfvunuvKqbk",
       "test": "0"
     },
