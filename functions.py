@@ -68,9 +68,9 @@ def compose_markup(number: int, d_exist):
 @dp.callback_query_handler(lambda c: True)
 async def answer_handler(callback: CallbackQuery):
     user_id = callback.from_user.id
-    level = db.get_level(user_id)
-    progress = db.get_leveling(user_id)
-    testNum = "test_" + video[level][progress]["test"]
+    level = db.get_level(user_id)[0]
+    progress = db.get_leveling(user_id)[0]
+    testNum = "test_" + video[level][str(progress)]["test"]
     testing = test[level][testNum]
 
     data = loads(callback.data)
@@ -84,13 +84,13 @@ async def answer_handler(callback: CallbackQuery):
     if int(q) + 1 not in testing.keys():
         score = db.get_passed(user_id)[0]
         if score >= int(q) * 0.7:
-            tries = db.get_try(user_id)
+            tries = db.get_try(user_id)[0]
             if tries == 0:
-                db.upd_coin(user_id, db.get_coin(user_id) + 3)
+                db.upd_coin(user_id, db.get_coin(user_id)[0] + 3)
             elif tries == 1:
-                db.upd_coin(user_id, db.get_coin(user_id) + 2)
+                db.upd_coin(user_id, db.get_coin(user_id)[0] + 2)
             else:
-                db.upd_coin(user_id, db.get_coin(user_id) + 1)
+                db.upd_coin(user_id, db.get_coin(user_id)[0] + 1)
             db.upd_try(user_id, 0)
             await bot.send_message(user_id, "хорош, прошел")
         else:
