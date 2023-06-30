@@ -1,12 +1,11 @@
-from json import load
-import schedule
-import aioschedule
-from db import Database
 import asyncio
-import pytz
-from datetime import datetime, date
-import functions as f
 import time
+from datetime import datetime
+from json import load
+import pytz
+import schedule
+import functions as f
+from db import Database
 
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
@@ -29,12 +28,12 @@ async def daily():
 
 
 # функция  для обнуления статуса подписки
-async def subacrition_scheduler():
-    dates = db.get_subscritions_time()
+async def subscription_scheduler():
+    dates = await db.get_subscritions_time()
     current_date = datetime.now().strftime('%Y-%m-%d')
     for end_day in dates:
         if end_day[0] == current_date:
-            db.remove_subscrition(end_day[2])
+            db.remove_subscrition(end_day[1])
 
 
 async def scheduler():
@@ -46,7 +45,7 @@ async def scheduler():
         await asyncio.sleep(60)
 
 
-schedule.every().day.at('00:00').do(subacrition_scheduler())  # планировщик для статуса подписок
+schedule.every().day.at('00:00').do(subscription_scheduler,)  # планировщик для статуса подписок
 
 
 async def on_startup(_):
