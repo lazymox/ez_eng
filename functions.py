@@ -17,8 +17,8 @@ video = load(open("video.json", "r", encoding="utf-8"))
 
 # отправка видео
 async def video_send(link, user_id):
-    video = YouTube(link)
-    video_file_path = video.streams.get_highest_resolution().download()
+    video_to_send = YouTube(link)
+    video_file_path = video_to_send.streams.get_highest_resolution().download()
     clip = VideoFileClip(video_file_path)
     width, height = clip.size
     filename = os.path.splitext(os.path.basename(clip.filename))[0]
@@ -116,7 +116,7 @@ async def answer_handler(callback: CallbackQuery):
                                 reply_markup=compose_markup(data["question"] + 1, d_exist))
 
 
-@dp.callback_query(text=["start_test"])
+@dp.callback_query_handler(text="start_test")
 async def start_test(callback: types.CallbackQuery):
     user_id = callback.from_user.id
 

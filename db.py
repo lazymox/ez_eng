@@ -246,6 +246,7 @@ class Database:
         connection.close()
         return result
 
+
     def get_subscritions_time(self):
         try:
             connection.ping(reconnect=True)
@@ -257,11 +258,11 @@ class Database:
         connection.close()
         return result
 
-    def give_subscription(user_id, months):
+    def give_subscription(self, user_id, months):
         end_day = datetime.now() + timedelta(days=30 * months)
         sql = f"UPDATE users SET reg_date = '{datetime.now().strftime('%Y-%m-%d')}', end_date='{end_day.strftime('%Y-%m-%d')}' WHERE user_id ={user_id}"
 
-    def remove_subscrition(user_id):
+    def remove_subscrition(self, user_id):
         try:
             connection.ping(reconnect=True)
         except:
