@@ -116,7 +116,7 @@ async def answer_handler(callback: CallbackQuery):
                                 reply_markup=compose_markup(data["question"] + 1, d_exist))
 
 
-@dp.callback_query(text="start_test")
+@dp.callback_query(text=["start_test"])
 async def start_test(callback: types.CallbackQuery):
     user_id = callback.from_user.id
 

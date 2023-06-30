@@ -1,20 +1,16 @@
 
-from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
-from aiogram.utils import executor
-from aiogram import types
-
-import scheduled as sc
-import functions as f
-from create_bot import dp, bot
 import os
-from pytube import YouTube
-from moviepy.editor import VideoFileClip
-from db import Database
-
 from json import dumps, loads, load
-
-import aioschedule
+import functions as f
+from aiogram import types
+from aiogram.dispatcher import FSMContext
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from aiogram.utils import executor
+from moviepy.editor import VideoFileClip
+from pytube import YouTube
+import scheduled as sc
+from create_bot import dp, bot
+from db import Database
 
 test = load(open("test.json", "r", encoding="utf-8"))
 test_test = load(open("test_test.json", "r", encoding="utf-8"))

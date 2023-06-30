@@ -6,6 +6,7 @@ import pytz
 import schedule
 import functions as f
 from db import Database
+import threading
 
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
@@ -45,7 +46,12 @@ async def scheduler():
         await asyncio.sleep(60)
 
 
-schedule.every().day.at('00:00').do(subscription_scheduler,)  # планировщик для статуса подписок
+def run_threaded(job_func):
+    job_thread = threading.Thread(target=job_func)
+    job_thread.start()
+
+
+schedule.every().day.at('00:00').do(run_threaded,subscription_scheduler)  # планировщик для статуса подписок
 
 
 async def on_startup(_):

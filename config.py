@@ -1,5 +1,5 @@
 TOKEN = "6191542874:AAHhyLFdTIuTanmt-jkINhRrVLiNkaXU8xw"
 host = 'localhost'
 user = 'root'
-password = 'bebepassword'
+password = 'password'
 db_name = 'mysql'
