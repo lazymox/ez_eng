@@ -43,22 +43,18 @@ def run_threaded(job_func):
     job_thread.start()
 
 
+schedule.every().day.at('00:00').do(run_threaded, subscription_scheduler)  # планировщик для статуса подписок
+
+
 async def scheduler():
     kazakhstan_tz = pytz.timezone('Asia/Almaty')
     while True:
+        schedule.run_pending()
         now = datetime.now(tz=kazakhstan_tz)
-        if now.hour == 17 and now.minute == 14:
+        if now.hour == 14 and now.minute == 6:
             await daily()
         await asyncio.sleep(60)
 
 
-
-
-
 async def on_startup(_):
     asyncio.create_task(scheduler())
-    # schedule.every().day.at('00:00').do(run_threaded, subscription_scheduler)  # планировщик для статуса подписок
-
-# while 1:
-#     schedule.run_pending()
-#     time.sleep(1)
