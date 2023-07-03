@@ -19,7 +19,7 @@ import aioschedule
 test = load(open("test.json", "r", encoding="utf-8"))
 test_test = load(open("test_test.json", "r", encoding="utf-8"))
 db = Database()
-cb = CallbackData("question", "answer")
+cb = CallbackData("kn", "question", "answer")
 
 @dp.message_handler(commands=['start'])
 async def hello(message: types.Message, state: FSMContext):
@@ -68,30 +68,30 @@ async def check_sub(message: types.Message):
 
 def compose_markup(number: int):
     question = "test_" + str(number)
-    km = InlineKeyboardMarkup(row_width=1)
+    kn = InlineKeyboardMarkup(row_width=1)
 
     cdA = {
         "question": number,
         "answer": "A"
     }
-    km.insert(InlineKeyboardButton(test_test[question]["A"], callback_data=dumps(cdA)))
+    kn.insert(InlineKeyboardButton(test_test[question]["A"], callback_data=cb.new(number, "A")))
     cdB = {
         "question": number,
         "answer": "B"
     }
-    km.insert(InlineKeyboardButton(test_test[question]["B"], callback_data=dumps(cdB)))
+    kn.insert(InlineKeyboardButton(test_test[question]["B"], callback_data=cb.new(number, "B")))
     cdC = {
         "question": number,
         "answer": "C"
     }
-    km.insert(InlineKeyboardButton(test_test[question]["C"], callback_data=dumps(cdC)))
-    return km
+    kn.insert(InlineKeyboardButton(test_test[question]["C"], callback_data=cb.new(number, "C")))
+    return kn
 
 
-@dp.callback_query_handler(lambda c: True)
-async def answer_handler(callback: CallbackQuery):
+@dp.callback_query_handler(cb.filter())
+async def answer_handler(callback: CallbackQuery, callback_data: dict):
     user_id = callback.from_user.id
-    data = loads(callback.data)
+    data = callback_data
     q = "test_" + str(data["question"])
     is_correct = test_test[q]["Correct"] == data["answer"]
     passed_value = db.get_passed(user_id)
@@ -120,11 +120,11 @@ async def answer_handler(callback: CallbackQuery):
                                                       f"Ваш уровень английского:*{db.get_level(user_id)[0]}*\\n"
                                                       f"Вы набрали *{score}*\ баллов из 25", parse_mode="MarkdownV2")
         return
-    q = "test_" + str(data["question"] + 1)
+    q = "test_" + str(int(data["question"]) + 1)
     await bot.edit_message_text(chat_id=callback.from_user.id,
                                 text=test_test[q]["question_1"],
                                 message_id=msg,
-                                reply_markup=compose_markup(data["question"] + 1))
+                                reply_markup=compose_markup(int(data["question"]) + 1))
 
 
 @dp.message_handler(text='TEST')
