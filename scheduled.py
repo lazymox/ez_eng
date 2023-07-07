@@ -36,6 +36,7 @@ async def subscription_scheduler():
     for end_day in dates:
         if end_day[0] == current_date:
             db.remove_subscrition(end_day[1])
+            await f.end_subscription_notifier(end_day[1])
 
 
 def run_threaded(job_func):

@@ -1,30 +1,28 @@
-from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
-from aiogram.utils import executor
-from aiogram import types
-from aiogram.utils.callback_data import CallbackData
-
-import scheduled as sc
-import functions as f
-from create_bot import dp, bot
 import os
-from pytube import YouTube
-from moviepy.editor import VideoFileClip
-from db import Database
-
 from json import dumps, loads, load
 
-import aioschedule
+from aiogram import types
+from aiogram.dispatcher import FSMContext
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ContentTypes
+from aiogram.utils import executor
+from moviepy.editor import VideoFileClip
+from pytube import YouTube
+from aiogram.utils.callback_data import CallbackData
+from config import PAYMENTS_PROVIDER_TOKEN
+import functions as f
+import scheduled as sc
+from create_bot import dp, bot
+from db import Database
 
 test = load(open("test.json", "r", encoding="utf-8"))
 test_test = load(open("test_test.json", "r", encoding="utf-8"))
 db = Database()
 cb = CallbackData("question", "answer")
 
-@dp.message_handler(commands=['start'])
+
+@dp.message_handler(commands='start')
 async def hello(message: types.Message, state: FSMContext):
     user_id = message.from_user.id
-
     if not db.user_exists(user_id):
         db.first_add(user_id)
         a = await bot.send_animation(message.chat.id, animation=open('7Pp0.gif', 'rb'), caption="Загрузка видео...")
@@ -117,14 +115,37 @@ async def answer_handler(callback: CallbackQuery):
         db.upd_passed(user_id, 0)
         db.upd_process(user_id, False)
         await bot.send_message(callback.from_user.id, f"END.\n"
-                                                      f"Ваш уровень английского:*{db.get_level(user_id)[0]}*\\n"
+                                                      f"Ваш уровень английского:*{db.get_level(user_id)[0]}*\ \n"
                                                       f"Вы набрали *{score}*\ баллов из 25", parse_mode="MarkdownV2")
+        await bot.send_invoice(callback.from_user.id, title='подписка на 1 месяц ',
+                               description=f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
+                                           f"Доступ более чем 150 видео для обучения английскому языку. \n"
+                                           f"Тесты для закрепления матерьяла. \n"
+                                           f"И много всего другово.",
+                               currency='kzt',
+                               provider_token=PAYMENTS_PROVIDER_TOKEN,
+                               prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
+                               )
+
         return
     q = "test_" + str(data["question"] + 1)
     await bot.edit_message_text(chat_id=callback.from_user.id,
                                 text=test_test[q]["question_1"],
                                 message_id=msg,
                                 reply_markup=compose_markup(data["question"] + 1))
+
+
+@dp.message_handler(content_types=ContentTypes.SUCCESSFUL_PAYMENT)
+async def got_payment(message: types.Message):
+    await bot.send_message(message.chat.id,
+                           'поздравляяем с покупкой')
+    await db.give_subscription(message.chat.id, 1)
+
+
+@dp.pre_checkout_query_handler(lambda query: True)
+async def checkout(pre_checkout_query: types.PreCheckoutQuery):
+    await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True,
+                                        error_message="Во время оплаты произошла ошибка. Попробуйте позже ")
 
 
 @dp.message_handler(text='TEST')
@@ -134,8 +155,7 @@ async def check_level(message: types.Message):
         await bot.send_message(message.from_user.id, "Вы уже сдавали проверочный экзамен ")
         return
     if db.get_process(user_id)[0]:
-        await bot.send_message(message.from_user.id,
-                               "Тест уже идёт")
+        await bot.send_message(message.from_user.id, "Тест уже идёт")
         return
     db.upd_process(user_id, True)
     db.upd_passed(user_id, 0)

@@ -8,6 +8,8 @@ from aiogram.utils.callback_data import CallbackData
 
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from pytube import YouTube
+
+from config import PAYMENTS_PROVIDER_TOKEN
 from create_bot import dp, bot
 from db import Database
 
@@ -15,6 +17,7 @@ db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
 video = load(open("video.json", "r", encoding="utf-8"))
 cd = CallbackData("question", "answer")
+
 
 # отправка видео
 async def video_send(link, user_id):
@@ -140,7 +143,8 @@ async def start_test(callback: types.CallbackQuery):
     if "D" in testing["1"].keys():
         d_exist = True
 
-    text = testing["1"]["question"] + "\n" + testing["1"]["A"] + "\n" + testing["1"]["B"] + "\n" + testing["1"]["C"] + "\n"
+    text = testing["1"]["question"] + "\n" + testing["1"]["A"] + "\n" + testing["1"]["B"] + "\n" + testing["1"][
+        "C"] + "\n"
     if d_exist:
         text += testing["1"]["D"]
 
@@ -179,7 +183,8 @@ async def interesting_message(message: types.Message, state: FSMContext):
         await bot.send_message(message.from_user.id,
                                'На нет и суда нет, это только твоё право, уверен что знания которые ты получил(а) тебе пригодятся в будущем и я выступил в роли катализатора и тебя теперь никто и ничто не остановит')
         await bot.send_message(message.from_user.id,
-                               'Я буду ждать тебя сколько потребуется тут, если ты передумаешь нажми на кнопку ниже', reply_markup=keyboard)
+                               'Я буду ждать тебя сколько потребуется тут, если ты передумаешь нажми на кнопку ниже',
+                               reply_markup=keyboard)
         await state.set_state('wait_for_number')
 
 
@@ -204,3 +209,13 @@ async def get_profile(callback: CallbackQuery):
                                f"дата окончания подписки: {data[5]}")
     else:
         await bot.send_message(callback.from_user.id, "Профиль доступен только регистрации.")
+
+
+async def end_subscription_notifier(user_id):
+    await bot.send_invoice(user_id, title='Переоформление подписки',
+                           description='Ваша подписка истекла.Пока вы ее не переоформите вам не будут приходить новые '
+                                       'материалы ',
+                           currency='kzt',
+                           provider_token=PAYMENTS_PROVIDER_TOKEN,
+                           prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
+                           )
