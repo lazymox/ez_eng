@@ -16,7 +16,7 @@ from db import Database
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
 video = load(open("video.json", "r", encoding="utf-8"))
-cd = CallbackData("question", "answer")
+cd = CallbackData("km", "action")
 
 
 # отправка видео
@@ -49,35 +49,35 @@ def compose_markup(number: int, d_exist):
         "question": number,
         "answer": "A"
     }
-    km.insert(InlineKeyboardButton("A", callback_data=dumps(cbA)))
+    km.insert(InlineKeyboardButton("A", callback_data=cd.new(cbA)))
     cbB = {
         "question": number,
         "answer": "B"
     }
-    km.insert(InlineKeyboardButton("B", callback_data=dumps(cbB)))
+    km.insert(InlineKeyboardButton("B", callback_data=cd.new(cbB)))
     cbC = {
         "question": number,
         "answer": "C"
     }
-    km.insert(InlineKeyboardButton("C", callback_data=dumps(cbC)))
+    km.insert(InlineKeyboardButton("C", callback_data=cd.new(cbC)))
     if d_exist:
         cbD = {
             "question": number,
             "answer": "D"
         }
-        km.insert(InlineKeyboardButton("D", callback_data=dumps(cbD)))
+        km.insert(InlineKeyboardButton("D", callback_data=cd.new(cbD)))
     return km
 
 
-@dp.callback_query_handler(lambda c: True)
-async def answer_handler(callback: CallbackQuery):
+@dp.callback_query_handler(cd.filter())
+async def answer_handler(callback: CallbackQuery, callback_data: dict):
     user_id = callback.from_user.id
     level = db.get_level(user_id)[0]
     progress = db.get_leveling(user_id)[0]
     testNum = "test_" + video[level][str(progress)]["test"]
     testing = test[level][testNum]
 
-    data = loads(callback.data)
+    data = callback_data['action']
     q = str(data["question"])
     is_correct = testing[q]["Correct"] == data["answer"]
     passed_value = db.get_passed(user_id)[0]
