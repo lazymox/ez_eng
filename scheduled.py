@@ -52,9 +52,9 @@ async def scheduler():
     while True:
         schedule.run_pending()
         now = datetime.now(tz=kazakhstan_tz)
-        if now.hour == 14 and now.minute == 6:
-            await daily()
-        await asyncio.sleep(60)
+        # if now.hour == 16 and now.minute == 6:
+        await daily()
+        await asyncio.sleep(120)
 
 
 async def on_startup(_):
