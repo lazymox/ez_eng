@@ -9,7 +9,7 @@ from aiogram.utils.callback_data import CallbackData
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from pytube import YouTube
 
-from config import PAYMENTS_PROVIDER_TOKEN
+# from config import PAYMENTS_PROVIDER_TOKEN
 from create_bot import dp, bot
 from db import Database
 
@@ -73,6 +73,7 @@ def reset(uid: int):
     db.upd_passed(uid, 0)
     db.upd_msg(uid, 0)
 @dp.callback_query_handler(cd.filter())
+@dp.throttled(rate= 2)
 async def answer_handler(callback: CallbackQuery, callback_data: dict):
     user_id = callback.from_user.id
     level = db.get_level(user_id)[0]
@@ -222,6 +223,6 @@ async def end_subscription_notifier(user_id):
                            description='Ваша подписка истекла.Пока вы ее не переоформите вам не будут приходить новые '
                                        'материалы ',
                            currency='kzt',
-                           provider_token=PAYMENTS_PROVIDER_TOKEN,
+                           # provider_token=PAYMENTS_PROVIDER_TOKEN,
                            prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
                            )
