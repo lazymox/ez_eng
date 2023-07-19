@@ -22,6 +22,7 @@ async def daily():
         video_link = video[level][str(progress)]["video_1"]
         video_test = video[level][str(progress)]["test"]
         await f.video_send(video_link, user_id)
+        await f.razdatka(user_id)
         if video_test != "0":
             await f.prep_test_mess(user_id)
         else:

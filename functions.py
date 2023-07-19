@@ -22,15 +22,12 @@ cd = CallbackData("km", "question", "answer")
 # отправка видео
 async def video_send(link, user_id):
     video_to_send = YouTube(link)
-    video_file_path = video_to_send.streams.get_highest_resolution().download()
-    clip = VideoFileClip(video_file_path)
-    width, height = clip.size
-    filename = os.path.splitext(os.path.basename(clip.filename))[0]
-    with open(video_file_path, 'rb') as video_file:
+    stream = video_to_send.streams.filter(progressive= True, file_extension= 'mp4')
+    stream.get_highest_resolution().download(f'{user_id}', f'{user_id}_{video_to_send.title}')
+    with open(f'{user_id}/{user_id}_{video_to_send.title}', 'rb') as video_file:
         await bot.send_video(chat_id=user_id, video=video_file,
-                             width=width, height=height,
-                             caption=filename)
-    os.remove(video_file_path)
+                             caption=video_to_send.title)
+    os.remove(f'{user_id}/{user_id}_{video_to_send.title}')
 
 
 # хочешь начать тест?
@@ -226,3 +223,13 @@ async def end_subscription_notifier(user_id):
                            # provider_token=PAYMENTS_PROVIDER_TOKEN,
                            prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
                            )
+
+async def razdatka(user_id):
+    urok = 'Урок ' + str(db.get_leveling(user_id)[0])
+    folder_path = f'Раздатки/{db.get_level(user_id)[0]}/{urok}'
+
+    for file_name in os.listdir(folder_path):
+        pdf_path = os.path.join(folder_path, file_name)
+        with open(pdf_path, 'rb') as pdf_file:
+            await bot.send_document(user_id, pdf_file)
+
