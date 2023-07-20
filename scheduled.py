@@ -24,6 +24,7 @@ async def daily():
         video_link = video[level][str(progress)]["video_1"]
         video_test = video[level][str(progress)]["test"]
         await f.video_send(video_link, user_id)
+        await f.razdatka(user_id)
         if video_test != "0":
             await f.prep_test_mess(user_id)
         else:
@@ -54,8 +55,8 @@ async def scheduler():
     while True:
         schedule.run_pending()
         now = datetime.now(tz=kazakhstan_tz)
-        if now.hour == 14 and now.minute == 6:
-            await daily()
+        # if now.hour == 16 and now.minute == 6:
+        await daily()
         await asyncio.sleep(60)
 
 

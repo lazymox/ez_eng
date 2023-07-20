@@ -9,28 +9,25 @@ from aiogram.utils.callback_data import CallbackData
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from pytube import YouTube
 
-from config import PAYMENTS_PROVIDER_TOKEN
+# from config import PAYMENTS_PROVIDER_TOKEN
 from create_bot import dp, bot
 from db import Database
 
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
 video = load(open("video.json", "r", encoding="utf-8"))
-cd = CallbackData("km", "action")
+cd = CallbackData("km", "question", "answer")
 
 
 # отправка видео
 async def video_send(link, user_id):
     video_to_send = YouTube(link)
-    video_file_path = video_to_send.streams.get_highest_resolution().download()
-    clip = VideoFileClip(video_file_path)
-    width, height = clip.size
-    filename = os.path.splitext(os.path.basename(clip.filename))[0]
-    with open(video_file_path, 'rb') as video_file:
+    stream = video_to_send.streams.filter(progressive= True, file_extension= 'mp4')
+    stream.get_highest_resolution().download(f'{user_id}', f'{user_id}_{video_to_send.title}')
+    with open(f'{user_id}/{user_id}_{video_to_send.title}', 'rb') as video_file:
         await bot.send_video(chat_id=user_id, video=video_file,
-                             width=width, height=height,
-                             caption=filename)
-    os.remove(video_file_path)
+                             caption=video_to_send.title)
+    os.remove(f'{user_id}/{user_id}_{video_to_send.title}')
 
 
 # хочешь начать тест?
@@ -38,7 +35,7 @@ async def prep_test_mess(user_id):
     knopka = InlineKeyboardMarkup()
     knopka.insert(InlineKeyboardButton("жми", callback_data="start_test"))
     msg = await bot.send_message(user_id, "Когда будешь готов начать тест, нажми на кнопку ниже", reply_markup=knopka)
-    db.upd_msg(user_id, msg)
+    db.upd_msg(user_id, msg.message_id)
 
 
 # составоение теста
@@ -49,27 +46,31 @@ def compose_markup(number: int, d_exist):
         "question": number,
         "answer": "A"
     }
-    km.insert(InlineKeyboardButton("A", callback_data=cd.new(cbA)))
+    km.insert(InlineKeyboardButton("A", callback_data=cd.new(number, "A")))
     cbB = {
         "question": number,
         "answer": "B"
     }
-    km.insert(InlineKeyboardButton("B", callback_data=cd.new(cbB)))
+    km.insert(InlineKeyboardButton("B", callback_data=cd.new(number, "B")))
     cbC = {
         "question": number,
         "answer": "C"
     }
-    km.insert(InlineKeyboardButton("C", callback_data=cd.new(cbC)))
+    km.insert(InlineKeyboardButton("C", callback_data=cd.new(number, "C")))
     if d_exist:
         cbD = {
             "question": number,
             "answer": "D"
         }
-        km.insert(InlineKeyboardButton("D", callback_data=cd.new(cbD)))
+        km.insert(InlineKeyboardButton("D", callback_data=cd.new(number, "D")))
     return km
 
-
+def reset(uid: int):
+    db.upd_process(uid, False)
+    db.upd_passed(uid, 0)
+    db.upd_msg(uid, 0)
 @dp.callback_query_handler(cd.filter())
+@dp.throttled(rate= 2)
 async def answer_handler(callback: CallbackQuery, callback_data: dict):
     user_id = callback.from_user.id
     level = db.get_level(user_id)[0]
@@ -77,7 +78,7 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
     testNum = "test_" + video[level][str(progress)]["test"]
     testing = test[level][testNum]
 
-    data = callback_data['action']
+    data = callback_data
     q = str(data["question"])
     is_correct = testing[q]["Correct"] == data["answer"]
     passed_value = db.get_passed(user_id)[0]
@@ -85,7 +86,7 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
     if is_correct:
         passed = passed_value + 1
         db.upd_passed(user_id, passed)
-    if int(q) + 1 not in testing.keys():
+    if str(int(q) + 1) not in testing.keys():
         score = db.get_passed(user_id)[0]
         if score >= int(q) * 0.7:
             tries = db.get_try(user_id)[0]
@@ -97,15 +98,18 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
                 db.upd_coin(user_id, db.get_coin(user_id)[0] + 1)
             db.upd_try(user_id, 0)
             await bot.send_message(user_id, "хорош, прошел")
+            db.upd_leveling(user_id, db.get_leveling(user_id)[0] + 1)
+            db.upd_try(user_id, 0)
         else:
             await bot.send_message(user_id, "все хуйня давай по новому")
-            db.upd_try(user_id, db.get_try(user_id) + 1)
+            db.upd_try(user_id, db.get_try(user_id)[0] + 1)
+            await prep_test_mess(user_id)
         await bot.delete_message(callback.from_user.id, msg)
         await bot.send_message(callback.from_user.id, f"END.\n"
-                                                      f"Your Score is {score}")
-
+                                                      f"Your Score is {score} out of {q}")
+        reset(user_id)
         return
-    q = str(data["question"] + 1)
+    q = str(int(data["question"]) + 1)
     d_exist = False
 
     if "D" in testing["1"].keys():
@@ -117,7 +121,7 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
     await bot.edit_message_text(chat_id=callback.from_user.id,
                                 text=text,
                                 message_id=msg,
-                                reply_markup=compose_markup(data["question"] + 1, d_exist))
+                                reply_markup=compose_markup(int(data["question"]) + 1, d_exist))
 
 
 @dp.callback_query_handler(text="start_test")
@@ -130,11 +134,11 @@ async def start_test(callback: types.CallbackQuery):
         return
 
     msg = db.get_msg(user_id)[0]
-    await bot.delete_message(user_id, msg.message_id)  # удаления сообщения с кнопкой начала теста
+    await bot.delete_message(user_id, msg)  # удаления сообщения с кнопкой начала теста
 
     progress = db.get_leveling(user_id)[0]
     level = db.get_level(user_id)[0]
-    testNumber = "test_" + video[level][progress]["test"]
+    testNumber = "test_" + video[level][str(progress)]["test"]
     testing = test[level][testNumber]
 
     db.upd_process(user_id, True)
@@ -217,6 +221,16 @@ async def end_subscription_notifier(user_id):
                            description='Ваша подписка истекла.Пока вы ее не переоформите вам не будут приходить новые '
                                        'материалы ',
                            currency='kzt',
-                           provider_token=PAYMENTS_PROVIDER_TOKEN,
+                           # provider_token=PAYMENTS_PROVIDER_TOKEN,
                            prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
                            )
+
+async def razdatka(user_id):
+    urok = 'Урок ' + str(db.get_leveling(user_id)[0])
+    folder_path = f'Раздатки/{db.get_level(user_id)[0]}/{urok}'
+
+    for file_name in os.listdir(folder_path):
+        pdf_path = os.path.join(folder_path, file_name)
+        with open(pdf_path, 'rb') as pdf_file:
+            await bot.send_document(user_id, pdf_file)
+
