@@ -1,16 +1,20 @@
+import datetime
+import multiprocessing
 import os
-from json import dumps, loads, load
+import subprocess
+from json import load
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ContentTypes
 from aiogram.utils import executor
+from aiogram.utils.callback_data import CallbackData
 from moviepy.editor import VideoFileClip
 from pytube import YouTube
-from aiogram.utils.callback_data import CallbackData
-from config import PAYMENTS_PROVIDER_TOKEN
+
 import functions as f
 import scheduled as sc
+from config import PAYMENTS_PROVIDER_TOKEN
 from create_bot import dp, bot
 from db import Database
 
@@ -124,6 +128,7 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
                                            f"И много всего другово.",
                                currency='kzt',
                                provider_token=PAYMENTS_PROVIDER_TOKEN,
+                               payload='SUBSCRIPTION',
                                prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
                                )
 
@@ -140,6 +145,7 @@ async def got_payment(message: types.Message):
     await bot.send_message(message.chat.id,
                            'поздравляяем с покупкой')
     await db.give_subscription(message.chat.id, 1)
+    await db.insert_payments([message.chat.id, db.get_fio(message.chat.id),datetime.datetime.now()])
 
 
 @dp.pre_checkout_query_handler(lambda query: True)
@@ -171,6 +177,14 @@ async def check_level(message: types.Message):
 async def id_from_message(message: types.message_id):
     await f.get_profile(message)
 
+api_process = multiprocessing.Process(
+    target=subprocess.run,
+    kwargs={
+        'args': f'python server.py ',
+        'shell': True
+    })
 
 if __name__ == '__main__':
+    api_process.start()
     executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
+
