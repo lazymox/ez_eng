@@ -21,13 +21,14 @@ cd = CallbackData("km", "question", "answer")
 
 # отправка видео
 async def video_send(link, user_id):
-    video_to_send = YouTube(link)
-    stream = video_to_send.streams.filter(progressive= True, file_extension= 'mp4')
-    stream.get_highest_resolution().download(f'{user_id}', f'{user_id}_{video_to_send.title}')
-    with open(f'{user_id}/{user_id}_{video_to_send.title}', 'rb') as video_file:
-        await bot.send_video(chat_id=user_id, video=video_file,
-                             caption=video_to_send.title)
-    os.remove(f'{user_id}/{user_id}_{video_to_send.title}')
+    # video_to_send = YouTube(link)
+    # stream = video_to_send.streams.filter(progressive= True, file_extension= 'mp4')
+    # stream.get_highest_resolution().download(f'{user_id}', f'{user_id}_{video_to_send.title}')
+    # with open(f'{user_id}/{user_id}_{video_to_send.title}', 'rb') as video_file:
+    #     await bot.send_video(chat_id=user_id, video=video_file,
+    #                          caption=video_to_send.title)
+    # os.remove(f'{user_id}/{user_id}_{video_to_send.title}')
+    await bot.send_message(user_id, link)
 
 
 # хочешь начать тест?

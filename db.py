@@ -8,7 +8,7 @@ import re
 import dateutil.parser as parser
 import locale
 
-locale.setlocale(locale.LC_ALL, "Russian")
+
 try:
     connection = mysql.connector.connect(
         host=host,
