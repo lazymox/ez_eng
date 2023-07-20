@@ -1,8 +1,14 @@
+import datetime
+import json
+from json import dumps
 from datetime import *
 import mysql.connector
 from config import host, user, password, db_name
 import re
+import dateutil.parser as parser
+import locale
 
+locale.setlocale(locale.LC_ALL, "Russian")
 try:
     connection = mysql.connector.connect(
         host=host,
@@ -246,7 +252,6 @@ class Database:
         connection.close()
         return result
 
-
     def get_subscritions_time(self):
         try:
             connection.ping(reconnect=True)
@@ -290,3 +295,83 @@ class Database:
         cursor.execute("UPDATE users SET try = %s WHERE user_id = %s", (tries, user_id))
         connection.commit()
         connection.close()
+
+    def get_all_users():
+
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor(dictionary=True)  # этот аргумент просто имба
+        cursor.execute('SELECT user_id,fio,subscription,reg_date,end_date FROM users')
+        result = cursor.fetchall()
+        return result
+
+    def update_data(data: [], table):
+
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        match table:
+            case 'users':
+                for x in data:
+                    cursor.execute(
+                        'UPDATE users SET fio=%s , subscription=%s, reg_date=%s,end_date=%s where user_id=%s',
+                        (x['fio'], x['subscription'],
+                         datetime.fromisoformat(parser.parse(x['reg_date']).isoformat()).strftime('%Y-%m-%d'),
+                         datetime.fromisoformat(parser.parse(x['end_date']).isoformat()).strftime('%Y-%m-%d'),
+                         x['user_id']))
+            case 'completed':
+                for x in data:
+                    cursor.execute(
+                        f'UPDATE completed set checked={x["checked"]},answer="{x["answer"]}" where user_id={x["user_id"]}')
+
+
+    def delete_user(user_ids, table):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        for x in user_ids:
+            cursor.execute(f'DELETE FROM {table} WHERE user_id = {x} LIMIT 1;')
+
+    def get_completed_data():
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor(dictionary=True)  # этот аргумент просто имба
+        cursor.execute('SELECT * FROM completed')
+        result = cursor.fetchall()
+        return result
+
+    def get_payments():
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor(dictionary=True)  # этот аргумент просто имба
+        cursor.execute('SELECT * FROM payments order by user_id')
+        result = cursor.fetchall()
+
+        print(result)
+        return result
+    def insert_payments(data):
+        try:
+            cursor.execute(f"INSERT INTO payments (user_id, fio, payment_data) VALUES ({data[0]},{data[1]},{data[2]})")
+            connection.commit()
+        except mysql.connector.Error as ex:
+            print("Error while executing the query:", ex)
+        finally:
+            cursor.close()
+    def insert_complited(data):
+        try:
+            cursor.execute(f"INSERT INTO completed (user_id, fio, phone_number, checked, answer) VALUES ({data[0]},{data[1]},{data[2]})")
+            connection.commit()
+        except mysql.connector.Error as ex:
+            print("Error while executing the query:", ex)
+        finally:
+            cursor.close()

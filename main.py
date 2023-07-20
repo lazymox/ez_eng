@@ -8,7 +8,7 @@ from aiogram.utils import executor
 from moviepy.editor import VideoFileClip
 from pytube import YouTube
 from aiogram.utils.callback_data import CallbackData
-# from config import PAYMENTS_PROVIDER_TOKEN
+from config import PAYMENTS_PROVIDER_TOKEN
 import functions as f
 import scheduled as sc
 from create_bot import dp, bot
@@ -87,7 +87,6 @@ def compose_markup(number: int):
 
 
 @dp.callback_query_handler(cb.filter())
-@dp.throttled(rate= 2)
 async def answer_handler(callback: CallbackQuery, callback_data: dict):
     user_id = callback.from_user.id
     data = callback_data
@@ -116,15 +115,15 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
         db.upd_passed(user_id, 0)
         db.upd_process(user_id, False)
         await bot.send_message(callback.from_user.id, f"END.\n"
-                                                      f"Ваш уровень английского: <b>{db.get_level(user_id)[0]}</b> \n"
-                                                      f"Вы набрали <b>{score}</b> баллов из 25")
+                                                      f"Ваш уровень английского:*{db.get_level(user_id)[0]}*\ \n"
+                                                      f"Вы набрали *{score}*\ баллов из 25", parse_mode="MarkdownV2")
         await bot.send_invoice(callback.from_user.id, title='подписка на 1 месяц ',
                                description=f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
                                            f"Доступ более чем 150 видео для обучения английскому языку. \n"
                                            f"Тесты для закрепления матерьяла. \n"
                                            f"И много всего другово.",
                                currency='kzt',
-                               # provider_token=PAYMENTS_PROVIDER_TOKEN,
+                               provider_token=PAYMENTS_PROVIDER_TOKEN,
                                prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
                                )
 

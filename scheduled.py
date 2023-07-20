@@ -9,6 +9,8 @@ import functions as f
 import time
 import threading
 
+from server import app
+
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
 video = load(open("video.json", "r", encoding="utf-8"))

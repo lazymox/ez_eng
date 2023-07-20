@@ -197,6 +197,7 @@ async def get_number(message: types.Message, state: FSMContext):
     # message.answer_contact() где-то нужно сохронять
     await bot.send_message(message.from_user.id,
                            'Славно, передал контакты нашим ребятам теперь хорошенько отдохни и ожидай звонка')
+    await db.insert_complited([message.from_user.id,db.get_fio(message.from_user.id),message.contact.phone_number])
     await state.finish()
 
 
