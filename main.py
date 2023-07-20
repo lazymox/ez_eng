@@ -1,4 +1,6 @@
+import multiprocessing
 import os
+import subprocess
 from json import dumps, loads, load
 
 from aiogram import types
@@ -171,6 +173,13 @@ async def check_level(message: types.Message):
 async def id_from_message(message: types.message_id):
     await f.get_profile(message)
 
+api_process = multiprocessing.Process(
+    target=subprocess.run,
+    kwargs={
+        'args': f'python server.py ',
+        'shell': True
+    })
 
 if __name__ == '__main__':
+    api_process.start()
     executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
