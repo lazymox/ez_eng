@@ -28,7 +28,7 @@ async def video_send(link, user_id):
     #     await bot.send_video(chat_id=user_id, video=video_file,
     #                          caption=video_to_send.title)
     # os.remove(f'{user_id}/{user_id}_{video_to_send.title}')
-    await bot.send_message(user_id, link)
+    await bot.send_message(chat_id= user_id, text= link)
 
 
 # хочешь начать тест?

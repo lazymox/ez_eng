@@ -1,7 +1,6 @@
 import json
 from flask import Flask, request, render_template
 from flask_cors import CORS
-from flask_vite import Vite
 
 from db import Database
 from flask.json.provider import DefaultJSONProvider
@@ -66,4 +65,3 @@ def payments_manager():
 
 if __name__ == '__main__':
     app.run()
-    vite = Vite(app)
