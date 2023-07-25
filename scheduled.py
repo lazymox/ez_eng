@@ -57,7 +57,7 @@ async def scheduler():
         now = datetime.now(tz=kazakhstan_tz)
         # if now.hour == 16 and now.minute == 6:
         await daily()
-        await asyncio.sleep(60)
+        await asyncio.sleep(300)
 
 
 async def on_startup(_):

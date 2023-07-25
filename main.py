@@ -24,24 +24,26 @@ cb = CallbackData("kn", "question", "answer")
 
 @dp.message_handler(commands='start')
 async def hello(message: types.Message, state: FSMContext):
+    await bot.send_message(message.chat.id, "ссылка на видос типа")
     user_id = message.from_user.id
     if not db.user_exists(user_id):
         db.first_add(user_id)
-        a = await bot.send_animation(message.chat.id, animation=open('7Pp0.gif', 'rb'), caption="Загрузка видео...")
 
-        video = YouTube('https://www.youtube.com/watch?v=ZQr7fzVp_KQ')
-        video_file_path = video.streams.get_highest_resolution().download()
-        clip = VideoFileClip(video_file_path)
-        width, height = clip.size
-        with open(video_file_path, 'rb') as video_file:
-            await bot.send_video(chat_id=message.chat.id, video=video_file,
-                                 width=width, height=height,
-                                 caption='Privetstvennoe soopshenie')
-            await bot.delete_message(message.chat.id, a.message_id)
-        os.remove(video_file_path)
-
-        await bot.send_message(message.chat.id, 'А как мне тебя звать?')
+        await bot.send_message(message.chat.id, 'А как мне тебя звать?\n'
+                                                '(Напиши ответ ввиде ФИО)')
         await state.set_state('wait_for_name')
+    #     a = await bot.send_animation(message.chat.id, animation=open('7Pp0.gif', 'rb'), caption="Загрузка видео...")
+    #
+    #     video = YouTube('https://www.youtube.com/watch?v=ZQr7fzVp_KQ')
+    #     video_file_path = video.streams.get_highest_resolution().download()
+    #     clip = VideoFileClip(video_file_path)
+    #     width, height = clip.size
+    #     with open(video_file_path, 'rb') as video_file:
+    #         await bot.send_video(chat_id=message.chat.id, video=video_file,
+    #                              width=width, height=height,
+    #                              caption='Privetstvennoe soopshenie')
+    #         await bot.delete_message(message.chat.id, a.message_id)
+    #     os.remove(video_file_path)
 
 
 @dp.message_handler(state='wait_for_name')
@@ -89,6 +91,7 @@ def compose_markup(number: int):
 
 
 @dp.callback_query_handler(cb.filter())
+@dp.throttled(rate= 2)
 async def answer_handler(callback: CallbackQuery, callback_data: dict):
     user_id = callback.from_user.id
     data = callback_data
@@ -116,9 +119,9 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
         db.upd_msg(user_id, 0)
         db.upd_passed(user_id, 0)
         db.upd_process(user_id, False)
-        await bot.send_message(callback.from_user.id, f"END.\n"
-                                                      f"Ваш уровень английского:*{db.get_level(user_id)[0]}*\ \n"
-                                                      f"Вы набрали *{score}*\ баллов из 25", parse_mode="MarkdownV2")
+        await bot.send_message(callback.from_user.id, f"END. \n"
+                                                      f"Ваш уровень английского:<b>{db.get_level(user_id)[0]}</b> \n"
+                                                      f"Вы набрали <b>{score}</b> баллов из 25")
         await bot.send_invoice(callback.from_user.id, title='подписка на 1 месяц ',
                                description=f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
                                            f"Доступ более чем 150 видео для обучения английскому языку. \n"

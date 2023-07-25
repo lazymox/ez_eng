@@ -50,7 +50,7 @@ class Database:
             cursor.execute("INSERT INTO users (user_id) VALUES (%s)", (user_id,))
             connection.commit()
         except mysql.connector.Error as ex:
-            print("Error while executing the query:", ex)
+            print(f"({user_id})Error while executing the query:", ex)
         finally:
             cursor.close()
 
