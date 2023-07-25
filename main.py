@@ -28,8 +28,18 @@ async def hello(message: types.Message, state: FSMContext):
     if not db.user_exists(user_id):
         db.first_add(user_id)
         a = await bot.send_animation(message.chat.id, animation=open('7Pp0.gif', 'rb'), caption="Загрузка видео...")
-        await bot.send_message(message.chat.id, 'https://www.youtube.com/watch?v=ZQr7fzVp_KQ')
-        await bot.delete_message(message.chat.id, a.message_id)
+
+        video = YouTube('https://www.youtube.com/watch?v=ZQr7fzVp_KQ')
+        video_file_path = video.streams.get_highest_resolution().download()
+        clip = VideoFileClip(video_file_path)
+        width, height = clip.size
+        with open(video_file_path, 'rb') as video_file:
+            await bot.send_video(chat_id=message.chat.id, video=video_file,
+                                 width=width, height=height,
+                                 caption='Privetstvennoe soopshenie')
+            await bot.delete_message(message.chat.id, a.message_id)
+        os.remove(video_file_path)
+
         await bot.send_message(message.chat.id, 'А как мне тебя звать?')
         await state.set_state('wait_for_name')
 
@@ -163,7 +173,6 @@ async def check_level(message: types.Message):
 async def id_from_message(message: types.message_id):
     await f.get_profile(message)
 
-
 api_process = multiprocessing.Process(
     target=subprocess.run,
     kwargs={
@@ -174,4 +183,3 @@ api_process = multiprocessing.Process(
 if __name__ == '__main__':
     api_process.start()
     executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
-
