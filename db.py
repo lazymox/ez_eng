@@ -258,7 +258,7 @@ class Database:
         except:
             pass
         cursor = connection.cursor()
-        cursor.execute(f"SELECT reg_date,end_date,user_id  FROM  users where subscription=1")
+        cursor.execute(f"SELECT user_id,end_date  FROM  users where subscription=1")
         result = cursor.fetchall()
         connection.close()
         return result
@@ -266,14 +266,16 @@ class Database:
     def give_subscription(self, user_id, months):
         end_day = datetime.now() + timedelta(days=30 * months)
         sql = f"UPDATE users SET reg_date = '{datetime.now().strftime('%Y-%m-%d')}', end_date='{end_day.strftime('%Y-%m-%d')}' WHERE user_id ={user_id}"
-
-    def remove_subscrition(self, user_id):
+        cursor=connection.cursor()
+        cursor.execute(sql)
+    def remove_subscription(self, user_id):
         try:
             connection.ping(reconnect=True)
         except:
             pass
         cursor = connection.cursor()
-        cursor.execute(f"UPDATE users set subscription=0 where WHERE user_id = {user_id} ")
+        cursor.execute(f"UPDATE users set subscription=0 WHERE user_id ='{user_id}'")
+        connection.commit()
 
     def get_try(self, user_id):
         try:
@@ -328,7 +330,6 @@ class Database:
                     cursor.execute(
                         f'UPDATE completed set checked={x["checked"]},answer="{x["answer"]}" where user_id={x["user_id"]}')
 
-
     def delete_user(user_ids, table):
         try:
             connection.ping(reconnect=True)
@@ -359,6 +360,7 @@ class Database:
 
         print(result)
         return result
+
     def insert_payments(data):
         try:
             cursor.execute(f"INSERT INTO payments (user_id, fio, payment_data) VALUES ({data[0]},{data[1]},{data[2]})")
@@ -367,9 +369,11 @@ class Database:
             print("Error while executing the query:", ex)
         finally:
             cursor.close()
-    def insert_complited(data):
+
+    def insert_completed(data):
         try:
-            cursor.execute(f"INSERT INTO completed (user_id, fio, phone_number, checked, answer) VALUES ({data[0]},{data[1]},{data[2]})")
+            cursor.execute(
+                f"INSERT INTO completed (user_id, fio, phone_number, checked, answer) VALUES ({data[0]},{data[1]},{data[2]})")
             connection.commit()
         except mysql.connector.Error as ex:
             print("Error while executing the query:", ex)

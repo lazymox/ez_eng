@@ -6,7 +6,7 @@ from flask_vite import Vite
 from db import Database
 from flask.json.provider import DefaultJSONProvider
 
-app = Flask(__name__, static_folder='front/dist')
+app = Flask(__name__, static_url_path='/front/dist/assets', template_folder='front/dist')
 db = Database
 
 
@@ -17,6 +17,11 @@ class CustomJSONProvider(DefaultJSONProvider):
 app.json = CustomJSONProvider(app)
 CORS(app, resources='*')
 app.debug = True
+
+
+@app.route('/')
+def return_site():
+    return render_template('index.html')
 
 
 @app.route('/users', methods=['GET', 'POST', 'DELETE'])
