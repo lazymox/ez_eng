@@ -101,7 +101,7 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
             db.upd_leveling(user_id, db.get_leveling(user_id)[0] + 1)
             db.upd_try(user_id, 0)
         else:
-            await bot.send_message(user_id, "все хуйня давай по новому")
+            await bot.send_message(user_id, "не сдал")
             db.upd_try(user_id, db.get_try(user_id)[0] + 1)
             await prep_test_mess(user_id)
         await bot.delete_message(callback.from_user.id, msg)
