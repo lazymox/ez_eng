@@ -3,16 +3,15 @@ import json
 from json import dumps
 from datetime import *
 import mysql.connector
-from config import host, user, password, db_name
+from config import host, user, password, db_name, port
 import re
 import dateutil.parser as parser
 import locale
 
-
 try:
     connection = mysql.connector.connect(
         host=host,
-        port=3306,
+        port=port,
         user=user,
         password=password,
         database=db_name,
@@ -34,9 +33,6 @@ class Database:
         result = cursor.fetchmany(1)
         connection.close()
         return bool(len(result))
-
-    # except ex:
-    # print("ошибка", ex)
 
     def first_add(self, user_id):
         try:
@@ -68,7 +64,7 @@ class Database:
         connection.close()
         return result
 
-    def get_users_name(self):
+    def get_users_name():
         try:
             connection.ping()
         except:
@@ -112,7 +108,6 @@ class Database:
         connection.close()
         return result
 
-    # TESTBASE
     def get_passed(self, user_id):
         try:
             connection.ping(reconnect=True)
@@ -266,8 +261,9 @@ class Database:
     def give_subscription(self, user_id, months):
         end_day = datetime.now() + timedelta(days=30 * months)
         sql = f"UPDATE users SET reg_date = '{datetime.now().strftime('%Y-%m-%d')}', end_date='{end_day.strftime('%Y-%m-%d')}' WHERE user_id ={user_id}"
-        cursor=connection.cursor()
+        cursor = connection.cursor()
         cursor.execute(sql)
+
     def remove_subscription(self, user_id):
         try:
             connection.ping(reconnect=True)
@@ -374,6 +370,27 @@ class Database:
         try:
             cursor.execute(
                 f"INSERT INTO completed (user_id, fio, phone_number, checked, answer) VALUES ({data[0]},{data[1]},{data[2]})")
+            connection.commit()
+        except mysql.connector.Error as ex:
+            print("Error while executing the query:", ex)
+        finally:
+            cursor.close()
+
+    def get_feedback():
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor(dictionary=True)  # этот аргумент просто имба
+        cursor.execute('SELECT * FROM feedback order by user_id')
+        result = cursor.fetchall()
+        print(result)
+        return result
+
+    def insert_feedback(data:[]):
+        try:
+            cursor.execute(
+                f"INSERT INTO feedback (user_id,message ) VALUES ({data[0]},{data[1]})")
             connection.commit()
         except mysql.connector.Error as ex:
             print("Error while executing the query:", ex)

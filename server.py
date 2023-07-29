@@ -1,12 +1,13 @@
 import json
 from flask import Flask, request, render_template
 from flask_cors import CORS
-
 from db import Database
 from flask.json.provider import DefaultJSONProvider
 
-app = Flask(__name__, static_url_path='/front/dist/assets', template_folder='front/dist')
+app = Flask(__name__, static_folder='front/dist/assets', template_folder='front/dist')
 db = Database
+
+CORS(app, resources='*')
 
 
 class CustomJSONProvider(DefaultJSONProvider):
@@ -14,7 +15,7 @@ class CustomJSONProvider(DefaultJSONProvider):
 
 
 app.json = CustomJSONProvider(app)
-CORS(app, resources='*')
+
 app.debug = True
 
 
@@ -65,6 +66,19 @@ def payments_manager():
         case 'DELETE':
             print(request.get_json())
             db.delete_user(request.get_json(), 'payments')
+            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+
+
+@app.route('/feedback', methods=['GET', 'POST', 'DELETE'])
+def feedback_manager():
+    match request.method:
+        case 'GET':
+            return db.get_feedback()
+        case 'POST':
+            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+        case 'DELETE':
+            print(request.get_json())
+            db.delete_user(request.get_json(), 'feedback')
             return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
 

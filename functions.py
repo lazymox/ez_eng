@@ -1,15 +1,15 @@
 import os
 from aiogram import types
-from json import dumps, loads, load
+from json import load
 
 from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from aiogram.utils.callback_data import CallbackData
 
-from moviepy.video.io.VideoFileClip import VideoFileClip
 from pytube import YouTube
 
-# from config import PAYMENTS_PROVIDER_TOKEN
+from config import PAYMENTS_PROVIDER_TOKEN
+
 from create_bot import dp, bot
 from db import Database
 
@@ -22,7 +22,7 @@ cd = CallbackData("km", "question", "answer")
 # отправка видео
 async def video_send(link, user_id):
     video_to_send = YouTube(link)
-    stream = video_to_send.streams.filter(progressive= True, file_extension= 'mp4')
+    stream = video_to_send.streams.filter(progressive=True, file_extension='mp4')
     stream.get_highest_resolution().download(f'{user_id}', f'{user_id}_{video_to_send.title}')
     with open(f'{user_id}/{user_id}_{video_to_send.title}', 'rb') as video_file:
         await bot.send_video(chat_id=user_id, video=video_file,
@@ -65,12 +65,15 @@ def compose_markup(number: int, d_exist):
         km.insert(InlineKeyboardButton("D", callback_data=cd.new(number, "D")))
     return km
 
+
 def reset(uid: int):
     db.upd_process(uid, False)
     db.upd_passed(uid, 0)
     db.upd_msg(uid, 0)
+
+
 @dp.callback_query_handler(cd.filter())
-@dp.throttled(rate= 2)
+@dp.throttled(rate=2)
 async def answer_handler(callback: CallbackQuery, callback_data: dict):
     user_id = callback.from_user.id
     level = db.get_level(user_id)[0]
@@ -197,7 +200,7 @@ async def get_number(message: types.Message, state: FSMContext):
     # message.answer_contact() где-то нужно сохронять
     await bot.send_message(message.from_user.id,
                            'Славно, передал контакты нашим ребятам теперь хорошенько отдохни и ожидай звонка')
-    await db.insert_complited([message.from_user.id,db.get_fio(message.from_user.id),message.contact.phone_number])
+    await db.insert_complited([message.from_user.id, db.get_fio(message.from_user.id), message.contact.phone_number])
     await state.finish()
 
 
@@ -216,14 +219,30 @@ async def get_profile(callback: CallbackQuery):
         await bot.send_message(callback.from_user.id, "Профиль доступен только регистрации.")
 
 
+async def send_feedback(message):
+    data = db.get_full_info(message.from_user.id)
+    if data[0]:
+        await bot.send_message(message.from_user.id, "Профиль доступен только регистрации.")
+    else:
+        if message.get_args() == '':
+            await bot.send_message(message.from_user.id,
+                                   'Чтобы отправить обращение разработчику, напишите /feedback и подробный текст обращения, например <pre>/feedback Прошу добавить возможность ...</pre> ',
+                                   parse_mode='HTML')
+        else:
+            await bot.send_message(message.from_user.id, 'Сообщение отправлено. Мы расмотрим ваше обращение')
+            await db.insert_feedback([message.from_user.id, message.get_args()])
+
+
 async def end_subscription_notifier(user_id):
     await bot.send_invoice(user_id, title='Переоформление подписки',
                            description='Ваша подписка истекла.Пока вы ее не переоформите вам не будут приходить новые '
                                        'материалы ',
                            currency='kzt',
-                           # provider_token=PAYMENTS_PROVIDER_TOKEN,
+                           provider_token=PAYMENTS_PROVIDER_TOKEN,
+                           payload='re_subscription',
                            prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
                            )
+
 
 async def razdatka(user_id):
     urok = 'Урок ' + str(db.get_leveling(user_id)[0])
@@ -233,4 +252,3 @@ async def razdatka(user_id):
         pdf_path = os.path.join(folder_path, file_name)
         with open(pdf_path, 'rb') as pdf_file:
             await bot.send_document(user_id, pdf_file)
-

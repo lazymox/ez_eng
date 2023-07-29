@@ -5,8 +5,6 @@ import asyncio
 import pytz
 from datetime import datetime, date
 import functions as f
-import time
-import threading
 
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))

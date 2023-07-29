@@ -6,6 +6,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Users from "./pages/Users.jsx";
 import Payments from "./pages/Payments.jsx";
 import Completed from "./pages/Completed.jsx";
+import Feedback from "./pages/Feedback.jsx";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,12 @@ const router = createBrowserRouter([
             {
                 path: '/completed',
                 element: <Completed/>
-            }]
+            },
+            {
+                path: '/feedback',
+                element: <Feedback/>
+            },
+        ]
     },
 
 

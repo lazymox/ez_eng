@@ -2,9 +2,9 @@ aiogram~=2.25.1
 moviepy~=1.0.3
 pytube~=15.0.0
 mysql-connector-python~=8.0.33
-aioschedule~=0.5.2
-schedule~=1.2.0
 pytz~=2023.3
-mysql~=0.0.3
 Flask~=2.3.2
 python-dateutil~=2.8.2
+python-dotenv
+gunicorn
+flask-cors
