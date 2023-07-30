@@ -19,7 +19,7 @@ try:
     cursor = connection.cursor()
     print("База данных спарилась с ботом успешно")
 except Exception as ex:
-    print('У базы данных болит голова(')
+    print(f"У базы данных болит голова({ex}")
 
 
 class Database:

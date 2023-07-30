@@ -1,15 +1,12 @@
 import os
-from aiogram import types
 from json import load
 
+from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from aiogram.utils.callback_data import CallbackData
 
-from pytube import YouTube
-
 from config import PAYMENTS_PROVIDER_TOKEN
-
 from create_bot import dp, bot
 from db import Database
 
@@ -201,7 +198,7 @@ async def get_number(message: types.Message, state: FSMContext):
     # message.answer_contact() где-то нужно сохронять
     await bot.send_message(message.from_user.id,
                            'Славно, передал контакты нашим ребятам теперь хорошенько отдохни и ожидай звонка')
-    await db.insert_complited([message.from_user.id, db.get_fio(message.from_user.id), message.contact.phone_number])
+    await db.insert_completed([message.from_user.id, db.get_fio(message.from_user.id), message.contact.phone_number])
     await state.finish()
 
 
