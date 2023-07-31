@@ -40,6 +40,8 @@ async def hello(message: types.Message, state: FSMContext):
 
         await bot.send_message(message.chat.id, 'А как мне тебя звать?')
         await state.set_state('wait_for_name')
+    else:
+        await bot.send_message(message.chat.id, "Hello?")
 
 
 @dp.message_handler(state='wait_for_name')
