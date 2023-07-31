@@ -59,7 +59,8 @@ async def check_sub(message: types.Message):
     if db.check_sub(user_id)[0]:
         await bot.send_message(message.chat.id,
                                "Регистрация прошла успешно. Добро пожаловать в мир английского языка вместе с NFC\n"
-                               "Чтобы проверить свой уровень знаний напиши мне 'TEST'")
+                               "Чтобы проверить свой уровень знаний /test\n"
+                               "<b>ПОПЫТКА ТОЛЬКО ОДНА</b>")
     else:
         await bot.send_message(message.chat.id, "Ошибка регистрации")
 
@@ -114,9 +115,14 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
         db.upd_msg(user_id, 0)
         db.upd_passed(user_id, 0)
         db.upd_process(user_id, False)
-        await bot.send_message(callback.from_user.id, f"END.\n"
-                                                      f"Ваш уровень английского:*{db.get_level(user_id)[0]}*\ \n"
-                                                      f"Вы набрали *{score}*\ баллов из 25", parse_mode="MarkdownV2")
+        intro = {"Beginner": "https://youtu.be/_ffiSFzHLw4",
+                 "Elementary": "https://youtu.be/CT6a4jKfuzs",
+                 "Pre-Intermediate": "https://youtu.be/oTqX1r3SFHI",
+                 "Intermediate": "https://youtu.be/aQbXt2f4Pag",
+                 "Upper-Intermediate": "https://youtu.be/HYyx3_X7zrE"}
+        await bot.send_message(callback.from_user.id, f"Конец. Лови вступительный видеоурок по твоему уровню: {intro[db.get_level(user_id)[0]]}\n"
+                                                      f"Ваш уровень английского:<b>{db.get_level(user_id)[0]}</b> \n"
+                                                      f"Вы набрали <b>{score}</b> баллов из 25")
         await bot.send_invoice(callback.from_user.id, title='подписка на 1 месяц ',
                                description=f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
                                            f"Доступ более чем 150 видео для обучения английскому языку. \n"
@@ -148,7 +154,7 @@ async def checkout(pre_checkout_query: types.PreCheckoutQuery):
                                         error_message="Во время оплаты произошла ошибка. Попробуйте позже ")
 
 
-@dp.message_handler(text='TEST')
+@dp.message_handler(commands='test')
 async def check_level(message: types.Message):
     user_id = message.from_user.id
     if db.get_level(user_id)[0]:
