@@ -13,6 +13,7 @@ import scheduled as sc
 from config import PAYMENTS_PROVIDER_TOKEN
 from create_bot import dp, bot
 from db import Database
+from server import app
 
 test = load(open("test.json", "r", encoding="utf-8"))
 test_test = load(open("test_test.json", "r", encoding="utf-8"))
@@ -122,9 +123,10 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
                  "Pre-Intermediate": "https://youtu.be/oTqX1r3SFHI",
                  "Intermediate": "https://youtu.be/aQbXt2f4Pag",
                  "Upper-Intermediate": "https://youtu.be/HYyx3_X7zrE"}
-        await bot.send_message(callback.from_user.id, f"Конец. Лови вступительный видеоурок по твоему уровню: {intro[db.get_level(user_id)[0]]}\n"
-                                                      f"Ваш уровень английского:<b>{db.get_level(user_id)[0]}</b> \n"
-                                                      f"Вы набрали <b>{score}</b> баллов из 25")
+        await bot.send_message(callback.from_user.id,
+                               f"Конец. Лови вступительный видеоурок по твоему уровню: {intro[db.get_level(user_id)[0]]}\n"
+                               f"Ваш уровень английского:<b>{db.get_level(user_id)[0]}</b> \n"
+                               f"Вы набрали <b>{score}</b> баллов из 25")
         await bot.send_invoice(callback.from_user.id, title='подписка на 1 месяц ',
                                description=f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
                                            f"Доступ более чем 150 видео для обучения английскому языку. \n"
@@ -186,12 +188,14 @@ async def id_from_message(message: types.message_id):
 
 
 api_process = multiprocessing.Process(
+
     target=subprocess.run,
     kwargs={
         'args': f'python server.py ',
-        'shell': True
+        'shell': False
+
     })
 
 if __name__ == '__main__':
-    api_process.start()
     executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
+    api_process.start()
