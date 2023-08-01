@@ -14,6 +14,8 @@ video = load(open("video.json", "r", encoding="utf-8"))
 async def daily():
     uids = db.get_user_ids()
     for user_id in uids:
+        if db.get_try(user_id)[0] != 0:
+            continue
         level = db.get_level(user_id)[0]
         progress = db.get_leveling(user_id)[0]
         video_link = video[level][str(progress)]["video_1"]
@@ -41,11 +43,13 @@ async def scheduler():
     kazakhstan_tz = pytz.timezone('Asia/Almaty')
     while True:
         now = datetime.now(tz=kazakhstan_tz)
-        if now.hour == 24:
-            await daily()
-        if now.hour == 15:
-            await subscription_scheduler()
-        await asyncio.sleep(60)
+        # if now.hour == 24:
+        #     await daily()
+        # if now.hour == 15:
+        #     await subscription_scheduler()
+        # await asyncio.sleep(60)
+        await daily()
+        await asyncio.sleep(300)
 
 
 async def on_startup(_):

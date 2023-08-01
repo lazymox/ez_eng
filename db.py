@@ -64,7 +64,7 @@ class Database:
         connection.close()
         return result
 
-    def get_users_name():
+    def get_users_name(self):
         try:
             connection.ping()
         except:
@@ -294,7 +294,49 @@ class Database:
         connection.commit()
         connection.close()
 
-    def get_all_users():
+    def get_options(self, user_id):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        cursor.execute("SELECT options FROM users WHERE user_id = %s", (user_id,))
+        result = cursor.fetchone()
+        connection.close()
+        return result
+
+    def upd_options(self, user_id, options):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        cursor.execute("UPDATE users SET options = %s WHERE user_id = %s", (options, user_id))
+        connection.commit()
+        connection.close()
+
+    def get_question(self, user_id):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        cursor.execute("SELECT question FROM users WHERE user_id = %s", (user_id,))
+        result = cursor.fetchone()
+        connection.close()
+        return result
+
+    def upd_question(self, user_id, question):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        cursor.execute("UPDATE users SET question = %s WHERE user_id = %s", (question, user_id))
+        connection.commit()
+        connection.close()
+
+    def get_all_users(self):
 
         try:
             connection.ping(reconnect=True)

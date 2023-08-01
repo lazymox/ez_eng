@@ -1,3 +1,4 @@
+import asyncio
 import os
 from json import load
 
@@ -10,8 +11,11 @@ from config import PAYMENTS_PROVIDER_TOKEN
 from create_bot import dp, bot
 from db import Database
 
+from main import parse_to_index
+
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
+test_test = load(open("test_test.json", "r", encoding="utf-8"))
 video = load(open("video.json", "r", encoding="utf-8"))
 cd = CallbackData("km", "question", "answer")
 
@@ -102,8 +106,10 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
             db.upd_leveling(user_id, db.get_leveling(user_id)[0] + 1)
             db.upd_try(user_id, 0)
         else:
-            await bot.send_message(user_id, "не сдал")
+            await bot.send_message(user_id, f"Ой! <b>{db.get_fio(user_id)[0]}</b>, похоже ты не сдал.\n"
+                                            f"Повтори прошедшие задания и попробуй снова через 2 часа, иначе дальше не пройдешь!")
             db.upd_try(user_id, db.get_try(user_id)[0] + 1)
+            await asyncio.sleep(7200)
             await prep_test_mess(user_id)
         await bot.delete_message(callback.from_user.id, msg)
         await bot.send_message(callback.from_user.id, f"END.\n"
@@ -250,3 +256,64 @@ async def razdatka(user_id):
         pdf_path = os.path.join(folder_path, file_name)
         with open(pdf_path, 'rb') as pdf_file:
             await bot.send_document(user_id, pdf_file)
+
+
+async def compose_poll(user_id):
+
+
+    q = "test_" + str(db.get_question(user_id)[0])
+
+    if q == "test_26":
+        score = db.get_passed(user_id)[0]
+        if score <= 8:
+            db.upd_level(user_id, "Beginner")
+        elif score <= 12:
+            db.upd_level(user_id, "Elementary")
+        elif score <= 16:
+            db.upd_level(user_id, "Pre-Intermediate")
+        elif score <= 21:
+            db.upd_level(user_id, "Intermediate")
+        else:
+            db.upd_level(user_id, "Upper-Intermediate")
+
+        # await bot.delete_message(user_id, db.get_msg(user_id)[0])
+        db.upd_msg(user_id, 0)
+        db.upd_passed(user_id, 0)
+        db.upd_process(user_id, False)
+        intro = {"Beginner": "https://youtu.be/_ffiSFzHLw4",
+                 "Elementary": "https://youtu.be/CT6a4jKfuzs",
+                 "Pre-Intermediate": "https://youtu.be/oTqX1r3SFHI",
+                 "Intermediate": "https://youtu.be/aQbXt2f4Pag",
+                 "Upper-Intermediate": "https://youtu.be/HYyx3_X7zrE"}
+        await bot.send_message(user_id,
+                               f"Конец. Лови вступительный видеоурок по твоему уровню: {intro[db.get_level(user_id)[0]]}\n"
+                               f"Ваш уровень английского: <b>{db.get_level(user_id)[0]}</b> \n"
+                               f"Вы набрали <b>{score}</b> баллов из 25")
+        await bot.send_invoice(user_id, title='подписка на 1 месяц ',
+                               description=f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
+                                           f"Доступ более чем 150 видео для обучения английскому языку. \n"
+                                           f"Тесты для закрепления матерьяла. \n"
+                                           f"И много всего другово.",
+                               currency='kzt',
+                               provider_token=PAYMENTS_PROVIDER_TOKEN,
+                               prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
+                               )
+        return
+    question = test_test[q]["question_1"]
+    options = []
+    options.append(test_test[q]["A"])
+    options.append(test_test[q]["B"])
+    options.append(test_test[q]["C"])
+
+    correct_option_id = parse_to_index[test_test[q]["Correct"]]
+    db.upd_options(user_id, parse_to_index[test_test[q]["Correct"]])
+
+    msg = await bot.send_poll(
+                        user_id,
+                        question=question,
+                        options=options,
+                        is_anonymous=False,
+                        type='quiz',
+                        correct_option_id=correct_option_id
+    )
+    db.upd_msg(user_id, msg.message_id)
