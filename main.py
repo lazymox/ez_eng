@@ -23,7 +23,7 @@ test = load(open("test.json", "r", encoding="utf-8"))
 test_test = load(open("test_test.json", "r", encoding="utf-8"))
 db = Database()
 cb = CallbackData("kn", "question", "answer")
-
+parse_to_index = {"A": 0, "B": 1, "C": 2, "D": 3}
 
 @dp.message_handler(commands='start')
 async def hello(message: types.Message, state: FSMContext):
@@ -42,11 +42,18 @@ async def hello(message: types.Message, state: FSMContext):
         #                          caption='Privetstvennoe soopshenie')
         #     await bot.delete_message(message.chat.id, a.message_id)
         # os.remove(video_file_path)
+        await bot.send_message(message.chat.id, 'Добро пожаловать в <b>Easy English</b> от <b>National Foundation Center!</b>\n'
+                                                'Мы рады приветствовать вас в нашем телеграм боте, где вы сможете получать увлекательные видеоуроки и интересные тесты для изучения английского языка. У нас есть всё, что вам нужно, чтобы улучшить свои навыки и достичь своих языковых целей.\n'
+                                                'Наши видеоуроки покрывают различные уровни сложности, от начинающих до продвинутых, а тесты помогут вам закрепить полученные знания.\n'
+                                                'Если вы хотите получить доступ к полному контенту и не упустить ни одного урока, рекомендуем приобрести подписку.\n'
+                                                'Так что давайте начнем увлекательное путешествие в мир английского языка вместе! Если у вас есть какие-либо вопросы, не стесняйтесь обращаться к нам.\n'
+                                                'Удачи в изучении английского языка, и до скорой встречи на наших уроках! 🚀🌟\n')
 
-        await bot.send_message(message.chat.id, 'А как мне тебя звать?')
+        await bot.send_message(message.chat.id, 'Прошу напишите мне своё имя и фамилию.\n'
+                                                '<b>(Любое написанное вами далее сообщение будет записана в качестве вашего ФИО и будет использовано лишь для обращения к вам. Его всегда можно будет поменять.)</b>')
         await state.set_state('wait_for_name')
     else:
-        await bot.send_message(message.chat.id, "Hello?")
+        await bot.send_message(message.chat.id, "Вы уже в базе.")
 
 
 @dp.message_handler(state='wait_for_name')
@@ -56,21 +63,8 @@ async def process_name(message: types.Message, state: FSMContext):
     await state.finish()
     await state.update_data(username=fio)
     await bot.send_message(message.chat.id, f"Так и запишем, {fio}!\n"
-                                            f"Если ты уже произвел оплату просто введи команду\n"
-                                            f"/subscription чтобы начать обучение")
-
-
-@dp.message_handler(commands=['subscription'])
-async def check_sub(message: types.Message):
-    user_id = message.from_user.id
-    if db.check_sub(user_id)[0]:
-        await bot.send_message(message.chat.id,
-                               "Регистрация прошла успешно. Добро пожаловать в мир английского языка вместе с NFC\n"
-                               "Чтобы проверить свой уровень знаний /test\n"
-                               "<b>ПОПЫТКА ТОЛЬКО ОДНА</b>")
-    else:
-        await bot.send_message(message.chat.id, "Ошибка регистрации")
-
+                                            "Чтобы проверить свой уровень знаний введи команду /test\n"
+                                            "<b>У тебя есть только одна попытка</b>")
 
 def compose_markup(number: int):
     question = "test_" + str(number)
@@ -95,6 +89,7 @@ def compose_markup(number: int):
 
 
 @dp.callback_query_handler(cb.filter())
+@dp.throttled(rate=2)
 async def answer_handler(callback: CallbackQuery, callback_data: dict):
     user_id = callback.from_user.id
     data = callback_data
@@ -129,7 +124,7 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
                  "Upper-Intermediate": "https://youtu.be/HYyx3_X7zrE"}
         await bot.send_message(callback.from_user.id,
                                f"Конец. Лови вступительный видеоурок по твоему уровню: {intro[db.get_level(user_id)[0]]}\n"
-                               f"Ваш уровень английского:<b>{db.get_level(user_id)[0]}</b> \n"
+                               f"Ваш уровень английского: <b>{db.get_level(user_id)[0]}</b> \n"
                                f"Вы набрали <b>{score}</b> баллов из 25")
         await bot.send_invoice(callback.from_user.id, title='подписка на 1 месяц ',
                                description=f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
@@ -162,7 +157,7 @@ async def checkout(pre_checkout_query: types.PreCheckoutQuery):
                                         error_message="Во время оплаты произошла ошибка. Попробуйте позже ")
 
 
-@dp.message_handler(commands='test')
+@dp.message_handler(commands='testSTOP')
 async def check_level(message: types.Message):
     user_id = message.from_user.id
     if db.get_level(user_id)[0]:
@@ -180,6 +175,28 @@ async def check_level(message: types.Message):
     )
     db.upd_msg(user_id, msg.message_id)
 
+@dp.message_handler(commands='test')
+async def check_level(message: types.Message):
+    user_id = message.from_user.id
+    if db.get_level(user_id)[0]:
+        await bot.send_message(user_id, "Вы уже сдавали проверочный экзамен ")
+        return
+    if db.get_process(user_id)[0]:
+        await bot.send_message(user_id, "Тест уже идёт")
+        return
+    db.upd_process(user_id, True)
+    db.upd_passed(user_id, 0)
+    await f.compose_poll(user_id)
+
+@dp.poll_answer_handler()
+async def poll_answer(poll_answer: types.PollAnswer):
+    user_id = poll_answer.user.id
+    db.upd_question(user_id, db.get_question(user_id)[0] + 1)
+    if db.get_options(user_id)[0] == poll_answer.option_ids[0]:
+        passed = db.get_passed(user_id)[0] + 1
+        db.upd_passed(user_id, passed)
+    await bot.delete_message(user_id, db.get_msg(user_id)[0])
+    await f.compose_poll(user_id)
 
 @dp.message_handler(commands=['profile'])
 async def id_from_message(message: types.message_id):

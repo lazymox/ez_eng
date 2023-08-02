@@ -1,12 +1,10 @@
 import datetime
-import json
-from json import dumps
 from datetime import *
-import mysql.connector
-from config import host, user, password, db_name, port
-import re
+
 import dateutil.parser as parser
-import locale
+import mysql.connector
+
+from config import host, user, password, db_name, port
 
 try:
     connection = mysql.connector.connect(
@@ -296,7 +294,51 @@ class Database:
         connection.close()
 
     @staticmethod
-    def get_all_users():
+    def get_options(user_id):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        cursor.execute("SELECT options FROM users WHERE user_id = %s", (user_id,))
+        result = cursor.fetchone()
+        connection.close()
+        return result
+
+    def upd_options(self, user_id, options):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        cursor.execute("UPDATE users SET options = %s WHERE user_id = %s", (options, user_id))
+        connection.commit()
+        connection.close()
+
+    def get_question(self, user_id):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        cursor.execute("SELECT question FROM users WHERE user_id = %s", (user_id,))
+        result = cursor.fetchone()
+        connection.close()
+        return result
+
+    def upd_question(self, user_id, question):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
+        cursor = connection.cursor()
+        cursor.execute("UPDATE users SET question = %s WHERE user_id = %s", (question, user_id))
+        connection.commit()
+        connection.close()
+
+    @staticmethod
+    def get_all_users(self):
+
         try:
             connection.ping(reconnect=True)
         except:
@@ -305,7 +347,6 @@ class Database:
         cursor.execute('SELECT user_id,fio,subscription,reg_date,end_date FROM users')
         result = cursor.fetchall()
         return result
-
 
     @staticmethod
     def update_data(data: [], table):
