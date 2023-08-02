@@ -1,13 +1,11 @@
+import asyncio
+from datetime import datetime
 from json import load
 
-from aiohttp import web
-
-from db import Database
-import asyncio
 import pytz
-from datetime import datetime, date
+
 import functions as f
-from server import app
+from db import Database
 
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
