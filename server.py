@@ -1,86 +1,97 @@
 import json
-from flask import Flask, request, render_template
-from flask_cors import CORS
+
+import aiohttp_cors
+import aiohttp_jinja2
+import jinja2
+from aiohttp import web
+
 from db import Database
-from flask.json.provider import DefaultJSONProvider
 
-app = Flask(__name__, static_folder='front/dist/assets', template_folder='front/dist')
-db = Database
-
-CORS(app, resources='*')
+db = Database()
+routes = web.RouteTableDef()
 
 
-class CustomJSONProvider(DefaultJSONProvider):
-    sort_keys = False
+@routes.get('/')
+@aiohttp_jinja2.template('index.html')
+async def return_site(request):
+    return
 
 
-app.json = CustomJSONProvider(app)
+@routes.view('/users')
+class UsersManager(web.View):
+    async def get(self):
+        return web.json_response(json.dumps(db.get_all_users(), default=str), content_type='application/json')
 
-app.debug = True
+    async def post(self):
+        data = await self.request.json()
+        print(data)
+        db.update_data(data, 'users')
+        return web.json_response({'success': True}), 200, {'ContentType': 'application/json'}
 
-
-@app.route('/')
-def return_site():
-    return render_template('index.html')
-
-
-@app.route('/users', methods=['GET', 'POST', 'DELETE'])
-def users_manager():
-    match request.method:
-        case 'GET':
-            return db.get_all_users()
-        case 'POST':
-            data = request.get_json()
-            print(data)
-            db.update_data(data, 'users')
-            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
-        case 'DELETE':
-            print(request.get_json())
-            db.delete_user(request.get_json())
-            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+    async def delete(self):
+        data = await self.request.json()
+        print(data)
+        db.delete_user(data, 'users')
+        return web.json_response({'success': True}), 200, {'ContentType': 'application/json'}
 
 
-@app.route('/completed', methods=['GET', 'POST', 'DELETE'])
-def completed_manager():
-    match request.method:
-        case 'GET':
-            return db.get_completed_data()
-        case 'POST':
-            data = request.get_json()
-            print(data)
-            db.update_data(data, 'completed')
-            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
-        case 'DELETE':
-            print(request.get_json())
-            db.delete_user(request.get_json(), 'completed')
-            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+@routes.view('/completed')
+class UsersManager(web.View):
+    async def get(self):
+        return web.json_response(json.dumps(db.get_completed_data(), default=str), content_type='application/json')
+
+    async def post(self):
+        data = await self.request.json()
+        print(data)
+        db.update_data(data, 'completed')
+        return web.json_response({'success': True}), 200, {'ContentType': 'application/json'}
+
+    async def delete(self):
+        data = await self.request.json()
+        print(data)
+        db.delete_user(data, 'completed')
+        return web.json_response({'success': True}), 200, {'ContentType': 'application/json'}
 
 
-@app.route('/payments', methods=['GET', 'POST', 'DELETE'])
-def payments_manager():
-    match request.method:
-        case 'GET':
-            return db.get_payments()
-        case 'POST':
-            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
-        case 'DELETE':
-            print(request.get_json())
-            db.delete_user(request.get_json(), 'payments')
-            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+@routes.view('/payments')
+class UsersManager(web.View):
+    async def get(self):
+        return web.json_response(json.dumps(db.get_payments(), default=str), content_type='application/json')
+
+    async def post(self):
+        data = await self.request.json()
+        print(data)
+        db.update_data(data, 'payments')
+        return web.json_response({'success': True}), 200, {'ContentType': 'application/json'}
+
+    async def delete(self):
+        data = await self.request.json()
+        print(data)
+        db.delete_user(data, 'payments')
+        return web.json_response({'success': True}), 200, {'ContentType': 'application/json'}
 
 
-@app.route('/feedback', methods=['GET', 'POST', 'DELETE'])
-def feedback_manager():
-    match request.method:
-        case 'GET':
-            return db.get_feedback()
-        case 'POST':
-            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
-        case 'DELETE':
-            print(request.get_json())
-            db.delete_user(request.get_json(), 'feedback')
-            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+@routes.view('/feedback')
+class UsersManager(web.View):
+    async def get(self):
+        return web.json_response(json.dumps(db.get_feedback(), default=str), content_type='application/json')
+
+    async def post(self):
+        data = await self.request.json()
+        print(data)
+        db.update_data(data, 'feedback')
+        return web.json_response({'success': True}), 200, {'ContentType': 'application/json'}
+
+    async def delete(self):
+        data = await self.request.json()
+        print(data)
+        db.delete_user(data, 'feedback')
+        return web.json_response({'success': True}), 200, {'ContentType': 'application/json'}
 
 
-if __name__ == '__main__':
-    app.run()
+app = web.Application()
+aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('./front/dist'))
+cors = aiohttp_cors.setup(app)
+routes.static('/assets', './front/dist/assets')
+app.add_routes(routes)
+

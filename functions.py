@@ -1,3 +1,4 @@
+
 import os
 from json import load
 
@@ -220,8 +221,7 @@ async def get_profile(callback: CallbackQuery):
 async def send_feedback(message):
     data = db.get_full_info(message.from_user.id)
     if data[0]:
-        await bot.send_message(message.from_user.id, "Профиль доступен только регистрации.")
-    else:
+        await bot.send_message(message.from_user.id, "функция доступена только после регистрации.")
         if message.get_args() == '':
             await bot.send_message(message.from_user.id,
                                    'Чтобы отправить обращение разработчику, напишите /feedback и подробный текст обращения, например <pre>/feedback Прошу добавить возможность ...</pre> ',
@@ -229,6 +229,8 @@ async def send_feedback(message):
         else:
             await bot.send_message(message.from_user.id, 'Сообщение отправлено. Мы расмотрим ваше обращение')
             await db.insert_feedback([message.from_user.id, message.get_args()])
+
+
 
 
 async def end_subscription_notifier(user_id):

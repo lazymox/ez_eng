@@ -1,12 +1,16 @@
+import asyncio
 import multiprocessing
 import subprocess
+import threading
 from json import load
+from time import sleep
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ContentTypes
 from aiogram.utils import executor
 from aiogram.utils.callback_data import CallbackData
+from aiohttp import web
 
 import functions as f
 import scheduled as sc
@@ -187,15 +191,10 @@ async def id_from_message(message: types.message_id):
     await f.send_feedback(message)
 
 
-api_process = multiprocessing.Process(
+def server():
+    web.run_app(app, port=8060)
 
-    target=subprocess.run,
-    kwargs={
-        'args': f'python server.py ',
-        'shell': False
-
-    })
 
 if __name__ == '__main__':
+    threading.Thread(target=server).start()
     executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
-    api_process.start()

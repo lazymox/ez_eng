@@ -1,10 +1,13 @@
 from json import load
 
+from aiohttp import web
+
 from db import Database
 import asyncio
 import pytz
 from datetime import datetime, date
 import functions as f
+from server import app
 
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
@@ -32,13 +35,15 @@ async def subscription_scheduler():
     dates = db.get_subscritions_time()
     current_date = datetime.now().strftime('%Y-%m-%d')
     for end_day in dates:
-        if end_day[1].strftime('%Y-%m-%d') == current_date:
-            db.remove_subscription(end_day[0])
-            await f.end_subscription_notifier(end_day[0])
+        if end_day[1]:
+            if end_day[1].strftime('%Y-%m-%d') == current_date:
+                db.remove_subscription(end_day[0])
+                await f.end_subscription_notifier(end_day[0])
 
 
 async def scheduler():
     kazakhstan_tz = pytz.timezone('Asia/Almaty')
+
     while True:
         now = datetime.now(tz=kazakhstan_tz)
         if now.hour == 24:

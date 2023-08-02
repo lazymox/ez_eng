@@ -12,7 +12,7 @@ export default function Table({endPoint, tableTypes}) {
     let [isEdit, setIsEdit] = useState(false)
     let deleteItems=useRef([])
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_PATH}${endPoint}`).then(r => r.json()).then(res => setItems(res))
+        fetch(`${import.meta.env.VITE_API_PATH}${endPoint}`).then(r => r.json()).then(res => setItems(JSON.parse(res)))
     }, [endPoint])
 
     function checkColumType(type, content, name, user_id) {

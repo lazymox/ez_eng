@@ -23,6 +23,7 @@ except Exception as ex:
 
 
 class Database:
+
     def user_exists(self, user_id):
         try:
             connection.ping(reconnect=True)
@@ -294,8 +295,8 @@ class Database:
         connection.commit()
         connection.close()
 
+    @staticmethod
     def get_all_users():
-
         try:
             connection.ping(reconnect=True)
         except:
@@ -305,6 +306,8 @@ class Database:
         result = cursor.fetchall()
         return result
 
+
+    @staticmethod
     def update_data(data: [], table):
 
         try:
@@ -326,6 +329,7 @@ class Database:
                     cursor.execute(
                         f'UPDATE completed set checked={x["checked"]},answer="{x["answer"]}" where user_id={x["user_id"]}')
 
+    @staticmethod
     def delete_user(user_ids, table):
         try:
             connection.ping(reconnect=True)
@@ -334,7 +338,9 @@ class Database:
         cursor = connection.cursor()
         for x in user_ids:
             cursor.execute(f'DELETE FROM {table} WHERE user_id = {x} LIMIT 1;')
+            connection.commit()
 
+    @staticmethod
     def get_completed_data():
         try:
             connection.ping(reconnect=True)
@@ -345,6 +351,7 @@ class Database:
         result = cursor.fetchall()
         return result
 
+    @staticmethod
     def get_payments():
         try:
             connection.ping(reconnect=True)
@@ -357,6 +364,7 @@ class Database:
         print(result)
         return result
 
+    @staticmethod
     def insert_payments(data):
         try:
             cursor.execute(f"INSERT INTO payments (user_id, fio, payment_data) VALUES ({data[0]},{data[1]},{data[2]})")
@@ -366,6 +374,7 @@ class Database:
         finally:
             cursor.close()
 
+    @staticmethod
     def insert_completed(data):
         try:
             cursor.execute(
@@ -376,6 +385,7 @@ class Database:
         finally:
             cursor.close()
 
+    @staticmethod
     def get_feedback():
         try:
             connection.ping(reconnect=True)
@@ -387,7 +397,8 @@ class Database:
         print(result)
         return result
 
-    def insert_feedback(data:[]):
+    @staticmethod
+    def insert_feedback(data: []):
         try:
             cursor.execute(
                 f"INSERT INTO feedback (user_id,message ) VALUES ({data[0]},{data[1]})")
