@@ -5,6 +5,7 @@ from json import load
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
+from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from aiogram.utils.callback_data import CallbackData
 
@@ -19,7 +20,8 @@ test = load(open("test.json", "r", encoding="utf-8"))
 test_test = load(open("test_test.json", "r", encoding="utf-8"))
 video = load(open("video.json", "r", encoding="utf-8"))
 cd = CallbackData("km", "question", "answer")
-
+class States(StatesGroup):
+    state1 = State()
 intro = {"Beginner": "https://youtu.be/_ffiSFzHLw4",
                      "Elementary": "https://youtu.be/CT6a4jKfuzs",
                      "Pre-Intermediate": "https://youtu.be/oTqX1r3SFHI",
@@ -40,34 +42,36 @@ async def prep_test_mess(user_id):
 
 # сообщение о конце обучения
 async def end_mess(user_id):
-    state = FSMContext(storage, user_id, user_id)
     kb = [[types.KeyboardButton(text="Да")], [types.KeyboardButton(text="Нет")]]
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True, input_field_placeholder="выберете вариант")
-    coin = db.get_coin(user_id)
+    coin = db.get_coin(user_id)[0]
     await bot.send_message(user_id, f'Поздравляю это конец, ты набрал вот столько коинов: {coin}\n'
                                     f'Вот такие то у тебя скидки короче похуй')
     await bot.send_message(user_id,
                            f'Перед тем как я с тобой попрощаюсь навсегда хочу тебе предложить 1 вещь который возможно тебя заинтересует называется он NCF English и там ты сможешь быть самым лучшим в группе ведь у тебя есть преимущества в виде меня и от меня символический подарок, скидка поскольку я уважаю твой труд и время',
                            reply_markup=keyboard)
-    await state.set_state('waiting')
+    await States.state1.set()
 
 
-@dp.message_handler(state='waiting')
+@dp.message_handler(lambda message: message, state=States.state1)
 async def interesting_message(message: types.Message, state: FSMContext):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(types.KeyboardButton(text="отправить контакт", request_contact=True))
-    if message == 'Да':
+    if message.text == 'Да':
         await bot.send_message(message.from_user.id,
                                "Рад видеть что у тебя есть рвение изучать язык дальше, напиши мне свои контактные данные (ФИО и номер телефона) я передам нашим специалистам они обязательно с тобой свяжутся",
                                reply_markup=keyboard)
         await state.set_state('wait_for_number')
-    elif message == 'Нет':
+    elif message.text == 'Нет':
         await bot.send_message(message.from_user.id,
                                'На нет и суда нет, это только твоё право, уверен что знания которые ты получил(а) тебе пригодятся в будущем и я выступил в роли катализатора и тебя теперь никто и ничто не остановит')
         await bot.send_message(message.from_user.id,
                                'Я буду ждать тебя сколько потребуется тут, если ты передумаешь нажми на кнопку ниже',
                                reply_markup=keyboard)
         await state.set_state('wait_for_number')
+    else:
+        await bot.send_message(message.from_user.id, "Ответь мне 'Да' или 'Нет'.")
+        await States.state1.set()
 
 
 @dp.message_handler(state='wait_for_number')
@@ -221,6 +225,8 @@ async def compose_poll(user_id):
                     if level == "Intermediate":
                         db.upd_level(user_id, "Upper-Intermediate")
                     if level == "Upper-Intermediate":
+                        db.upd_level(user_id, "")
+                        db.remove_subscription(user_id)
                         await end_mess(user_id)
                         return
                     await bot.send_message(user_id, f"Какой же ты молодец!\n"
