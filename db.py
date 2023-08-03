@@ -73,7 +73,7 @@ class Database:
 
     def get_fio(self, user_id):
         try:
-            connection.ping()
+            connection.ping(reconnect=True)
         except:
             pass
         cursor = connection.cursor()

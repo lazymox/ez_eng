@@ -543,7 +543,7 @@
           "D": "D. You are play football?",
           "Correct": "C"
         }
-      
+
     },
     "test_3": {
       "1": {
@@ -608,7 +608,7 @@
           "B": "B. The amusement park was very interested.",
           "C": "C. Learning new things is always amazed.",
           "D": "D. We were interesting in the movie we saw.",
-          "Correct": "А"
+          "Correct": "A"
         },
         "9": {
           "question": "В котором предложении правильно используется прилагательное с окончанием “-ing”?",
@@ -626,7 +626,7 @@
           "D": "D. The elephant is big than the giraffe.",
           "Correct": "B"
         }
-      
+
     },
     "test_4": {
       "1": {
@@ -709,7 +709,7 @@
           "D": "D. I didn’t like chocolate.",
           "Correct": "D"
         }
-      
+
     },
     "test_5": {
       "1": {
