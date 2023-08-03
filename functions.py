@@ -225,7 +225,7 @@ async def compose_poll(user_id):
                     if level == "Intermediate":
                         db.upd_level(user_id, "Upper-Intermediate")
                     if level == "Upper-Intermediate":
-                        db.upd_level(user_id, "")
+                        db.upd_level(user_id, "COMPLETED")
                         db.remove_subscription(user_id)
                         await end_mess(user_id)
                         return
