@@ -53,6 +53,8 @@ async def process_name(message: types.Message, state: FSMContext):
     await bot.send_message(message.chat.id, f"Так и запишем, {fio}!\n"
                                             "Чтобы проверить свой уровень знаний введи команду /test\n"
                                             "<b>У тебя есть только одна попытка</b>")
+
+
 @dp.message_handler(content_types=ContentTypes.SUCCESSFUL_PAYMENT)
 async def got_payment(message: types.Message):
     await bot.send_message(message.chat.id,
@@ -64,9 +66,6 @@ async def got_payment(message: types.Message):
 async def checkout(pre_checkout_query: types.PreCheckoutQuery):
     await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True,
                                         error_message="Во время оплаты произошла ошибка. Попробуйте позже ")
-
-
-
 
 
 @dp.message_handler(commands='test')
@@ -82,6 +81,7 @@ async def check_level(message: types.Message):
     db.upd_passed(user_id, 0)
     await f.compose_poll(user_id)
 
+
 @dp.callback_query_handler(text="start_test")
 async def start_test(callback: CallbackQuery):
     user_id = callback.from_user.id
@@ -93,6 +93,8 @@ async def start_test(callback: CallbackQuery):
     db.upd_question(user_id, 1)
     await bot.delete_message(user_id, db.get_msg(user_id)[0])
     await f.compose_poll(user_id)
+
+
 @dp.poll_answer_handler()
 async def poll_answer(poll_answer: types.PollAnswer):
     user_id = poll_answer.user.id
