@@ -11,7 +11,7 @@ from aiogram.utils.callback_data import CallbackData
 from config import PAYMENTS_PROVIDER_TOKEN
 from create_bot import dp, bot
 from db import Database
-
+from create_bot import storage
 from main import parse_to_index
 
 db = Database()
@@ -34,7 +34,8 @@ async def prep_test_mess(user_id):
     db.upd_msg(user_id, msg.message_id)
 
 # сообщение о конце обучения
-async def end_mess(user_id, state: FSMContext):
+async def end_mess(user_id):
+    state = FSMContext(storage, user_id, user_id)
     kb = [[types.KeyboardButton(text="Да")], [types.KeyboardButton(text="Нет")]]
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True, input_field_placeholder="выберете вариант")
     coin = db.get_coin(user_id)
@@ -117,12 +118,13 @@ async def end_subscription_notifier(user_id):
 async def razdatka(user_id):
     urok = 'Урок ' + str(db.get_leveling(user_id)[0])
     folder_path = f'Раздатки/{db.get_level(user_id)[0]}/{urok}'
-
-    for file_name in os.listdir(folder_path):
-        pdf_path = os.path.join(folder_path, file_name)
-        with open(pdf_path, 'rb') as pdf_file:
-            await bot.send_document(user_id, pdf_file)
-
+    try:
+        for file_name in os.listdir(folder_path):
+            pdf_path = os.path.join(folder_path, file_name)
+            with open(pdf_path, 'rb') as pdf_file:
+                await bot.send_document(user_id, pdf_file)
+    except:
+        pass
 
 async def compose_poll(user_id):
     if not db.get_level(user_id)[0]:
@@ -184,7 +186,11 @@ async def compose_poll(user_id):
     else:
         level = db.get_level(user_id)[0]
         progress = db.get_leveling(user_id)[0]
-        testNum = "test_" + video[level][str(progress)]["test"]
+        num = video[level][str(progress)]["test"]
+        last = False
+        if num == "final":
+            last = True
+        testNum = "test_" + num
         testing = test[level][testNum]
 
         q = db.get_question(user_id)[0]
@@ -203,9 +209,25 @@ async def compose_poll(user_id):
                     db.upd_coin(user_id, db.get_coin(user_id)[0] + 1)
                 db.upd_try(user_id, 0)
                 await bot.send_message(user_id, f"Поздравляю <b>{db.get_fio(user_id)[0]}</b>, ты набрал <b>{score}</b> из <b>{q}</b>")
-                db.upd_leveling(user_id, db.get_leveling(user_id)[0] + 1)
                 db.upd_try(user_id, 0)
                 db.upd_process(user_id, 0)
+                if last:
+                    if level == "Beginner":
+                        db.upd_level(user_id, "Elementary")
+                    if level == "Elementary":
+                        db.upd_level(user_id, "Pre-Intermediate")
+                    if level == "Pre-Intermediate":
+                        db.upd_level(user_id, "Intermediate")
+                    if level == "Intermediate":
+                        db.upd_level(user_id, "Upper-Intermediate")
+                    if level == "Upper-Intermediate":
+                        await end_mess(user_id)
+                        return
+                    await bot.send_message(user_id, f"Какой же ты молодец!\n"
+                                                    f"Теперь можешь хвастатся друзьям своим новым уровнем английского: <b>{db.get_level(user_id)[0]}</b>")
+                    db.upd_leveling(user_id, 1)
+                    return
+                db.upd_leveling(user_id, db.get_leveling(user_id)[0] + 1)
             else:
                 await bot.send_message(user_id, f"Ой! <b>{db.get_fio(user_id)[0]}</b>, похоже ты не сдал.\n"
                                                 f"Ты набрал <b>{score}</b> из <b>{q}</b>.\n"
