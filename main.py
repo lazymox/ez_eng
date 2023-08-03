@@ -59,7 +59,7 @@ async def process_name(message: types.Message, state: FSMContext):
 async def got_payment(message: types.Message):
     await bot.send_message(message.chat.id,
                            'поздравляяем с покупкой')
-    await db.give_subscription(message.chat.id, 1)
+    db.give_subscription(message.chat.id, 1)
 
 
 @dp.pre_checkout_query_handler(lambda query: True)

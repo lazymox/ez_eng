@@ -19,13 +19,18 @@ test = load(open("test.json", "r", encoding="utf-8"))
 test_test = load(open("test_test.json", "r", encoding="utf-8"))
 video = load(open("video.json", "r", encoding="utf-8"))
 cd = CallbackData("km", "question", "answer")
+
+
 class States(StatesGroup):
     state1 = State()
+
+
 intro = {"Beginner": "https://youtu.be/_ffiSFzHLw4",
-                     "Elementary": "https://youtu.be/CT6a4jKfuzs",
-                     "Pre-Intermediate": "https://youtu.be/oTqX1r3SFHI",
-                     "Intermediate": "https://youtu.be/aQbXt2f4Pag",
-                     "Upper-Intermediate": "https://youtu.be/HYyx3_X7zrE"}
+         "Elementary": "https://youtu.be/CT6a4jKfuzs",
+         "Pre-Intermediate": "https://youtu.be/oTqX1r3SFHI",
+         "Intermediate": "https://youtu.be/aQbXt2f4Pag",
+         "Upper-Intermediate": "https://youtu.be/HYyx3_X7zrE"}
+
 
 # отправка видео
 async def video_send(link, user_id):
@@ -38,6 +43,7 @@ async def prep_test_mess(user_id):
     knopka.insert(InlineKeyboardButton("жми", callback_data="start_test"))
     msg = await bot.send_message(user_id, "Когда будешь готов начать тест, нажми на кнопку ниже", reply_markup=knopka)
     db.upd_msg(user_id, msg.message_id)
+
 
 # сообщение о конце обучения
 async def end_mess(user_id):
@@ -128,8 +134,8 @@ async def razdatka(user_id):
     except:
         pass
 
+
 async def compose_poll(user_id):
-    q = "test_" + str(db.get_question(user_id)[0])
     if not db.get_level(user_id)[0]:
         q = "test_" + str(db.get_question(user_id)[0])
 
@@ -146,30 +152,6 @@ async def compose_poll(user_id):
             else:
                 db.upd_level(user_id, "Upper-Intermediate")
 
-        # await bot.delete_message(user_id, db.get_msg(user_id)[0])
-        db.upd_msg(user_id, 0)
-        db.upd_passed(user_id, 0)
-        db.upd_process(user_id, False)
-        intro = {"Beginner": "https://youtu.be/_ffiSFzHLw4",
-                 "Elementary": "https://youtu.be/CT6a4jKfuzs",
-                 "Pre-Intermediate": "https://youtu.be/oTqX1r3SFHI",
-                 "Intermediate": "https://youtu.be/aQbXt2f4Pag",
-                 "Upper-Intermediate": "https://youtu.be/HYyx3_X7zrE"}
-        await bot.send_message(user_id,
-                               f"Конец. Лови вступительный видеоурок по твоему уровню: {intro[db.get_level(user_id)[0]]}\n"
-                               f"Ваш уровень английского: <b>{db.get_level(user_id)[0]}</b> \n"
-                               f"Вы набрали <b>{score}</b> баллов из 25")
-        await invoice(user_id, 'подписка на 1 месяц ',
-                      f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
-                      f"Доступ более чем 150 видео для обучения английскому языку. \n"
-                      f"Тесты для закрепления матерьяла. \n"
-                      f"И много всего другово.", 'sub')
-        return
-    question = test_test[q]["question_1"]
-    options = []
-    options.append(test_test[q]["A"])
-    options.append(test_test[q]["B"])
-    options.append(test_test[q]["C"])
             db.upd_msg(user_id, 0)
             db.upd_passed(user_id, 0)
             db.upd_process(user_id, False)
@@ -177,15 +159,13 @@ async def compose_poll(user_id):
                                    f"Конец. Лови вступительный видеоурок по твоему уровню: {intro[db.get_level(user_id)[0]]}\n"
                                    f"Ваш уровень английского: <b>{db.get_level(user_id)[0]}</b> \n"
                                    f"Вы набрали <b>{score}</b> баллов из 25")
-            await bot.send_invoice(user_id, title='подписка на 1 месяц ',
-                                   description=f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
-                                               f"Доступ более чем 150 видео для обучения английскому языку. \n"
-                                               f"Тесты для закрепления матерьяла. \n"
-                                               f"И много всего другово.",
-                                   currency='kzt',
-                                   provider_token=PAYMENTS_PROVIDER_TOKEN,
-                                   prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
-                                   )
+            await invoice(user_id, 'подписка на 1 месяц ',
+                          f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
+                          f"Доступ более чем 150 видео для обучения английскому языку. \n"
+                          f"Тесты для закрепления матерьяла. \n"
+                          f"И много всего другово.",
+                            'sub'
+                          )
             return
         question = f"[{q}/25] " + test_test[q]["question_1"]
         options = []
@@ -197,12 +177,12 @@ async def compose_poll(user_id):
         db.upd_options(user_id, parse_to_index[test_test[q]["Correct"]])
 
         msg = await bot.send_poll(
-                            user_id,
-                            question=question,
-                            options=options,
-                            is_anonymous=False,
-                            type='quiz',
-                            correct_option_id=correct_option_id
+            user_id,
+            question=question,
+            options=options,
+            is_anonymous=False,
+            type='quiz',
+            correct_option_id=correct_option_id
         )
         db.upd_msg(user_id, msg.message_id)
     else:
@@ -217,7 +197,6 @@ async def compose_poll(user_id):
 
         q = db.get_question(user_id)[0]
 
-
         if str(q) not in testing.keys():
             q = int(q) - 1
             score = db.get_passed(user_id)[0]
@@ -230,7 +209,8 @@ async def compose_poll(user_id):
                 else:
                     db.upd_coin(user_id, db.get_coin(user_id)[0] + 1)
                 db.upd_try(user_id, 0)
-                await bot.send_message(user_id, f"Поздравляю <b>{db.get_fio(user_id)[0]}</b>, ты набрал <b>{score}</b> из <b>{q}</b>")
+                await bot.send_message(user_id,
+                                       f"Поздравляю <b>{db.get_fio(user_id)[0]}</b>, ты набрал <b>{score}</b> из <b>{q}</b>")
                 db.upd_try(user_id, 0)
                 db.upd_process(user_id, 0)
                 if last:
@@ -291,15 +271,6 @@ async def compose_poll(user_id):
             correct_option_id=correct_option_id
         )
         db.upd_msg(user_id, msg.message_id)
-    msg = await bot.send_poll(
-        user_id,
-        question=question,
-        options=options,
-        is_anonymous=False,
-        type='quiz',
-        correct_option_id=correct_option_id
-    )
-    db.upd_msg(user_id, msg.message_id)
 
 
 async def invoice(user_id, title, description, payload):
