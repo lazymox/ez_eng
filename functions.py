@@ -205,6 +205,7 @@ async def compose_poll(user_id):
                 await bot.send_message(user_id, f"Поздравляю <b>{db.get_fio(user_id)[0]}</b>, ты набрал <b>{score}</b> из <b>{q}</b>")
                 db.upd_leveling(user_id, db.get_leveling(user_id)[0] + 1)
                 db.upd_try(user_id, 0)
+                db.upd_passed(user_id, 0)
             else:
                 await bot.send_message(user_id, f"Ой! <b>{db.get_fio(user_id)[0]}</b>, похоже ты не сдал.\n"
                                                 f"Ты набрал <b>{score}</b> из <b>{q}</b>.\n"
@@ -212,6 +213,7 @@ async def compose_poll(user_id):
                 db.upd_try(user_id, db.get_try(user_id)[0] + 1)
                 db.upd_question(user_id, 1)
                 db.upd_process(user_id, 0)
+                db.upd_passed(user_id, 0)
                 await asyncio.sleep(60)
                 await prep_test_mess(user_id)
             return
