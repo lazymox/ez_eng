@@ -20,6 +20,11 @@ test_test = load(open("test_test.json", "r", encoding="utf-8"))
 video = load(open("video.json", "r", encoding="utf-8"))
 cd = CallbackData("km", "question", "answer")
 
+intro = {"Beginner": "https://youtu.be/_ffiSFzHLw4",
+                     "Elementary": "https://youtu.be/CT6a4jKfuzs",
+                     "Pre-Intermediate": "https://youtu.be/oTqX1r3SFHI",
+                     "Intermediate": "https://youtu.be/aQbXt2f4Pag",
+                     "Upper-Intermediate": "https://youtu.be/HYyx3_X7zrE"}
 
 # отправка видео
 async def video_send(link, user_id):
@@ -146,11 +151,6 @@ async def compose_poll(user_id):
             db.upd_msg(user_id, 0)
             db.upd_passed(user_id, 0)
             db.upd_process(user_id, False)
-            intro = {"Beginner": "https://youtu.be/_ffiSFzHLw4",
-                     "Elementary": "https://youtu.be/CT6a4jKfuzs",
-                     "Pre-Intermediate": "https://youtu.be/oTqX1r3SFHI",
-                     "Intermediate": "https://youtu.be/aQbXt2f4Pag",
-                     "Upper-Intermediate": "https://youtu.be/HYyx3_X7zrE"}
             await bot.send_message(user_id,
                                    f"Конец. Лови вступительный видеоурок по твоему уровню: {intro[db.get_level(user_id)[0]]}\n"
                                    f"Ваш уровень английского: <b>{db.get_level(user_id)[0]}</b> \n"
@@ -224,7 +224,8 @@ async def compose_poll(user_id):
                         await end_mess(user_id)
                         return
                     await bot.send_message(user_id, f"Какой же ты молодец!\n"
-                                                    f"Теперь можешь хвастатся друзьям своим новым уровнем английского: <b>{db.get_level(user_id)[0]}</b>")
+                                                    f"Теперь можешь хвастатся друзьям своим новым уровнем английского: <b>{db.get_level(user_id)[0]}</b>\n"
+                                                    f"Лови вступительный видеоурок по твоему новому уровню: {intro[db.get_level(user_id)[0]]}")
                     db.upd_leveling(user_id, 1)
                     return
                 db.upd_leveling(user_id, db.get_leveling(user_id)[0] + 1)
@@ -248,9 +249,10 @@ async def compose_poll(user_id):
         options = []
         options.append(testing[q]["A"])
         options.append(testing[q]["B"])
-        options.append(testing[q]["C"])
+        if "C" in testing[q].keys():
+            options.append(testing[q]["C"])
 
-        if "D" in testing["1"].keys():
+        if "D" in testing[q].keys():
             options.append(testing[q]["D"])
 
         correct_option_id = parse_to_index[testing[q]["Correct"]]
