@@ -1,4 +1,5 @@
 import threading
+from datetime import datetime
 from json import load
 
 from aiogram import types
@@ -27,18 +28,7 @@ async def hello(message: types.Message, state: FSMContext):
     user_id = message.from_user.id
     if not db.user_exists(user_id):
         db.first_add(user_id)
-        # a = await bot.send_animation(message.chat.id, animation=open('7Pp0.gif', 'rb'), caption="Загрузка видео...")
-        #
-        # video = YouTube('https://www.youtube.com/watch?v=ZQr7fzVp_KQ')
-        # video_file_path = video.streams.get_highest_resolution().download()
-        # clip = VideoFileClip(video_file_path)
-        # width, height = clip.size
-        # with open(video_file_path, 'rb') as video_file:
-        #     await bot.send_video(chat_id=message.chat.id, video=video_file,
-        #                          width=width, height=height,
-        #                          caption='Privetstvennoe soopshenie')
-        #     await bot.delete_message(message.chat.id, a.message_id)
-        # os.remove(video_file_path)
+
         await bot.send_message(message.chat.id,
                                'Добро пожаловать в <b>Easy English</b> от <b>National Foundation Center!</b>\n'
                                'Мы рады приветствовать вас в нашем телеграм боте, где вы сможете получать увлекательные видеоуроки и интересные тесты для изучения английского языка. У нас есть всё, что вам нужно, чтобы улучшить свои навыки и достичь своих языковых целей.\n'
@@ -125,35 +115,17 @@ async def answer_handler(callback: CallbackQuery, callback_data: dict):
                                f"Конец. Лови вступительный видеоурок по твоему уровню: {intro[db.get_level(user_id)[0]]}\n"
                                f"Ваш уровень английского: <b>{db.get_level(user_id)[0]}</b> \n"
                                f"Вы набрали <b>{score}</b> баллов из 25")
-        await bot.send_invoice(callback.from_user.id, title='подписка на 1 месяц ',
-                               description=f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
-                                           f"Доступ более чем 150 видео для обучения английскому языку. \n"
-                                           f"Тесты для закрепления матерьяла. \n"
-                                           f"И много всего другово.",
-                               currency='kzt',
-                               provider_token=PAYMENTS_PROVIDER_TOKEN,
-                               prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
-                               )
-
+        await f.invoice(callback.from_user.id, 'подписка на 1 месяц ',
+                        f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
+                        f"Доступ более чем 150 видео для обучения английскому языку. \n"
+                        f"Тесты для закрепления матерьяла. \n"
+                        f"И много всего другово.", 'sub')
         return
     q = "test_" + str(int(data["question"]) + 1)
     await bot.edit_message_text(chat_id=callback.from_user.id,
                                 text=test_test[q]["question_1"],
                                 message_id=msg,
                                 reply_markup=compose_markup(int(data["question"]) + 1))
-
-
-@dp.message_handler(content_types=ContentTypes.SUCCESSFUL_PAYMENT)
-async def got_payment(message: types.Message):
-    await bot.send_message(message.chat.id,
-                           'поздравляяем с покупкой')
-    await db.give_subscription(message.chat.id, 1)
-
-
-@dp.pre_checkout_query_handler(lambda query: True)
-async def checkout(pre_checkout_query: types.PreCheckoutQuery):
-    await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True,
-                                        error_message="Во время оплаты произошла ошибка. Попробуйте позже ")
 
 
 @dp.message_handler(commands='testSTOP')
@@ -210,8 +182,38 @@ async def id_from_message(message: types.message_id):
     await f.send_feedback(message)
 
 
+@dp.message_handler(commands=['subscription'])
+async def id_from_message(message: types.message_id):
+    if db.check_sub(message.from_user.id):
+        await bot.send_message(message.from_user.id,
+                               f'У вас уже есть подписка. Мы уведомим вас о надобности покупки подписки. ')
+    else:
+        payload = 'sub' if db.check_sub(message.from_user.id)[0] is None else 'resub'
+        await f.invoice(message.from_user.id, 'подписка', 'описание', payload)
+
+
+@dp.message_handler(content_types=ContentTypes.SUCCESSFUL_PAYMENT)
+async def got_payment(message: types.Message):
+    match message.successful_payment.invoice_payload:
+        case 'sub':
+            await bot.send_message(message.chat.id,
+                                   'Поздравляяем с покупкой.Короче раскад такой.Каждый день в 15.00 тебе будет приходить тест вместе с раздаточным матерьялом.Проходя тест ты продвигаешся дальше')
+        case 'resub':
+            await bot.send_message(message.chat.id, 'поздравляяем с покупкой')
+    db.give_subscription(message.chat.id, 1)
+    name = db.get_fio(message.chat.id)[0]
+    db.insert_payments([message.chat.id, name])
+
+
+@dp.pre_checkout_query_handler(lambda query: True)
+async def checkout(pre_checkout_query: types.PreCheckoutQuery):
+    await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True,
+                                        error_message="Во время оплаты произошла ошибка. Попробуйте позже ")
+
+
 def server():
     web.run_app(app, port=8060)
+    return app
 
 
 if __name__ == '__main__':

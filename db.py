@@ -49,9 +49,6 @@ class Database:
         finally:
             cursor.close()
 
-    # except ex:
-    # print("ошибка1", ex)
-
     def get_user_ids(self):
         try:
             connection.ping(reconnect=True)
@@ -80,7 +77,7 @@ class Database:
         except:
             pass
         cursor = connection.cursor()
-        cursor.execute(f"SELECT fio FROM users WHERE user_id = {user_id}")
+        cursor.execute(f"SELECT fio FROM users WHERE user_id ={user_id}")
         result = cursor.fetchone()
         connection.close()
         return result
@@ -258,10 +255,15 @@ class Database:
         return result
 
     def give_subscription(self, user_id, months):
+        try:
+            connection.ping(reconnect=True)
+        except:
+            pass
         end_day = datetime.now() + timedelta(days=30 * months)
-        sql = f"UPDATE users SET reg_date = '{datetime.now().strftime('%Y-%m-%d')}', end_date='{end_day.strftime('%Y-%m-%d')}' WHERE user_id ={user_id}"
         cursor = connection.cursor()
+        sql = f"UPDATE users SET subscription=1, reg_date = '{datetime.now().strftime('%Y-%m-%d')}', end_date='{end_day.strftime('%Y-%m-%d')}' WHERE user_id ={user_id}"
         cursor.execute(sql)
+        connection.commit()
 
     def remove_subscription(self, user_id):
         try:
@@ -408,18 +410,30 @@ class Database:
     @staticmethod
     def insert_payments(data):
         try:
-            cursor.execute(f"INSERT INTO payments (user_id, fio, payment_data) VALUES ({data[0]},{data[1]},{data[2]})")
+            connection.ping(reconnect=True)
+        except mysql.connector.Error as ex:
+            print("Error while reconnecting to the database:", ex)
+            return
+        cursor = connection.cursor()
+        try:
+            cursor.execute(f"INSERT INTO payments (user_id, fio) VALUES (%s,%s)", (data[0], data[1]))
             connection.commit()
         except mysql.connector.Error as ex:
-            print("Error while executing the query:", ex)
+            print(f"Error while executing the query:", ex)
         finally:
             cursor.close()
 
     @staticmethod
     def insert_completed(data):
         try:
+            connection.ping(reconnect=True)
+        except mysql.connector.Error as ex:
+            print("Error while reconnecting to the database:", ex)
+            return
+        cursor = connection.cursor()
+        try:
             cursor.execute(
-                f"INSERT INTO completed (user_id, fio, phone_number, checked, answer) VALUES ({data[0]},{data[1]},{data[2]})")
+                f"INSERT INTO completed (user_id, fio, phone_number) VALUES (%s,%s,%s)", (data[0], data[1], data[2]))
             connection.commit()
         except mysql.connector.Error as ex:
             print("Error while executing the query:", ex)
@@ -428,6 +442,7 @@ class Database:
 
     @staticmethod
     def get_feedback():
+
         try:
             connection.ping(reconnect=True)
         except:
@@ -441,8 +456,14 @@ class Database:
     @staticmethod
     def insert_feedback(data: []):
         try:
+            connection.ping(reconnect=True)
+        except mysql.connector.Error as ex:
+            print("Error while reconnecting to the database:", ex)
+            return
+        cursor = connection.cursor()
+        try:
             cursor.execute(
-                f"INSERT INTO feedback (user_id,message ) VALUES ({data[0]},{data[1]})")
+                f"INSERT INTO feedback (user_id,message ) VALUES (%s,%s)", (data[0], data[1]))
             connection.commit()
         except mysql.connector.Error as ex:
             print("Error while executing the query:", ex)

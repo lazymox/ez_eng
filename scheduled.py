@@ -46,13 +46,11 @@ async def scheduler():
 
     while True:
         now = datetime.now(tz=kazakhstan_tz)
-        # if now.hour == 24:
-        #     await daily()
-        # if now.hour == 15:
-        #     await subscription_scheduler()
-        # await asyncio.sleep(60)
-        await daily()
-        await asyncio.sleep(300)
+        if now.hour == 15:
+            await daily()
+        if now.hour == 23:
+            await subscription_scheduler()
+        await asyncio.sleep(60)
 
 
 async def on_startup(_):

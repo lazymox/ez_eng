@@ -1,4 +1,3 @@
-
 import asyncio
 import os
 from json import load
@@ -227,27 +226,21 @@ async def get_profile(callback: CallbackQuery):
 async def send_feedback(message):
     data = db.get_full_info(message.from_user.id)
     if data[0]:
-        await bot.send_message(message.from_user.id, "функция доступена только после регистрации.")
         if message.get_args() == '':
             await bot.send_message(message.from_user.id,
                                    'Чтобы отправить обращение разработчику, напишите /feedback и подробный текст обращения, например <pre>/feedback Прошу добавить возможность ...</pre> ',
                                    parse_mode='HTML')
         else:
             await bot.send_message(message.from_user.id, 'Сообщение отправлено. Мы расмотрим ваше обращение')
-            await db.insert_feedback([message.from_user.id, message.get_args()])
-
-
+            db.insert_feedback([message.from_user.id, message.get_args()])
+    else:
+        await bot.send_message(message.from_user.id, "функция доступена только после регистрации.")
 
 
 async def end_subscription_notifier(user_id):
-    await bot.send_invoice(user_id, title='Переоформление подписки',
-                           description='Ваша подписка истекла.Пока вы ее не переоформите вам не будут приходить новые '
-                                       'материалы ',
-                           currency='kzt',
-                           provider_token=PAYMENTS_PROVIDER_TOKEN,
-                           payload='re_subscription',
-                           prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
-                           )
+    await invoice(user_id, 'Переоформление подписки',
+                  'Ваша подписка истекла.Пока вы ее не переоформите вам не будут приходить новые '
+                  'материалы ', 'resub')
 
 
 async def razdatka(user_id):
@@ -261,8 +254,6 @@ async def razdatka(user_id):
 
 
 async def compose_poll(user_id):
-
-
     q = "test_" + str(db.get_question(user_id)[0])
 
     if q == "test_26":
@@ -291,15 +282,11 @@ async def compose_poll(user_id):
                                f"Конец. Лови вступительный видеоурок по твоему уровню: {intro[db.get_level(user_id)[0]]}\n"
                                f"Ваш уровень английского: <b>{db.get_level(user_id)[0]}</b> \n"
                                f"Вы набрали <b>{score}</b> баллов из 25")
-        await bot.send_invoice(user_id, title='подписка на 1 месяц ',
-                               description=f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
-                                           f"Доступ более чем 150 видео для обучения английскому языку. \n"
-                                           f"Тесты для закрепления матерьяла. \n"
-                                           f"И много всего другово.",
-                               currency='kzt',
-                               provider_token=PAYMENTS_PROVIDER_TOKEN,
-                               prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
-                               )
+        await invoice(user_id, 'подписка на 1 месяц ',
+                      f"Поздравляем с прохождением пробного экзамена.Но это еще не все. Оформив платную подписку вы получаете: \n"
+                      f"Доступ более чем 150 видео для обучения английскому языку. \n"
+                      f"Тесты для закрепления матерьяла. \n"
+                      f"И много всего другово.", 'sub')
         return
     question = test_test[q]["question_1"]
     options = []
@@ -311,11 +298,27 @@ async def compose_poll(user_id):
     db.upd_options(user_id, parse_to_index[test_test[q]["Correct"]])
 
     msg = await bot.send_poll(
-                        user_id,
-                        question=question,
-                        options=options,
-                        is_anonymous=False,
-                        type='quiz',
-                        correct_option_id=correct_option_id
+        user_id,
+        question=question,
+        options=options,
+        is_anonymous=False,
+        type='quiz',
+        correct_option_id=correct_option_id
     )
     db.upd_msg(user_id, msg.message_id)
+
+
+async def invoice(user_id, title, description, payload):
+    await bot.send_invoice(user_id, title=title,
+                           description=description,
+                           currency='KZT',
+                           provider_token=PAYMENTS_PROVIDER_TOKEN,
+                           payload=payload,
+                           prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000 * 100)],
+                           need_name=False,
+                           need_shipping_address=False,
+                           protect_content=True,
+                           need_email=False,
+                           need_phone_number=False,
+                           start_parameter='subscription'
+                           )
