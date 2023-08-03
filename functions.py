@@ -163,7 +163,7 @@ async def compose_poll(user_id):
                                    prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
                                    )
             return
-        question = test_test[q]["question_1"]
+        question = f"[{q}/25]" + test_test[q]["question_1"]
         options = []
         options.append(test_test[q]["A"])
         options.append(test_test[q]["B"])
@@ -205,7 +205,7 @@ async def compose_poll(user_id):
                 await bot.send_message(user_id, f"Поздравляю <b>{db.get_fio(user_id)[0]}</b>, ты набрал <b>{score}</b> из <b>{q}</b>")
                 db.upd_leveling(user_id, db.get_leveling(user_id)[0] + 1)
                 db.upd_try(user_id, 0)
-                db.upd_passed(user_id, 0)
+                db.upd_process(user_id, 0)
             else:
                 await bot.send_message(user_id, f"Ой! <b>{db.get_fio(user_id)[0]}</b>, похоже ты не сдал.\n"
                                                 f"Ты набрал <b>{score}</b> из <b>{q}</b>.\n"
