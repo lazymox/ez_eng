@@ -163,7 +163,7 @@ async def compose_poll(user_id):
                                    prices=[types.LabeledPrice(label='Подписка на один месяц', amount=7000)]
                                    )
             return
-        question = f"[{q}/25]" + test_test[q]["question_1"]
+        question = f"[{q}/25] " + test_test[q]["question_1"]
         options = []
         options.append(test_test[q]["A"])
         options.append(test_test[q]["B"])
@@ -219,7 +219,10 @@ async def compose_poll(user_id):
             return
 
         q = str(q)
-        question = testing[q]["question"]
+        if "11" in testing.keys():
+            question = f"[{q}/20] " + testing[q]["question"]
+        else:
+            question = f"[{q}/10] " + testing[q]["question"]
         options = []
         options.append(testing[q]["A"])
         options.append(testing[q]["B"])
