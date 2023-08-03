@@ -272,7 +272,6 @@ async def compose_poll(user_id):
         )
         db.upd_msg(user_id, msg.message_id)
 
-
 async def invoice(user_id, title, description, payload):
     await bot.send_invoice(user_id, title=title,
                            description=description,
