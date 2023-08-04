@@ -166,7 +166,7 @@ async def compose_poll(user_id):
                             'sub'
                           )
             return
-        question = f"[{q}/25] " + test_test[q]["question_1"]
+        question = f"[{db.get_question(user_id)[0]}/25] " + test_test[q]["question_1"]
         options = []
         options.append(test_test[q]["A"])
         options.append(test_test[q]["B"])
