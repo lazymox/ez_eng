@@ -1,17 +1,15 @@
 import threading
-from datetime import datetime
 from json import load
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ContentTypes
+from aiogram.types import CallbackQuery, ContentTypes
 from aiogram.utils import executor
 from aiogram.utils.callback_data import CallbackData
 from aiohttp import web
 
 import functions as f
 import scheduled as sc
-from config import PAYMENTS_PROVIDER_TOKEN
 from create_bot import dp, bot
 from db import Database
 from server import app
@@ -148,6 +146,7 @@ async def checkout(pre_checkout_query: types.PreCheckoutQuery):
 def server():
     web.run_app(app, port=8060)
     return app
+
 
 if __name__ == '__main__':
     threading.Thread(target=server).start()
