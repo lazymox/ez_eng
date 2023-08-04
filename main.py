@@ -20,7 +20,7 @@ test = load(open("test.json", "r", encoding="utf-8"))
 test_test = load(open("test_test.json", "r", encoding="utf-8"))
 db = Database()
 cb = CallbackData("kn", "question", "answer")
-parse_to_index = {"A": 0, "B": 1, "C": 2, "D": 3}
+
 
 
 @dp.message_handler(commands='start')

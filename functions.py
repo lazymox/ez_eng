@@ -12,14 +12,13 @@ from config import PAYMENTS_PROVIDER_TOKEN
 from create_bot import dp, bot
 from db import Database
 from create_bot import storage
-from main import parse_to_index
 
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
 test_test = load(open("test_test.json", "r", encoding="utf-8"))
 video = load(open("video.json", "r", encoding="utf-8"))
 cd = CallbackData("km", "question", "answer")
-
+parse_to_index = {"A": 0, "B": 1, "C": 2, "D": 3}
 
 class States(StatesGroup):
     state1 = State()
