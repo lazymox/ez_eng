@@ -1,5 +1,6 @@
 import threading
 from json import load
+from multiprocessing import Process
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -148,6 +149,6 @@ def server():
 
 
 if __name__ == '__main__':
-    threading.Thread(target=server).start()
+    Process(target=server).start()
     executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
 
