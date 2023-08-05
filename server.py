@@ -1,6 +1,5 @@
 import json
 
-import aiohttp_cors
 import aiohttp_jinja2
 import jinja2
 from aiohttp import web
@@ -91,7 +90,6 @@ class UsersManager(web.View):
 
 app = web.Application()
 aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('./front/dist'))
-cors = aiohttp_cors.setup(app)
 routes.static('/assets', './front/dist/assets')
 app.add_routes(routes)
 
