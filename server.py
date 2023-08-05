@@ -1,23 +1,15 @@
 import json
-
-import aiohttp_jinja2
-import jinja2
+import aiohttp_cors
 from aiohttp import web
-
 from db import Database
 
 db = Database()
 routes = web.RouteTableDef()
 
 
-@routes.get('/')
-@aiohttp_jinja2.template('index.html')
-async def return_site(request):
-    return
-
-
 @routes.view('/users')
-class UsersManager(web.View):
+class UsersManager(web.View, aiohttp_cors.CorsViewMixin):
+
     async def get(self):
         return web.json_response(json.dumps(db.get_all_users(), default=str), content_type='application/json')
 
@@ -35,7 +27,8 @@ class UsersManager(web.View):
 
 
 @routes.view('/completed')
-class UsersManager(web.View):
+class UsersManager(web.View, aiohttp_cors.CorsViewMixin):
+
     async def get(self):
         return web.json_response(json.dumps(db.get_completed_data(), default=str), content_type='application/json')
 
@@ -53,7 +46,8 @@ class UsersManager(web.View):
 
 
 @routes.view('/payments')
-class UsersManager(web.View):
+class UsersManager(web.View, aiohttp_cors.CorsViewMixin):
+
     async def get(self):
         return web.json_response(json.dumps(db.get_payments(), default=str), content_type='application/json')
 
@@ -71,7 +65,8 @@ class UsersManager(web.View):
 
 
 @routes.view('/feedback')
-class UsersManager(web.View):
+class UsersManager(web.View, aiohttp_cors.CorsViewMixin):
+
     async def get(self):
         return web.json_response(json.dumps(db.get_feedback(), default=str), content_type='application/json')
 
@@ -89,7 +84,10 @@ class UsersManager(web.View):
 
 
 app = web.Application()
-aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('./front/dist'))
-routes.static('/assets', './front/dist/assets')
-app.add_routes(routes)
 
+app.add_routes(routes)
+cors = aiohttp_cors.setup(app, defaults={
+    "http://horse-front.duckdns.org/": aiohttp_cors.ResourceOptions(),
+})
+for route in list(app.router.resources()):
+    cors.add(route)
