@@ -148,5 +148,5 @@ def server():
 
 
 if __name__ == '__main__':
-    threading.Thread(target=server).start()
     executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
+    threading.Thread(target=server).start()
