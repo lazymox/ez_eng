@@ -1,0 +1,15 @@
+.git
+venv
+front/.idea
+front/node_modules
+front/public
+front/src
+front/.env
+front/.eslintrc.cjs
+front/index.html
+front/package.json
+front/package-lock.json
+front/postcss.config.js
+front/tailwind.config.js
+front/vite.config.js
+front/.gitignore

@@ -20,7 +20,6 @@ db = Database()
 cb = CallbackData("kn", "question", "answer")
 
 
-
 @dp.message_handler(commands='start')
 async def hello(message: types.Message, state: FSMContext):
     user_id = message.from_user.id
@@ -143,11 +142,10 @@ async def checkout(pre_checkout_query: types.PreCheckoutQuery):
                                         error_message="Во время оплаты произошла ошибка. Попробуйте позже ")
 
 
-def server():
-    web.run_app(app, port=8060)
+def init():
+    executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
     return app
 
 
 if __name__ == '__main__':
-    threading.Thread(target=server).start()
-    executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
+    init()
