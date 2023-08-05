@@ -87,7 +87,9 @@ app = web.Application()
 
 app.add_routes(routes)
 cors = aiohttp_cors.setup(app, defaults={
-    "http://horse-front.duckdns.org/": aiohttp_cors.ResourceOptions(),
+    "http://horse-front.duckdns.org/": aiohttp_cors.ResourceOptions(allow_credentials=True,
+            expose_headers="*",
+            allow_headers="*",),
 })
 for route in list(app.router.resources()):
     cors.add(route)
