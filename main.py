@@ -141,5 +141,12 @@ async def checkout(pre_checkout_query: types.PreCheckoutQuery):
     await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True,
                                         error_message="Во время оплаты произошла ошибка. Попробуйте позже ")
 
+
+def server():
+    web.run_app(app, port=8060)
+    return app
+
+
 if __name__ == '__main__':
+    threading.Thread(target=server).start()
     executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
