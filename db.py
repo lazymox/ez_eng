@@ -339,7 +339,7 @@ class Database:
         connection.close()
 
     @staticmethod
-    def get_all_users(self):
+    def get_all_users():
 
         try:
             connection.ping(reconnect=True)
