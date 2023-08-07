@@ -401,7 +401,7 @@ class Database:
         except:
             pass
         cursor = connection.cursor(dictionary=True)  # этот аргумент просто имба
-        cursor.execute('SELECT * FROM payments order by user_id')
+        cursor.execute('SELECT * FROM payments order by №')
         result = cursor.fetchall()
 
         print(result)
@@ -448,7 +448,7 @@ class Database:
         except:
             pass
         cursor = connection.cursor(dictionary=True)  # этот аргумент просто имба
-        cursor.execute('SELECT * FROM feedback order by user_id')
+        cursor.execute('SELECT * FROM feedback order by №')
         result = cursor.fetchall()
         print(result)
         return result
