@@ -1,4 +1,3 @@
-import threading
 from json import load
 from multiprocessing import Process
 
@@ -120,7 +119,7 @@ async def id_from_message(message: types.message_id):
         await bot.send_message(message.from_user.id,
                                f'У вас уже есть подписка. Мы уведомим вас о надобности покупки подписки. ')
     else:
-        payload = 'sub' if db.check_sub(message.from_user.id)[0] is None else 'resub'
+        payload = 'sub' if db.get_coin(message.from_user.id)[0] is None else 'resub'
         await f.invoice(message.from_user.id, 'подписка', 'описание', payload)
 
 
@@ -149,6 +148,6 @@ def server():
 
 
 if __name__ == '__main__':
-    Process(target=server).start()
+    # Process(target=server).start()
     executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
 
