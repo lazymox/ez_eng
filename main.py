@@ -40,7 +40,6 @@ async def hello(message: types.Message, state: FSMContext):
     else:
         await bot.send_message(message.chat.id, "Ты уже в базе.")
 
-
 @dp.message_handler(state='wait_for_name')
 async def process_name(message: types.Message, state: FSMContext):
     fio = message.text
@@ -50,13 +49,6 @@ async def process_name(message: types.Message, state: FSMContext):
     await bot.send_message(message.chat.id, f"Так и запишем, {fio}!\n"
                                             "Чтобы проверить свой уровень знаний введи команду /test\n"
                                             "<b>У тебя есть только одна попытка</b>")
-
-
-@dp.message_handler(content_types=ContentTypes.SUCCESSFUL_PAYMENT)
-async def got_payment(message: types.Message):
-    await bot.send_message(message.chat.id,
-                           'поздравляяем с покупкой')
-    db.give_subscription(message.chat.id, 1)
 
 
 @dp.pre_checkout_query_handler(lambda query: True)
@@ -115,11 +107,11 @@ async def id_from_message(message: types.message_id):
 
 @dp.message_handler(commands=['subscription'])
 async def id_from_message(message: types.message_id):
-    if db.check_sub(message.from_user.id):
+    if db.check_sub(message.from_user.id) == 0:
         await bot.send_message(message.from_user.id,
                                f'У вас уже есть подписка. Мы уведомим вас о надобности покупки подписки. ')
     else:
-        payload = 'sub' if db.get_coin(message.from_user.id)[0] is None else 'resub'
+        payload = 'sub' if db.get_coin(message.from_user.id)[0] == 0 else 'resub'
         await f.invoice(message.from_user.id, 'подписка', 'описание', payload)
 
 
@@ -150,4 +142,3 @@ def server():
 if __name__ == '__main__':
     # Process(target=server).start()
     executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
-

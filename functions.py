@@ -4,14 +4,12 @@ from json import load
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from aiogram.utils.callback_data import CallbackData
 
 from config import PAYMENTS_PROVIDER_TOKEN
 from create_bot import dp, bot
 from db import Database
-from create_bot import storage
 
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
@@ -20,9 +18,7 @@ video = load(open("video.json", "r", encoding="utf-8"))
 cd = CallbackData("km", "question", "answer")
 parse_to_index = {"A": 0, "B": 1, "C": 2, "D": 3}
 
-class States(StatesGroup):
-    state1 = State()
-
+promote_text = "Перед тем как я с тобой попрощаюсь навсегда хочу тебе предложить 1 вещь который возможно тебя заинтересует называется он NCF English и там ты сможешь быть самым лучшим в группе ведь у тебя есть преимущества в виде меня и от меня символический подарок, скидка поскольку я уважаю твой труд и время",
 
 intro = {"Beginner": "https://youtu.be/_ffiSFzHLw4",
          "Elementary": "https://youtu.be/CT6a4jKfuzs",
@@ -46,44 +42,47 @@ async def prep_test_mess(user_id):
 
 # сообщение о конце обучения
 async def end_mess(user_id):
-    kb = [[types.KeyboardButton(text="Да")], [types.KeyboardButton(text="Нет")]]
-    keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True, input_field_placeholder="выберете вариант")
+    kb = [[types.InlineKeyboardButton(text="Да", callback_data='answer_yes')],
+          [types.InlineKeyboardButton(text="Нет", callback_data='answer_no')]]
+    keyboard = types.InlineKeyboardMarkup(row_width=2, inline_keyboard=kb)
     coin = db.get_coin(user_id)[0]
     await bot.send_message(user_id, f'Поздравляю это конец, ты набрал вот столько коинов: {coin}\n'
                                     f'Вот такие то у тебя скидки короче похуй')
-    await bot.send_message(user_id,
-                           f'Перед тем как я с тобой попрощаюсь навсегда хочу тебе предложить 1 вещь который возможно тебя заинтересует называется он NCF English и там ты сможешь быть самым лучшим в группе ведь у тебя есть преимущества в виде меня и от меня символический подарок, скидка поскольку я уважаю твой труд и время',
-                           reply_markup=keyboard)
-    await States.state1.set()
+    await bot.send_message(user_id, promote_text, reply_markup=keyboard)
 
 
-@dp.message_handler(lambda message: message, state=States.state1)
-async def interesting_message(message: types.Message, state: FSMContext):
-    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+@dp.callback_query_handler(text='answer_yes')
+async def answer_yes(call: types.callback_query, state: FSMContext):
+    await bot.edit_message_text(text=promote_text, chat_id=call.from_user.id, message_id=call.message.message_id,
+                                reply_markup=None)
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
     keyboard.add(types.KeyboardButton(text="отправить контакт", request_contact=True))
-    if message.text == 'Да':
-        await bot.send_message(message.from_user.id,
-                               "Рад видеть что у тебя есть рвение изучать язык дальше, напиши мне свои контактные данные (ФИО и номер телефона) я передам нашим специалистам они обязательно с тобой свяжутся",
-                               reply_markup=keyboard)
-        await state.set_state('wait_for_number')
-    elif message.text == 'Нет':
-        await bot.send_message(message.from_user.id,
-                               'На нет и суда нет, это только твоё право, уверен что знания которые ты получил(а) тебе пригодятся в будущем и я выступил в роли катализатора и тебя теперь никто и ничто не остановит')
-        await bot.send_message(message.from_user.id,
-                               'Я буду ждать тебя сколько потребуется тут, если ты передумаешь нажми на кнопку ниже',
-                               reply_markup=keyboard)
-        await state.set_state('wait_for_number')
-    else:
-        await bot.send_message(message.from_user.id, "Ответь мне 'Да' или 'Нет'.")
-        await States.state1.set()
+    await bot.send_message(call.from_user.id,
+                           "Рад видеть что у тебя есть рвение изучать язык дальше, напиши мне свои контактные данные (ФИО и номер телефона) я передам нашим специалистам они обязательно с тобой свяжутся",
+                           reply_markup=keyboard)
+    await state.set_state('wait_number')
 
 
-@dp.message_handler(state='wait_for_number')
-async def get_number(message: types.Message, state: FSMContext):
-    # message.answer_contact() где-то нужно сохронять
+@dp.callback_query_handler(text='answer_no')
+async def answer_no(call: types.callback_query, state: FSMContext):
+    keyboard = types.ReplyKeyboardMarkup()
+    keyboard.add(types.KeyboardButton(text="отправить контакт", request_contact=True))
+    await bot.send_message(call.from_user.id,
+                           'На нет и суда нет, это только твоё право, уверен что знания которые ты получил(а) тебе пригодятся в будущем и я выступил в роли катализатора и тебя теперь никто и ничто не остановит')
+    await bot.send_message(call.from_user.id,
+                           'Я буду ждать тебя сколько потребуется тут, если ты передумаешь нажми на кнопку ниже',
+                           reply_markup=keyboard)
+    await state.set_state('wait_number')
+
+
+@dp.message_handler(content_types=types.ContentTypes.CONTACT, state='wait_number')
+async def get_contact(message, state: FSMContext):
+    name = db.get_fio(message.from_user.id)[0]
     await bot.send_message(message.from_user.id,
-                           'Славно, передал контакты нашим ребятам теперь хорошенько отдохни и ожидай звонка')
-    await db.insert_completed([message.from_user.id, db.get_fio(message.from_user.id), message.contact.phone_number])
+                           'Славно, передал контакты нашим ребятам теперь хорошенько отдохни и ожидай звонка',
+                           reply_markup=types.ReplyKeyboardRemove())
+    db.insert_completed(
+        [message.from_user.id, name, message.contact.phone_number])
     await state.finish()
 
 
@@ -163,7 +162,7 @@ async def compose_poll(user_id):
                           f"Доступ более чем 150 видео для обучения английскому языку. \n"
                           f"Тесты для закрепления матерьяла. \n"
                           f"И много всего другово.",
-                            'sub'
+                          'sub'
                           )
             return
         question = f"[{db.get_question(user_id)[0]}/25] " + test_test[q]["question_1"]
