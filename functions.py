@@ -113,7 +113,7 @@ async def send_feedback(message):
             await bot.send_message(message.from_user.id, 'Сообщение отправлено. Мы расмотрим ваше обращение')
             db.insert_feedback([message.from_user.id, message.get_args()])
     else:
-        await bot.send_message(message.from_user.id, "функция доступена только после регистрации.")
+        await bot.send_message(message.from_user.id, "функция доступна только после регистрации.")
 
 
 async def end_subscription_notifier(user_id):
