@@ -109,7 +109,7 @@ async def id_from_message(message: types.message_id):
 @dp.message_handler(commands=['subscription'])
 async def id_from_message(message: types.message_id):
     data = db.get_full_info(message.from_user.id)
-    if data[0]:
+    if data[1]:
         if db.check_sub(message.from_user.id)[0] == 1:
             await bot.send_message(message.from_user.id,
                                    f'У вас уже есть подписка. Мы уведомим вас о надобности покупки подписки. ')
