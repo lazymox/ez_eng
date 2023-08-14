@@ -78,11 +78,12 @@ async def answer_no(call: types.callback_query, state: FSMContext):
 @dp.message_handler(content_types=types.ContentTypes.CONTACT, state='wait_number')
 async def get_contact(message, state: FSMContext):
     name = db.get_fio(message.from_user.id)[0]
+    db.insert_completed(
+        [message.from_user.id, name, message.contact.phone_number])
     await bot.send_message(message.from_user.id,
                            'Славно, передал контакты нашим ребятам теперь хорошенько отдохни и ожидай звонка',
                            reply_markup=types.ReplyKeyboardRemove())
-    db.insert_completed(
-        [message.from_user.id, name, message.contact.phone_number])
+
     await state.finish()
 
 
