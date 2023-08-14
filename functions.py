@@ -104,7 +104,7 @@ async def get_profile(callback: CallbackQuery):
 
 async def send_feedback(message):
     data = db.get_full_info(message.from_user.id)
-    if data[0]:
+    if data[1]:
         if message.get_args() == '':
             await bot.send_message(message.from_user.id,
                                    'Чтобы отправить обращение разработчику, напишите /feedback и подробный текст обращения, например <pre>/feedback Прошу добавить возможность ...</pre> ',
