@@ -123,11 +123,10 @@ async def got_payment(message: types.Message):
                                    'Поздравляяем с покупкой.Короче раскад такой.Каждый день в 15.00 тебе будет приходить тест вместе с раздаточным матерьялом.Проходя тест ты продвигаешся дальше')
         case 'resub':
             await bot.send_message(message.chat.id, 'поздравляяем с покупкой')
-    db.give_subscription(message.chat.id, 1)
     name = db.get_fio(message.chat.id)[0]
     db.insert_payments([message.chat.id, name])
-
-
+    db.give_subscription(message.chat.id, 1)
+    
 @dp.pre_checkout_query_handler(lambda query: True)
 async def checkout(pre_checkout_query: types.PreCheckoutQuery):
     await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True,
