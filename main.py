@@ -40,6 +40,7 @@ async def hello(message: types.Message, state: FSMContext):
     else:
         await bot.send_message(message.chat.id, "Ты уже в базе.")
 
+
 @dp.message_handler(state='wait_for_name')
 async def process_name(message: types.Message, state: FSMContext):
     fio = message.text
@@ -126,7 +127,8 @@ async def got_payment(message: types.Message):
     name = db.get_fio(message.chat.id)[0]
     db.insert_payments([message.chat.id, name])
     db.give_subscription(message.chat.id, 1)
-    
+
+
 @dp.pre_checkout_query_handler(lambda query: True)
 async def checkout(pre_checkout_query: types.PreCheckoutQuery):
     await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True,
