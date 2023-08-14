@@ -108,7 +108,8 @@ async def id_from_message(message: types.message_id):
 
 @dp.message_handler(commands=['subscription'])
 async def id_from_message(message: types.message_id):
-    if db.get_full_info(message.from_user.id)[0]:
+    data = db.get_full_info(message.from_user.id)
+    if data[0]:
         if db.check_sub(message.from_user.id)[0] == 1:
             await bot.send_message(message.from_user.id,
                                    f'У вас уже есть подписка. Мы уведомим вас о надобности покупки подписки. ')
@@ -116,7 +117,7 @@ async def id_from_message(message: types.message_id):
             payload = 'sub' if db.get_coin(message.from_user.id)[0] == 0 else 'resub'
             await f.invoice(message.from_user.id, 'подписка', 'описание', payload)
     else:
-        await bot.send_message(message.from_user.id, "Профиль доступен только регистрации.")
+        await bot.send_message(message.from_user.id, "Подписка доступена только регистрации.")
 
 
 @dp.message_handler(content_types=ContentTypes.SUCCESSFUL_PAYMENT)
