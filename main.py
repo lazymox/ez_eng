@@ -153,7 +153,7 @@ if __name__ == '__main__':
     if webhook:
 
         executor.start_webhook(dispatcher=dp, webhook_path='/', on_startup=sc.on_startup, skip_updates=True,
-                               host='0.0.0.0',
+                               host='94.124.78.197',
                                port=webhook_port)
     else:
         executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
