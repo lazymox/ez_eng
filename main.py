@@ -145,7 +145,7 @@ def server():
 
 
 async def run_hook():
-    await bot.set_webhook(f'{webhook_host}/')
+    await bot.set_webhook(f'{webhook_host}/api')
 
 
 if __name__ == '__main__':
