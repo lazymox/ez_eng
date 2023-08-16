@@ -1,5 +1,4 @@
 from json import load
-from multiprocessing import Process
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -10,6 +9,7 @@ from aiohttp import web
 
 import functions as f
 import scheduled as sc
+from config import webhook_host, webhook_port, webhook
 from create_bot import dp, bot
 from db import Database
 from server import app
@@ -144,6 +144,16 @@ def server():
     return app
 
 
+async def run_hook():
+    await bot.set_webhook(f'{webhook_host}/')
+
+
 if __name__ == '__main__':
     # Process(target=server).start()
-    executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
+    if webhook:
+        run_hook()
+        executor.start_webhook(dispatcher=dp, webhook_path='/', on_startup=sc.on_startup, skip_updates=True,
+                               host='0.0.0.0',
+                               port=webhook_port)
+    else:
+        executor.start_polling(dp, skip_updates=True, on_startup=sc.on_startup)
