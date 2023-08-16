@@ -58,5 +58,7 @@ async def scheduler():
 
 
 async def on_startup(_):
-    asyncio.create_task(scheduler())
     await run_hook()
+    asyncio.create_task(scheduler())
+
+
