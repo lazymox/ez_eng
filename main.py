@@ -151,7 +151,7 @@ async def run_hook():
 if __name__ == '__main__':
     # Process(target=server).start()
     if webhook:
-        run_hook()
+
         executor.start_webhook(dispatcher=dp, webhook_path='/', on_startup=sc.on_startup, skip_updates=True,
                                host='0.0.0.0',
                                port=webhook_port)

@@ -6,6 +6,7 @@ import pytz
 
 import functions as f
 from db import Database
+from main import run_hook
 
 db = Database()
 test = load(open("test.json", "r", encoding="utf-8"))
@@ -58,3 +59,4 @@ async def scheduler():
 
 async def on_startup(_):
     asyncio.create_task(scheduler())
+    await run_hook()
