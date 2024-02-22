@@ -125,7 +125,7 @@ async def got_payment(message: types.Message):
     match message.successful_payment.invoice_payload:
         case 'sub':
             await bot.send_message(message.chat.id,
-                                   'Поздравляяем с покупкой.Короче раскад такой.Каждый день в 15.00 тебе будет приходить тест вместе с раздаточным матерьялом.Проходя тест ты продвигаешся дальше')
+                                   'Поздравляяем с покупкой. Короче раскад такой. Каждый день в 15.00 тебе будет приходить тест вместе с раздаточным материалом. Проходя тест ты продвигаешся дальше')
         case 'resub':
             await bot.send_message(message.chat.id, 'поздравляяем с покупкой')
     name = db.get_fio(message.chat.id)[0]
